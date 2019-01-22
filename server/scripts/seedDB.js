@@ -72,7 +72,7 @@ db.Poem
 //User inserte into DB
 db.User
   .remove({})
-  .then(() => User.collection.insertMany(userSeed))
+  .then(() => User.collection.insert(userSeed))
   .then(data => {
     console.log(data.result.n + "User records inserted!");
     process.exit(0);
