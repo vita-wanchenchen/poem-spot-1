@@ -8,6 +8,7 @@ mongoose.connect(
   "mongodb://localhost/poemlist"
 );
 
+//Test data
 const poemSeed = [
   {
     title: "Footprints",
@@ -46,11 +47,34 @@ const poemSeed = [
   }
 ];
 
+//TestData
+const userSeed = [{
+      name: "User",
+      lastName: "Data",
+      email: "userdata@test.com",
+      password: "p@ssword123"
+    }
+  ];
+
+//Poem insert into DB
 db.Poem
   .remove({})
   .then(() => db.Poem.collection.insertMany(poemSeed))
   .then(data => {
-    console.log(data.result.n + " records inserted!");
+    console.log(data.result.n + "Poem records inserted!");
+    process.exit(0);
+  })
+  .catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
+
+//User inserte into DB
+db.User
+  .remove({})
+  .then(() => User.collection.insertMany(userSeed))
+  .then(data => {
+    console.log(data.result.n + "User records inserted!");
     process.exit(0);
   })
   .catch(err => {
