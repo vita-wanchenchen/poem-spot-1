@@ -10,9 +10,11 @@ const poemSchema = new Schema({
     type: String,
     required: true
   },
-  text: String,
-  minlength: 1,
-  maxlength: 500,
+  body: {
+    type: String,
+    minlength: 1,
+    maxlength: 500,
+  },
   date: {
     type: Date,
     default: Date.now
