@@ -1,4 +1,4 @@
 module.exports = {
   Poem: require("./poem"),
-  Login: require("./login")
+  User: require("./user")
 };
