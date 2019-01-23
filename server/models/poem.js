@@ -1,14 +1,16 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+
+// eslint-disable-next-line prefer-destructuring
 const Schema = mongoose.Schema;
 
 const poemSchema = new Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   author: {
     type: String,
-    required: true
+    required: true,
   },
   body: {
     type: String,
@@ -17,10 +19,10 @@ const poemSchema = new Schema({
   },
   date: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
-const Poem = mongoose.model("Poem", poemSchema);
+const Poem = mongoose.model('Poem', poemSchema);
 
 module.exports = Poem;

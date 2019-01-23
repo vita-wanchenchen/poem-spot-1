@@ -1,7 +1,6 @@
 {
   "name": "poem-spot",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,7 +23,16 @@
   "dependencies": {
     "axios": "^0.18.0",
     "express": "^4.16.4",
-    "mongoose": "^5.4.5",
+    "mongoose": "^5.4.6",
     "sequelize": "^4.42.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vita-wanchenchen/poem-spot-1.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vita-wanchenchen/poem-spot-1/issues"
+  },
+  "homepage": "https://github.com/vita-wanchenchen/poem-spot-1#readme",
+  "description": ""
 }
