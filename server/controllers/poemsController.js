@@ -1,5 +1,5 @@
 /* eslint-disable linebreak-style */
-const db = require('../models');
+const db = require("../models");
 
 // Defining methods for the PoemsController
 module.exports = {

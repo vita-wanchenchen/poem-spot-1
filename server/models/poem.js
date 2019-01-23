@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // eslint-disable-next-line prefer-destructuring
 const Schema = mongoose.Schema;
@@ -23,6 +23,6 @@ const poemSchema = new Schema({
   },
 });
 
-const Poem = mongoose.model('Poem', poemSchema);
+const Poem = mongoose.model("Poem", poemSchema);
 
 module.exports = Poem;

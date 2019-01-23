@@ -1,7 +1,10 @@
-const mongoose = require('mongoose');
+/* eslint-disable prefer-destructuring */
+/* eslint-disable func-names */
+const mongoose = require("mongoose");
+
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
+const newUserSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -12,19 +15,19 @@ const userSchema = new Schema({
   },
   email: {
     type: String,
-    required: 'Email is Required',
+    required: "Email is Required",
     unique: true,
-    match: [/.+@.+\..+/, 'Please enter a valid e-mail address'],
+    match: [/.+@.+\..+/, "Please enter a valid e-mail address"],
   },
   password: {
     type: String,
     trim: true,
-    required: 'Password is Required',
+    required: "Password is Required",
     validate: [
       function (input) {
         return input.length >= 6;
       },
-      'Password should be longer minimum length is 6.',
+      "Password should be longer minimum length is 6.",
     ],
   },
   userCreated: {
@@ -34,10 +37,10 @@ const userSchema = new Schema({
   // associate poem with user
   poem: {
     type: Schema.Types.ObjectId,
-    ref: 'Poem',
+    ref: "Poem",
   },
 });
 
-const User = mongoose.model('User', userSchema);
+const NewUser = mongoose.model("NewUser", newUserSchema);
 
-module.exports = User;
+module.exports = NewUser;
