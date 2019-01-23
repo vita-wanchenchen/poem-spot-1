@@ -1,6 +1,3 @@
-/* eslint-disable func-names */
-/* eslint-disable prefer-destructuring */
-/* eslint-disable import/newline-after-import */
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
