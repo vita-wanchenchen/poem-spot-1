@@ -23,8 +23,19 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "*",
     "express": "^4.16.4",
+    "express-handlebars": "3.0.0",
+    "express-messages": "*",
+    "express-session": "*",
+    "express-validator": "*",
+    "mongodb": "*",
     "mongoose": "^5.4.5",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "sequelize": "^4.42.0"
   }
 }
