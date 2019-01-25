@@ -6,13 +6,13 @@ This app has Passport.js sign-in authentication and accesses an API to display p
 
 <h2>Technologies Used:</h2>
 
-React
-Mongoose
-Passport.js
-Node.js
-Express
-Styled-components
-Axios
+<li>React</li>
+<li>Mongoose</li>
+<li>Passport.js</li>
+<li>Node.js</li>
+<li>Express</li>
+<li>Styled-components</li>
+<li>Axios</li>
 
 
 
