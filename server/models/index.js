@@ -1,6 +1,6 @@
 const Poem = require("./poem");
-const NewUser = require("./newUser");
+const User = require("./user");
 
 module.exports = {
-  Poem, NewUser,
+  Poem, User,
 };
