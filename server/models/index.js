@@ -1,4 +1,6 @@
+const Poem = require("./poem");
+const NewUser = require("./newUser");
+
 module.exports = {
-  Poem: require("./poem"),
-  NewUser: require("./newUser"),
+  Poem, NewUser,
 };

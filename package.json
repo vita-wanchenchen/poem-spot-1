@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./server",
+    "lint:fix": "eslint --fix ./server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
