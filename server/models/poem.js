@@ -15,7 +15,7 @@ const poemSchema = new Schema({
   body: {
     type: String,
     minlength: 1,
-    maxlength: 500,
+    maxlength: 1000,
   },
   date: {
     type: Date,

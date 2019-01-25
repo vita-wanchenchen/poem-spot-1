@@ -27,7 +27,7 @@ const newUserSchema = new Schema({
       function (input) {
         return input.length >= 6;
       },
-      "Password should be longer minimum length is 6.",
+      "Password should be a minimum of 6 characters.",
     ],
   },
   userCreated: {
