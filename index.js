@@ -1,11 +1,13 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-console */
 const express = require("express");
 const mongoose = require("mongoose");
-const exphbs = require("express-handlebars");
 const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
 const mongodb = require("mongodb");
+const bodyParser = require("body-parser");
 const routes = require("./routes");
 
 // Init App
@@ -28,12 +30,16 @@ mongoose.connect(db, { useNewUrlParser: true })
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
-// View Engine
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
+// // View Engine
+// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+// app.set("view engine", "handlebars");
 
 // Express body parser
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({
+  type: "application/*+json",
+}));
+app.use(bodyParser.json());
 
 app.use("/public", express.static("public"));
 
@@ -50,6 +56,16 @@ app.use(passport.session());
 
 // Connect Flash
 app.use(flash());
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, user-token",
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  next();
+});
 
 // Global variables
 app.use((req, { locals }, next) => {
