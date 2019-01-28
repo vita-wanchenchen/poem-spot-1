@@ -8,7 +8,9 @@ const session = require("express-session");
 const passport = require("passport");
 const mongodb = require("mongodb");
 const bodyParser = require("body-parser");
+const cors = require("cors");
 const routes = require("./routes");
+
 
 // Init App
 const app = express();
@@ -76,9 +78,13 @@ app.use((req, { locals }, next) => {
   next();
 });
 
+// Use Corse for API requests
+app.use(cors());
+
 // Routes
 app.use("/", require("./routes/index.js"));
 app.use("/users", require("./routes/users.js"));
+
 // Start the API server
 app.listen(PORT, () => {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
