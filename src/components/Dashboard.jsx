@@ -10,7 +10,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <h3 style={{ fontSize: "5em" }}>Dashboard</h3>
+        <h3 style={{ fontSize: "2em" }}>Dashboard</h3>
       </div>
     );
   }
