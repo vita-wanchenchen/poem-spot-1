@@ -34,6 +34,15 @@ loadPoem = () => {
     .catch(err => console.log(err));
 };
 
+// Load Poems from DB
+loadPoemDB = () => {
+  API.getPoemsDB()
+    .then(res => this.setState({
+      dailyPoem: res.data,
+    }))
+    .catch(err => console.log(err));
+};
+
 render() {
   return (
     <div id="home-page">

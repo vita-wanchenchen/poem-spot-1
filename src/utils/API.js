@@ -13,4 +13,8 @@ export default {
   getPoems() {
     return axios.get(cors + poemsURL);
   },
+  // Gets all poems
+  getPoemsDB() {
+    return axios.get("/api/poems");
+  },
 };
