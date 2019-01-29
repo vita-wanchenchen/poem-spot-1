@@ -9,6 +9,7 @@ class Home extends Component {
   state = {
     meetUp: [],
     dailyPoem: [],
+    dbPoems: [],
   };
 
   componentDidMount() {
@@ -38,7 +39,7 @@ loadPoem = () => {
 loadPoemDB = () => {
   API.getPoemsDB()
     .then(res => this.setState({
-      dailyPoem: res.data,
+      dbPoems: res.data,
     }))
     .catch(err => console.log(err));
 };
@@ -86,6 +87,25 @@ render() {
             <span> {this.state.meetUp.state}</span>
             <span>  {this.state.meetUp.country}</span>
           </p>
+        </div>
+      </div>
+      {/* Database Poems */}
+      <div id="dbPoems">
+        <div className="APIS">
+          <h1>Latest Poems</h1>
+          {!this.state.dbPoems.length ? (
+            <h1 className="text-center">No Poems to Display</h1>
+          ) : (
+            <React.Fragment>
+              {this.state.dbPoems.map(poems => (
+                <div>
+                  <h2>{poems.title}</h2>
+                  <p>Authors: {poems.authors}</p>
+                  <p>Poem: {poems.body}</p>
+                </div>
+              ))}
+            </React.Fragment>
+          )}
         </div>
       </div>
     </div>

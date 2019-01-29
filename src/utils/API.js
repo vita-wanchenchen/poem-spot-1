@@ -15,6 +15,6 @@ export default {
   },
   // Gets all poems
   getPoemsDB() {
-    return axios.get("/api/poems");
+    return axios.get("/poems");
   },
 };

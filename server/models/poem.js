@@ -1,25 +1,28 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
-  name: {
+// eslint-disable-next-line prefer-destructuring
+const Schema = mongoose.Schema;
+
+const poemSchema = new Schema({
+  title: {
     type: String,
     required: true,
   },
-  email: {
+  author: {
     type: String,
     required: true,
   },
-  password: {
+  body: {
     type: String,
-    required: true,
+    minlength: 1,
+    maxlength: 1000,
   },
   date: {
     type: Date,
     default: Date.now,
   },
-
 });
 
-const User = mongoose.model("User", UserSchema);
+const Poem = mongoose.model("Poem", poemSchema);
 
-module.exports = User;
+module.exports = Poem;
