@@ -1,5 +1,8 @@
 const mongoose = require("mongoose");
 
+// eslint-disable-next-line prefer-destructuring
+const Schema = mongoose.Schema;
+
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -17,7 +20,11 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-
+  // associate poem with user
+  poem: {
+    type: Schema.Types.ObjectId,
+    ref: "Poem",
+  },
 });
 
 const User = mongoose.model("User", UserSchema);

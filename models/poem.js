@@ -21,6 +21,11 @@ const poemSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  // associate poem with user
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 const Poem = mongoose.model("Poem", poemSchema);
