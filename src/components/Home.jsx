@@ -15,6 +15,7 @@ class Home extends Component {
   componentDidMount() {
     this.loadMeetup();
     this.loadPoem();
+    this.loadPoemDB();
   }
 
   // load meetup API

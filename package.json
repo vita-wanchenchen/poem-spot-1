@@ -88,7 +88,8 @@
     "start:client": "node scripts/start.js",
     "start": "run-p start:server start:client",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "seed": "node scripts/seedDB.js"
   },
   "eslintConfig": {
     "extends": "react-app"

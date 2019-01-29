@@ -15,6 +15,11 @@ export default {
   },
   // Gets all poems
   getPoemsDB() {
-    return axios.get("/poems");
+    return axios.get("/api/poems");
   },
+  // Saves a book to the database
+  savePoem(poemData) {
+    return axios.post("/api/poems", poemData);
+  },
+
 };
