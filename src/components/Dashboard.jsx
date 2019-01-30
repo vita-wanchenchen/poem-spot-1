@@ -1,8 +1,5 @@
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable react/destructuring-assignment */
 import React, { Component } from "react";
-// eslint-disable-next-line no-unused-vars
-import Axios from "axios";
+// import Axios from "axios";
 import API from "../utils/API";
 
 class Dashboard extends Component {
@@ -44,11 +41,17 @@ class Dashboard extends Component {
   // Submit saves data then loads poems
   handleFormSubmit = (event) => {
     event.preventDefault();
-    if (this.state.title && this.state.author) {
+    const {
+      title,
+      author,
+      body,
+    } = this.state;
+
+    if (title && author) {
       API.savePoem({
-        title: this.state.title,
-        author: this.state.author,
-        body: this.state.body,
+        title,
+        author,
+        body,
       })
         // eslint-disable-next-line no-unused-vars
         .then(res => this.loadPoemDB())
@@ -57,6 +60,12 @@ class Dashboard extends Component {
   };
 
   render() {
+    const {
+      dbPoems,
+      title,
+      authors,
+      body,
+    } = this.state;
     return (
       <div>
         <div>
@@ -65,38 +74,38 @@ class Dashboard extends Component {
         <div className="conatiner" id="form">
           <form className="form-group main-body">
             <div className="authentication">
-              Poem Title :
+              <p>Poem Title :</p>
               <input
                 className="form-control"
-                value={this.state.title}
+                value={title}
                 onChange={this.handleInputChange}
                 name="title"
                 placeholder="Title (required)"
                 type="text"
               />
-              Poem Author :
+              <p>Poem Author :</p>
               <input
                 className="form-control"
-                value={this.state.authors}
+                value={authors}
                 onChange={this.handleInputChange}
                 name="author"
                 placeholder="Author (required)"
                 type="text"
               />
-              Poem :
+              <p>Poem :</p>
               <textarea
                 className="form-control"
-                value={this.state.body}
+                value={body}
                 onChange={this.handleInputChange}
                 name="body"
                 placeholder="Body (required)"
               />
               <button
-                disabled={!(this.state.author && this.state.title && this.state.body)}
+                disabled={!(authors && title && body)}
                 onClick={this.handleFormSubmit}
                 type="submit"
               >
-              Submit Poem
+                <span>Submit Poem</span>
               </button>
             </div>
           </form>
@@ -104,15 +113,17 @@ class Dashboard extends Component {
         <div id="dbPoems">
           <div className="APIS">
             <h1>My Poems</h1>
-            {!this.state.dbPoems.length ? (
+            {!dbPoems.length ? (
               <h1 className="text-center">No Poems to Display</h1>
             ) : (
               <React.Fragment>
-                {this.state.dbPoems.map(poems => (
+                {dbPoems.map(poems => (
                   <div>
                     <h2>{poems.title}</h2>
-                    <p>Authors: {poems.authors}</p>
-                    <p>Poem: {poems.body}</p>
+                    <p>Authors:</p>
+                    <p>{poems.authors}</p>
+                    <p>Poem:</p>
+                    <p>{poems.body}</p>
                   </div>
                 ))}
               </React.Fragment>
@@ -123,5 +134,4 @@ class Dashboard extends Component {
     );
   }
 }
-
 export default Dashboard;
