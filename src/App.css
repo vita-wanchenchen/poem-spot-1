@@ -59,7 +59,7 @@
   flex-direction: column;
 }
 
-.main-body .authentication input, .main-body .authentication button{
+.main-body .authentication input, textarea, .main-body .authentication button{
   width: 300px;
   height: 40px;
   font-family: 'Handlee', 'Courier New', Courier, monospace;

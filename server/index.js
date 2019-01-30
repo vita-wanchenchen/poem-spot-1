@@ -27,7 +27,7 @@ if (process.env.NODE_ENV === "production") {
 require("./config/passport")(passport);
 
 // Connect to MongoDB
-mongoose.connect(db, { useNewUrlParser: true })
+mongoose.connect(db || "mongodb://localhost/poem-spot", { useNewUrlParser: true })
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
