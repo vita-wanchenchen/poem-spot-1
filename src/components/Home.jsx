@@ -4,6 +4,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
+import Footer from "./Footer";
 
 class Home extends Component {
   state = {
@@ -48,7 +49,7 @@ render() {
         <div className="container">
           <div className="main-body">
             <div className="welcome">
-              <h1>Welcome To Poet Spot</h1>
+              <h1>Welcome To Poem Spot</h1>
             </div>
           </div>
         </div>
@@ -79,6 +80,7 @@ render() {
           </p>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

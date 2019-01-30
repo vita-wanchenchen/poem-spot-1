@@ -5,6 +5,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
+import Footer from "./Footer";
 
 class Register extends Component {
   constructor(props) {
@@ -85,6 +86,7 @@ class Register extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }

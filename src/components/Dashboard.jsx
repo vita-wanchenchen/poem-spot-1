@@ -1,5 +1,6 @@
 /* eslint-disable import/no-unresolved */
 import React, { Component } from "react";
+import Footer from "./Footer";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class Dashboard extends Component {
     return (
       <div>
         <h3 style={{ fontSize: "2em" }}>Dashboard</h3>
+        <Footer />
       </div>
     );
   }
