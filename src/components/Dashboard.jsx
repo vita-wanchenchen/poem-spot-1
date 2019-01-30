@@ -26,6 +26,9 @@ class Dashboard extends Component {
     API.getPoemsDB()
       .then(res => this.setState({
         dbPoems: res.data,
+        title: "",
+        author: "",
+        body: "",
       }))
       .catch(err => console.log(err));
   };

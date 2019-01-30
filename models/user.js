@@ -21,10 +21,10 @@ const UserSchema = new mongoose.Schema({
     default: Date.now,
   },
   // associate poem with user
-  poem: {
-    type: Schema.Types.ObjectId,
-    ref: "Poem",
-  },
+  // poem: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "Poem",
+  // },
 });
 
 const User = mongoose.model("User", UserSchema);

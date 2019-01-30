@@ -1,4 +1,4 @@
-const db = require("../models/poem");
+const db = require("../models");
 // Defining methods for the PoemsController
 module.exports = {
   findAll(req, res) {

@@ -28,7 +28,7 @@ require("./config/passport")(passport);
 const db = require("./config/keys").mongoURI;
 
 // Connect to MongoDB
-mongoose.connect(db || "mongodb://localhost/poemlist", { useNewUrlParser: true })
+mongoose.connect(db || "mongodb://localhost/poem-spot", { useNewUrlParser: true })
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
@@ -84,6 +84,9 @@ app.use(cors());
 // Routes
 app.use("/", require("./routes/index.js"));
 app.use("/users", require("./routes/users.js"));
+
+// Add routes, both API and view
+app.use(routes);
 
 // Start the API server
 app.listen(PORT, () => {
