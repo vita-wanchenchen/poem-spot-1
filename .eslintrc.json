@@ -5,13 +5,14 @@
     "jest": true,
     "node": true,
     "browser": true
-  },
+    },
   "rules": {
     "no-duplicate-case": "error",
     "consistent-return": "off",
     "no-console": "off",
     "no-empty": "error",
     "no-extra-semi": "error",
+    "jsx-a11y/label-has-for": "off",
     "no-func-assign": "error",
     "no-irregular-whitespace": "error",
     "no-unreachable": "error",
@@ -25,6 +26,22 @@
     "indent": [
       "error",
       2
+    ],
+    "react/destructuring-assignment": ["<enabled>", "always"
+    ],
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelComponents": [
+          "label"
+        ],
+        "labelAttributes": [
+          "htmlFor"
+        ],
+        "controlComponents": [
+          "input"
+        ]
+      }
     ],
     "linebreak-style": [
       "error",
