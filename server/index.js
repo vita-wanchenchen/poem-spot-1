@@ -7,7 +7,7 @@ const passport = require("passport");
 // const mongodb = require("mongodb");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-// const routes = require("./routes");
+const routes = require("./routes");
 // Database Config
 const db = require("./config/keys").mongoURI;
 // Passport Config
@@ -81,6 +81,7 @@ app.use((req, { locals }, next) => {
 app.use(cors());
 
 // Routes
+app.use(routes);
 app.use("/", require("./routes/index.js"));
 app.use("/users", require("./routes/users.js"));
 
