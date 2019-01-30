@@ -85,8 +85,10 @@
   },
   "scripts": {
     "start:server": "node index.js",
+    "watch:server": "nodemon index.js",
     "start:client": "node scripts/start.js",
     "start": "run-p start:server start:client",
+    "dev": "run-p watch:server start:client",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "lint": "eslint .",
