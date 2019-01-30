@@ -4,3 +4,4 @@ config/env.js
 config/paths.js
 config/webpack.config.js
 config/webpackDevServer.config.js
+build
