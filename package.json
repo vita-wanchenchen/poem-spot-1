@@ -84,8 +84,8 @@
     "workbox-webpack-plugin": "3.6.3"
   },
   "scripts": {
-    "start:server": "node index.js",
     "watch:server": "nodemon index.js",
+    "start:server": "node server/index.js",
     "start:client": "node scripts/start.js",
     "start": "run-p start:server start:client",
     "dev": "run-p watch:server start:client",

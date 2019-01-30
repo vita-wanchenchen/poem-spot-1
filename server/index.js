@@ -1,15 +1,17 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-param-reassign */
-/* eslint-disable no-console */
 const express = require("express");
 const mongoose = require("mongoose");
 const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
-const mongodb = require("mongodb");
+// const mongodb = require("mongodb");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const routes = require("./routes");
+// const routes = require("./routes");
+// Database Config
+const db = require("./config/keys").mongoURI;
+// Passport Config
+require("./config/passport")(passport);
 
 
 // Init App
@@ -19,13 +21,10 @@ const PORT = process.env.PORT || 3001;
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use(express.static("/build"));
 }
 // Passport Config
 require("./config/passport")(passport);
-
-// Database Config
-const db = require("./config/keys").mongoURI;
 
 // Connect to MongoDB
 mongoose.connect(db, { useNewUrlParser: true })
