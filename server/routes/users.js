@@ -1,120 +1,81 @@
-/* eslint-disable no-shadow */
-/* eslint-disable no-console */
-/* eslint-disable eqeqeq */
 const express = require("express");
 
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
-
 // Load User model
-// eslint-disable-next-line import/no-unresolved
-const User = require("../models/User");
-
-// Login Page
-router.get("/login", (req, res) => res.render("login"));
-
-// Register Page
-router.get("/register", (req, res) => res.render("register"));
+const User = require("../models/user");
 
 // Register
 router.post("/register", (req, res) => {
-  const {
-    name, email, password, password2,
-  } = req.body;
-  const errors = [];
+  const { name, email, password } = req.body;
 
-  if (!name || !email || !password || !password2) {
-    errors.push({ msg: "Please enter all fields" });
-  }
-
-  if (password != password2) {
-    errors.push({ msg: "Passwords do not match" });
+  if (!name || !email || !password) {
+    return res.status(400).send({
+      message: "Please enter all fields",
+    });
   }
 
   if (password.length < 6) {
-    errors.push({ msg: "Password must be at least 6 characters" });
+    return res.status(400).send({
+      message: "Passport must be of length greater than 6",
+    });
   }
 
-  if (errors.length > 0) {
-    const newUser = new User({
-      name,
-      email,
-      password,
-    });
-
-    bcrypt.genSalt(10, (err, salt) => {
-      bcrypt.hash(newUser.password, salt, (err, hash) => {
-        if (err) throw err;
-        newUser.password = hash;
-        newUser
-          .save()
-          // eslint-disable-next-line no-unused-vars
-          .then((user) => {
-            req.flash(
-              "success_msg",
-              "You are now registered and can log in",
-            );
-            res.redirect("/users/login");
-          })
-          .catch(err => console.log(err));
+  return User.findOne({ email }).then((user) => {
+    if (user) {
+      res.status(400).send({
+        message: "Email already exists",
       });
-    });
-    res.render("register", {
-      errors,
-      name,
-      email,
-      password,
-      password2,
-    });
-  } else {
-    User.findOne({ email }).then((user) => {
-      if (user) {
-        errors.push({ msg: "Email already exists" });
-        res.render("register", {
-          errors,
-          name,
-          email,
-          password,
-          password2,
-        });
-      } else {
-        const newUser = new User({
-          name,
-          email,
-          password,
-        });
+    } else {
+      const newUser = new User({
+        name,
+        email,
+        password,
+      });
 
-        bcrypt.genSalt(10, (err, salt) => {
-          bcrypt.hash(newUser.password, salt, (err, hash) => {
-            if (err) throw err;
-            newUser.password = hash;
-            newUser
-              .save()
-              // eslint-disable-next-line no-unused-vars
-              .then((user) => {
-                req.flash(
-                  "success_msg",
-                  "You are now registered and can log in",
-                );
-                res.redirect("/users/login");
-              })
-              .catch(err => console.log(err));
-          });
+      bcrypt.genSalt(10, (err1, salt) => {
+        bcrypt.hash(newUser.password, salt, (err2, hash) => {
+          if (err2) throw err2;
+          newUser.password = hash;
+          newUser
+            .save()
+            .then((/* user */) => {
+              res.status(201).send({
+                message: "User created successfully",
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+              res.status(400).send({
+                message: "Error registering User",
+                error: err,
+              });
+            });
         });
-      }
-    });
-  }
+      });
+    }
+  });
 });
 
 // Login
-router.post("/login", (req, res, next) => {
-  passport.authenticate("local", {
-    successRedirect: "/",
-    failureRedirect: "/users/login",
-    failureFlash: true,
-  })(req, res, next);
-});
+router.post("/login", (req, res, next) => passport.authenticate(
+  "local",
+  { session: false },
+  // (error, user /*, info */) => {
+  (error, user) => {
+    if (error) {
+      res.status(400).send({
+        message: "Login Unsuccessful",
+      });
+    } else {
+      res.status(200).send({
+        message: "Login successful",
+        user,
+      });
+    }
+  },
+)(req, res, next));
 
 // Logout
 router.get("/logout", (req, res) => {
