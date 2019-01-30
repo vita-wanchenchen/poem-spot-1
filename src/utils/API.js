@@ -13,4 +13,13 @@ export default {
   getPoems() {
     return axios.get(cors + poemsURL);
   },
+  // Gets all poems
+  getPoemsDB() {
+    return axios.get("http://localhost:3001/api/poems");
+  },
+  // Saves a book to the database
+  savePoem(poemData) {
+    return axios.post("http://localhost:3001/api/poems", poemData);
+  },
+
 };
