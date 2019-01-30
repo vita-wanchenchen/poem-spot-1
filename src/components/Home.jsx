@@ -2,9 +2,9 @@
 /* eslint-disable react/destructuring-assignment */
 // eslint-disable-next-line import/no-unresolved
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import API from "../utils/API";
 import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 class Home extends Component {
   state = {
@@ -39,13 +39,7 @@ render() {
   return (
     <div id="home-page">
       <div className="main">
-        <div className="navigation">
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/register">Register</Link></li>
-          </ul>
-        </div>
+        <Navbar />
         <div className="container">
           <div className="main-body">
             <div className="welcome">
