@@ -2,7 +2,7 @@ const router = require("express").Router();
 const poemsController = require("../controllers/poemControllers");
 
 // Matches with "/poems"
-router.route("/poems")
+router.route("/")
   .get(poemsController.findAll)
   .post(poemsController.create);
 
