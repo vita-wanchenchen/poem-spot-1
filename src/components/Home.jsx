@@ -110,6 +110,10 @@ class Dashboard extends Component {
             </div>
           </form>
         </div>
+<<<<<<< HEAD
+=======
+        {/* Database Poems */}
+>>>>>>> 40481a108d58b990f9cdddebbd44de050c286c54
         <div id="dbPoems">
           <div className="APIS">
             <h1>My Poems</h1>

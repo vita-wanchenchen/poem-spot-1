@@ -1,9 +1,16 @@
 import React, { Component } from "react";
+<<<<<<< HEAD
+=======
+import Axios from "axios";
+
+// eslint-disable-next-line no-unused-vars
+>>>>>>> 40481a108d58b990f9cdddebbd44de050c286c54
 import API from "../utils/API";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import Background from "../images/background.png";
 
+<<<<<<< HEAD
 const crumpledPaper = {
   backgroundImage: `url(${Background})`,
 };
@@ -14,6 +21,18 @@ class Home extends Component {
     dailyPoem: [],
     dbPoems: [],
   };
+=======
+class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dbPoems: [],
+      title: "",
+      author: "",
+      body: "",
+    };
+  }
+>>>>>>> 40481a108d58b990f9cdddebbd44de050c286c54
 
   componentDidMount() {
     this.loadMeetup();
