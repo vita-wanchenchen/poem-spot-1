@@ -92,7 +92,8 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "seed": "node scripts/seedDB.js"
   },
   "eslintConfig": {
     "extends": "react-app"

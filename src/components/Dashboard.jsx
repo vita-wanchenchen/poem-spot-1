@@ -38,20 +38,40 @@ class Dashboard extends Component {
     });
   };
 
+  // // Submit saves data then loads poems
+  // handleFormSubmit = (event) => {
+  //   event.preventDefault();
+  //   if (this.state.title && this.state.author) {
+  //     API.savePoem({
+  //       title: this.state.title,
+  //       author: this.state.author,
+  //       body: this.state.body,
+  //     })
+  //       // eslint-disable-next-line no-unused-vars
+  //       .then(res => this.loadPoemDB())
+  //       .catch(err => console.log(err));
+  //   }
+  // };
+
   // Submit saves data then loads poems
   handleFormSubmit = (event) => {
     event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.savePoem({
-        title: this.state.title,
-        author: this.state.author,
-        body: this.state.body,
+    const { title, author, body } = this.state;
+    if (title && author && body) {
+      Axios.post("http://localhost:3001/api/poem", {
+        title,
+        author,
+        body,
       })
-        // eslint-disable-next-line no-unused-vars
-        .then(res => this.loadPoemDB())
-        .catch(err => console.log(err));
+        .then((res) => {
+          // eslint-disable-next-line react/prop-types
+          const { history } = this.props;
+          if (res.status === 201) {
+            history.push("/login");
+          }
+        });
     }
-  };
+  }
 
   render() {
     return (

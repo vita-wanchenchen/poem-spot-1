@@ -31,10 +31,6 @@ mongoose.connect(db, { useNewUrlParser: true })
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
-// // View Engine
-// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-// app.set("view engine", "handlebars");
-
 // Express body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({

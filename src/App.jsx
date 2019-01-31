@@ -12,12 +12,12 @@ import "./App.css";
 const App = () => (
   <div className="App">
     <Switch>
-      <Route path="/dashboard" exact component={Dashboard} />
+      <Route path="/" exact component={Home} />
       <Route path="/login" exact component={Login} />
       <Route path="/register" exact component={Register} />
-      <Route path="/" exact component={Home} />
-      <Route path="/poems" exact component={Home} />
+      <Route path="/poems" exact component={Dashboard} />
       <Route path="/poems/:id" exact component={Dashboard} />
+      <Route path="/dashboard" exact component={Dashboard} />
     </Switch>
   </div>
 );
