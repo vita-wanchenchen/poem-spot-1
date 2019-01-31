@@ -91,6 +91,9 @@ class Home extends Component {
           </div>
         </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 58067cfb3b017c497c3ae881ed74ee5658f7c57b
         {/* Database Poems */}
         <div id="dbPoems">
           <div className="APIS">
@@ -109,6 +112,7 @@ class Home extends Component {
               </React.Fragment>
             )}
           </div>
+<<<<<<< HEAD
 =======
       </div>
       {/* Database Poems */}
@@ -129,6 +133,8 @@ class Home extends Component {
             </React.Fragment>
           )}
 >>>>>>> 2357520a48ff8545a5d5476482d4ed1093347aac
+=======
+>>>>>>> 58067cfb3b017c497c3ae881ed74ee5658f7c57b
         </div>
         <Footer />
       </div>
