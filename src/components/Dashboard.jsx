@@ -6,6 +6,8 @@ import Axios from "axios";
 import API from "../utils/API";
 import NavbarDash from "./NavbarDash";
 import Footer from "./Footer";
+import Button from "./Button";
+import IconDance from "./IconDance";
 
 
 class Dashboard extends Component {
@@ -92,13 +94,14 @@ class Dashboard extends Component {
                 name="body"
                 placeholder="Body (required)"
               />
-              <button
+              <Button
                 disabled={!(this.state.author && this.state.title && this.state.body)}
                 onClick={this.handleFormSubmit}
                 type="submit"
               >
               Submit Poem
-              </button>
+                <IconDance><span role="img" aria-label="write">✍</span></IconDance>
+              </Button>
             </div>
           </form>
         </div>
