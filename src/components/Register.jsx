@@ -3,8 +3,9 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable react/no-unused-state */
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import Axios from "axios";
+import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 class Register extends Component {
   constructor(props) {
@@ -66,13 +67,7 @@ class Register extends Component {
   render() {
     return (
       <div className="main">
-        <div className="navigation">
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/register">Register</Link></li>
-          </ul>
-        </div>
+        <Navbar />
         <div className="container">
           <div className="main-body">
             <div className="authentication">
@@ -85,6 +80,7 @@ class Register extends Component {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
