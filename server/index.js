@@ -84,6 +84,7 @@ app.use(cors());
 app.use(routes);
 app.use("/", require("./routes/index.js"));
 app.use("/users", require("./routes/users.js"));
+app.use("/poems", require("./routes/poems.js"));
 
 // Start the API server
 app.listen(PORT, () => {
