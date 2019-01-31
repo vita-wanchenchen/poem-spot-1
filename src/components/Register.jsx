@@ -6,6 +6,7 @@ import React, { Component } from "react";
 import Axios from "axios";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+import Button from "./Button";
 
 class Register extends Component {
   constructor(props) {
@@ -76,7 +77,7 @@ class Register extends Component {
               <input onChange={this.handleEmailChange} type="text" placeholder="Email Address" name="email" />
               <input onChange={this.handlePasswordChange} type="password" placeholder="Password" name="password" />
               <input onChange={this.handleConfirmPasswordChange} type="password" placeholder="Confirm Password" name="password_" />
-              <button onClick={this.handleSubmit}>Submit</button>
+              <Button onClick={this.handleSubmit}>Submit</Button>
             </div>
           </div>
         </div>
