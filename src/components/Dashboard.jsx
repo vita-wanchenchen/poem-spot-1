@@ -4,6 +4,11 @@ import React, { Component } from "react";
 // eslint-disable-next-line no-unused-vars
 import Axios from "axios";
 import API from "../utils/API";
+import NavbarDash from "./NavbarDash";
+import Footer from "./Footer";
+import Button from "./Button";
+import IconDance from "./IconDance";
+
 
 class Dashboard extends Component {
   constructor(props) {
@@ -76,6 +81,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
+        <NavbarDash />
         <div>
           <h3 style={{ fontSize: "5em" }}>Dashboard</h3>
         </div>
@@ -108,13 +114,14 @@ class Dashboard extends Component {
                 name="body"
                 placeholder="Body (required)"
               />
-              <button
+              <Button
                 disabled={!(this.state.author && this.state.title && this.state.body)}
                 onClick={this.handleFormSubmit}
                 type="submit"
               >
               Submit Poem
-              </button>
+                <IconDance><span role="img" aria-label="write">✍</span></IconDance>
+              </Button>
             </div>
           </form>
         </div>
@@ -136,6 +143,7 @@ class Dashboard extends Component {
             )}
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
