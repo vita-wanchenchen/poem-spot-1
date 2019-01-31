@@ -15,7 +15,7 @@ class Home extends Component {
   componentDidMount() {
     this.loadMeetup();
     this.loadPoem();
-    // this.loadPoemDB();
+    this.loadPoemDB();
   }
 
   // load meetup API
@@ -101,7 +101,7 @@ render() {
               {this.state.dbPoems.map(poems => (
                 <div>
                   <h2>{poems.title}</h2>
-                  <p>Authors: {poems.authors}</p>
+                  <p>Author: {poems.author}</p>
                   <p>Poem: {poems.body}</p>
                 </div>
               ))}

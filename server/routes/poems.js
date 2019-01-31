@@ -1,14 +1,13 @@
 const router = require("express").Router();
 const poemsController = require("../controllers/poemControllers");
 
-// Matches with "/api/poems"
-router.route("/")
+// Matches with "/poems"
+router.route("/poems")
   .get(poemsController.findAll)
   .post(poemsController.create);
 
 // Matches with "/api/poems/:id"
-router
-  .route("/:id")
+router.route("/:id")
   .get(poemsController.findById)
   .put(poemsController.update)
   .delete(poemsController.remove);
