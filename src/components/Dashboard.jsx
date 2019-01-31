@@ -2,7 +2,6 @@
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from "react";
 // eslint-disable-next-line no-unused-vars
-import Axios from "axios";
 import API from "../utils/API";
 import NavbarDash from "./NavbarDash";
 import Footer from "./Footer";
@@ -22,15 +21,18 @@ class Dashboard extends Component {
   }
 
   // When the component mounts, load allpoems will load
-  // componentDidMount() {
-  //   this.loadPoemDB();
-  // }
+  componentDidMount() {
+    this.loadPoemDB();
+  }
 
   // Load Poems from DB
   loadPoemDB = () => {
     API.getPoemsDB()
       .then(res => this.setState({
         dbPoems: res.data,
+        title: "",
+        author: "",
+        body: "",
       }))
       .catch(err => console.log(err));
   };
@@ -135,7 +137,7 @@ class Dashboard extends Component {
                 {this.state.dbPoems.map(poems => (
                   <div>
                     <h2>{poems.title}</h2>
-                    <p>Authors: {poems.authors}</p>
+                    <p>Author: {poems.author}</p>
                     <p>Poem: {poems.body}</p>
                   </div>
                 ))}

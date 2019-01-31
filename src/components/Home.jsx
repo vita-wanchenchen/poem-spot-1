@@ -90,6 +90,7 @@ class Home extends Component {
             </p>
           </div>
         </div>
+<<<<<<< HEAD
         {/* Database Poems */}
         <div id="dbPoems">
           <div className="APIS">
@@ -108,6 +109,26 @@ class Home extends Component {
               </React.Fragment>
             )}
           </div>
+=======
+      </div>
+      {/* Database Poems */}
+      <div id="dbPoems">
+        <div className="APIS">
+          <h1>Latest Poems</h1>
+          {!this.state.dbPoems.length ? (
+            <h1 className="text-center">No Poems to Display</h1>
+          ) : (
+            <React.Fragment>
+              {this.state.dbPoems.map(poems => (
+                <div>
+                  <h2>{poems.title}</h2>
+                  <p>Author: {poems.author}</p>
+                  <p>Poem: {poems.body}</p>
+                </div>
+              ))}
+            </React.Fragment>
+          )}
+>>>>>>> 2357520a48ff8545a5d5476482d4ed1093347aac
         </div>
         <Footer />
       </div>
