@@ -4,6 +4,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import API from "../utils/API";
+import Background from "../images/background.png";
+
+const crumpledPaper = {
+  backgroundImage: `url(${Background})`,
+};
 
 class Home extends Component {
   state = {
@@ -47,7 +52,7 @@ loadPoemDB = () => {
 
 render() {
   return (
-    <div id="home-page">
+    <div id="home-page" style={crumpledPaper}>
       <div className="main">
         <div className="navigation">
           <ul>
@@ -59,7 +64,7 @@ render() {
         <div className="container">
           <div className="main-body">
             <div className="welcome">
-              <h1>Welcome To Poet Spot</h1>
+              <h1>Welcome To Poem Spot</h1>
             </div>
           </div>
         </div>
