@@ -46,7 +46,7 @@ class Login extends Component {
     return (
       <div className="main">
         <div className="navigation">
-          <ul>
+          <ul className="right">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/login">Login</Link></li>
             <li><Link to="/register">Register</Link></li>
