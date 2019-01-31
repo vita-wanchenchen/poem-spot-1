@@ -1,103 +1,118 @@
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable react/destructuring-assignment */
-// eslint-disable-next-line import/no-unresolved
 import React, { Component } from "react";
+// import Axios from "axios";
 import API from "../utils/API";
+import NavbarDash from "./NavbarDash";
 import Footer from "./Footer";
-import Navbar from "./Navbar";
-import Background from "../images/background.png";
+import Button from "./Button";
+import IconDance from "./IconDance";
 
-const crumpledPaper = {
-  backgroundImage: `url(${Background})`,
-};
 
-class Home extends Component {
-  state = {
-    meetUp: [],
-    dailyPoem: [],
-    dbPoems: [],
-  };
-
-  componentDidMount() {
-    this.loadMeetup();
-    this.loadPoem();
-    this.loadPoemDB();
+class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dbPoems: [],
+      title: "",
+      author: "",
+      body: "",
+    };
   }
 
-  // load meetup API
-  loadMeetup = () => {
-    API.getMeetUp()
-      .then(res => this.setState({
-        meetUp: res.data[0],
-      }))
-      .catch(err => console.log(err));
-  };
-
-  // Load Poem API
-  loadPoem = () => {
-    API.getPoems()
-      .then(res => this.setState({
-        dailyPoem: res.data[0],
-      }))
-      .catch(err => console.log(err));
-  };
+  // When the component mounts, load allpoems will load
+  // componentDidMount() {
+  //   this.loadPoemDB();
+  // }
 
   // Load Poems from DB
   loadPoemDB = () => {
     API.getPoemsDB()
       .then(res => this.setState({
         dbPoems: res.data,
+        title: "",
+        author: "",
+        body: "",
       }))
       .catch(err => console.log(err));
   };
 
+  // input on change
+  handleInputChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  // Submit saves data then loads poems
+  handleFormSubmit = (event) => {
+    event.preventDefault();
+    const {
+      title,
+      author,
+      body,
+    } = this.state;
+    if (title && author && body) {
+      API.savePoem({
+        title,
+        author,
+        body,
+      })
+        // eslint-disable-next-line no-unused-vars
+        .then(res => this.loadPoemDB())
+        .catch(err => console.log(err));
+    }
+  };
+
   render() {
     return (
-      <div id="home-page" style={crumpledPaper}>
-        <div className="main">
-          <Navbar />
-          <div className="container">
-            <div className="main-body">
-              <div className="welcome">
-                <h1>Welcome To Poem Spot</h1>
-              </div>
+      <div>
+        <NavbarDash />
+        <div>
+          <h3 style={{ fontSize: "5em" }}>Dashboard</h3>
+        </div>
+        <div className="conatiner" id="form">
+          <form className="form-group main-body">
+            <div className="authentication">
+              <p>Poem Title :</p>
+              <input
+                className="form-control"
+                value={this.state.title}
+                onChange={this.handleInputChange}
+                name="title"
+                placeholder="Title (required)"
+                type="text"
+              />
+              <p>Poem Author :</p>
+              <input
+                className="form-control"
+                value={this.state.authors}
+                onChange={this.handleInputChange}
+                name="author"
+                placeholder="Author (required)"
+                type="text"
+              />
+              <p>Poem :</p>
+              <textarea
+                className="form-control"
+                value={this.state.body}
+                onChange={this.handleInputChange}
+                name="body"
+                placeholder="Body (required)"
+              />
+              <Button
+                disabled={!(this.state.author && this.state.title && this.state.body)}
+                onClick={this.handleFormSubmit}
+                type="submit"
+              >
+                <span>Submit Poem</span>
+                <IconDance><span role="img" aria-label="write">✍</span></IconDance>
+              </Button>
             </div>
-          </div>
+          </form>
         </div>
-        <div id="dailyPoem">
-          <div className="APIS">
-            <h1>Daily Poem</h1>
-            <h2>{this.state.dailyPoem.title}</h2>
-            <p>{this.state.dailyPoem.content}</p>
-            <p>{this.state.dailyPoem.url}</p>
-            {/* <p>{this.state.dailyPoem.poet.name}</p> */}
-            {/* <p>{this.state.dailyPoem.poet.url}</p> */}
-          </div>
-        </div>
-        <div id="meetUp">
-          <div className="APIS">
-            <h1>Meetup Group</h1>
-            <h2>{this.state.meetUp.name}</h2>
-            {/* <img src={this.state.meetUp.group_photo.thumb_link} alt="" /> */}
-            <p>Status: {this.state.meetUp.status}</p>
-            <p>Group Link: {this.state.meetUp.link}</p>
-            <p>What we are about: </p>
-            {this.state.meetUp.description}
-            <p>Location:
-              <span> {this.state.meetUp.city} </span>,
-              <span> {this.state.meetUp.state}</span>
-              <span>  {this.state.meetUp.country}</span>
-            </p>
-          </div>
-        </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 58067cfb3b017c497c3ae881ed74ee5658f7c57b
-        {/* Database Poems */}
         <div id="dbPoems">
           <div className="APIS">
-            <h1>Latest Poems</h1>
+            <h1>My Poems</h1>
             {!this.state.dbPoems.length ? (
               <h1 className="text-center">No Poems to Display</h1>
             ) : (
@@ -105,36 +120,15 @@ class Home extends Component {
                 {this.state.dbPoems.map(poems => (
                   <div>
                     <h2>{poems.title}</h2>
-                    <p>Authors: {poems.authors}</p>
-                    <p>Poem: {poems.body}</p>
+                    <p>Author: </p>
+                    {poems.author}
+                    <p>Poem: </p>
+                    {poems.body}
                   </div>
                 ))}
               </React.Fragment>
             )}
           </div>
-<<<<<<< HEAD
-=======
-      </div>
-      {/* Database Poems */}
-      <div id="dbPoems">
-        <div className="APIS">
-          <h1>Latest Poems</h1>
-          {!this.state.dbPoems.length ? (
-            <h1 className="text-center">No Poems to Display</h1>
-          ) : (
-            <React.Fragment>
-              {this.state.dbPoems.map(poems => (
-                <div>
-                  <h2>{poems.title}</h2>
-                  <p>Author: {poems.author}</p>
-                  <p>Poem: {poems.body}</p>
-                </div>
-              ))}
-            </React.Fragment>
-          )}
->>>>>>> 2357520a48ff8545a5d5476482d4ed1093347aac
-=======
->>>>>>> 58067cfb3b017c497c3ae881ed74ee5658f7c57b
         </div>
         <Footer />
       </div>
@@ -142,4 +136,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default Dashboard;
