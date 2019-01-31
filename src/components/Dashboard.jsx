@@ -1,10 +1,11 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable react/destructuring-assignment */
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
 import Axios from "axios";
 import API from "../utils/API";
+import NavbarDash from "./NavbarDash";
+import Footer from "./Footer";
 
 
 class Dashboard extends Component {
@@ -58,11 +59,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <div className="navigation">
-          <ul>
-            <li><Link to="/">Home</Link></li>
-          </ul>
-        </div>
+        <NavbarDash />
         <div>
           <h3 style={{ fontSize: "5em" }}>Dashboard</h3>
         </div>
@@ -123,6 +120,7 @@ class Dashboard extends Component {
             )}
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
