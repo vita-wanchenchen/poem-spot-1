@@ -1,45 +1,128 @@
-/* eslint-disable import/no-unresolved */
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable react/destructuring-assignment */
 import React, { Component } from "react";
-import Footer from "./Footer";
+import { Link } from "react-router-dom";
+// eslint-disable-next-line no-unused-vars
+import Axios from "axios";
+import API from "../utils/API";
+
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // name: "",
-      value: "",
-
+      dbPoems: [],
+      title: "",
+      author: "",
+      body: "",
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
+  // When the component mounts, load allpoems will load
+  // componentDidMount() {
+  //   this.loadPoemDB();
+  // }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  // Load Poems from DB
+  loadPoemDB = () => {
+    API.getPoemsDB()
+      .then(res => this.setState({
+        dbPoems: res.data,
+      }))
+      .catch(err => console.log(err));
+  };
+
+  // input on change
+  handleInputChange = (event) => {
+    const { name, value } = event.target;
     this.setState({
-      value: event.target.value,
+      [name]: value,
     });
-  }
+  };
 
+  // Submit saves data then loads poems
+  handleFormSubmit = (event) => {
+    event.preventDefault();
+    if (this.state.title && this.state.author) {
+      API.savePoem({
+        title: this.state.title,
+        author: this.state.author,
+        body: this.state.body,
+      })
+        // eslint-disable-next-line no-unused-vars
+        .then(res => this.loadPoemDB())
+        .catch(err => console.log(err));
+    }
+  };
 
   render() {
     return (
       <div>
-        <h3 style={{ fontSize: "2em" }}>Dashboard</h3>
-        <h2 style={{ fontSize: "1em" }}>Welcome</h2>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            <app>Poem:</app>
-            <textarea value={this.state.value} onChange={this.handleChange} />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
-        <Footer />
+        <div className="navigation">
+          <ul>
+            <li><Link to="/">Home</Link></li>
+          </ul>
+        </div>
+        <div>
+          <h3 style={{ fontSize: "5em" }}>Dashboard</h3>
+        </div>
+        <div className="conatiner" id="form">
+          <form className="form-group main-body">
+            <div className="authentication">
+              Poem Title :
+              <input
+                className="form-control"
+                value={this.state.title}
+                onChange={this.handleInputChange}
+                name="title"
+                placeholder="Title (required)"
+                type="text"
+              />
+              Poem Author :
+              <input
+                className="form-control"
+                value={this.state.authors}
+                onChange={this.handleInputChange}
+                name="author"
+                placeholder="Author (required)"
+                type="text"
+              />
+              Poem :
+              <textarea
+                className="form-control"
+                value={this.state.body}
+                onChange={this.handleInputChange}
+                name="body"
+                placeholder="Body (required)"
+              />
+              <button
+                disabled={!(this.state.author && this.state.title && this.state.body)}
+                onClick={this.handleFormSubmit}
+                type="submit"
+              >
+              Submit Poem
+              </button>
+            </div>
+          </form>
+        </div>
+        <div id="dbPoems">
+          <div className="APIS">
+            <h1>My Poems</h1>
+            {!this.state.dbPoems.length ? (
+              <h1 className="text-center">No Poems to Display</h1>
+            ) : (
+              <React.Fragment>
+                {this.state.dbPoems.map(poems => (
+                  <div>
+                    <h2>{poems.title}</h2>
+                    <p>Authors: {poems.authors}</p>
+                    <p>Poem: {poems.body}</p>
+                  </div>
+                ))}
+              </React.Fragment>
+            )}
+          </div>
+        </div>
       </div>
     );
   }
