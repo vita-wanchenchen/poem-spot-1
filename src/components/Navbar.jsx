@@ -40,11 +40,8 @@ function Navbar() {
       <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul style={navbarNav} className="navbar-nav">
           <li className="nav-item active">
-            <Link style={linkStyle} to="/" className="nav-link">Home</Link>
-            <span className="sr-only">(current)</span>
-          </li>
-          <li className="nav-item">
             <Link style={linkStyle} to="/login" className="nav-link">Login</Link>
+            <span className="sr-only">(current)</span>
           </li>
           <li className="nav-item">
             <Link style={linkStyle} to="/register" className="nav-link">Register</Link>
