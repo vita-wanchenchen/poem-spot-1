@@ -53,7 +53,7 @@ class Home extends Component {
 
   render() {
     return (
-      <div id="home-page" style={crumpledPaper}>
+      <div id="home-page" style={crumpledPaper} className="row">
         <div className="main">
           <Navbar />
           <div className="container">
@@ -64,7 +64,7 @@ class Home extends Component {
             </div>
           </div>
         </div>
-        <div id="dailyPoem">
+        <div id="dailyPoem" className="col-md-4">
           <div className="APIS">
             <h1>Daily Poem</h1>
             <h2>{this.state.dailyPoem.title}</h2>
@@ -74,26 +74,8 @@ class Home extends Component {
             {/* <p>{this.state.dailyPoem.poet.url}</p> */}
           </div>
         </div>
-        <div id="meetUp">
-          <div className="APIS">
-            <h1>Meetup Group</h1>
-            <h2>{this.state.meetUp.name}</h2>
-            {/* <img src=
-            {this.state.meetUp.group_photo.thumb_link} alt="" /> */}
-            <p>Status: </p>
-            {this.state.meetUp.status}
-            <p>Group Link: </p>
-            {this.state.meetUp.link}
-            <p>What we are about: </p>
-            {this.state.meetUp.description}
-            <p>Location: </p>
-            <span>{this.state.meetUp.city}</span>
-            <span>{this.state.meetUp.state}</span>
-            <span>{this.state.meetUp.country}</span>
-          </div>
-        </div>
         {/* Database Poems */}
-        <div id="dbPoems">
+        <div id="dbPoems" className="col-md-4">
           <div className="APIS">
             <h1>Latest Poems</h1>
             {!this.state.dbPoems.length ? (
@@ -111,6 +93,24 @@ class Home extends Component {
                 ))}
               </React.Fragment>
             )}
+          </div>
+        </div>
+        <div id="meetUp" className="col-md-4">
+          <div className="APIS">
+            <h1>Meetup Group</h1>
+            <h2>{this.state.meetUp.name}</h2>
+            {/* <img src=
+            {this.state.meetUp.group_photo.thumb_link} alt="" /> */}
+            <p>Status: </p>
+            {this.state.meetUp.status}
+            <p>Group Link: </p>
+            {this.state.meetUp.link}
+            <p>What we are about: </p>
+            {this.state.meetUp.description}
+            <p>Location: </p>
+            <span>{this.state.meetUp.city}</span>
+            <span>{this.state.meetUp.state}</span>
+            <span>{this.state.meetUp.country}</span>
           </div>
         </div>
         <Footer />
