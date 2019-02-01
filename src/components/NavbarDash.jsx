@@ -39,10 +39,10 @@ function NavbarDash() {
       </button>
       <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul style={navbarNav} className="navbar-nav">
-          <li className="nav-item active">
+          {/* <li className="nav-item active">
             <Link style={linkStyle} to="/" className="nav-link">Home</Link>
             <span className="sr-only">(current)</span>
-          </li>
+          </li> */}
         </ul>
       </div>
     </nav>
