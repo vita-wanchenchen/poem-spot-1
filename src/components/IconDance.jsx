@@ -15,10 +15,13 @@ const rotate = keyframes`
 // Here we create a component that will rotate everything we pass in over two seconds
 const IconDance = Styled.div`
   display: inline-block;
-  animation: ${rotate} 0.5s linear infinite;
-  font-size: 1.2rem;
-  padding-top: -5px;
   margin-left: 8px;
+  padding-top: -5px;
+
+  :hover {
+    animation: ${rotate} 0.5s linear infinite;
+    font-size: 1.2rem;
+  }
 `;
 
 export default IconDance;
