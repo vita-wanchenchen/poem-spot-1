@@ -61,7 +61,7 @@ router.post("/register", (req, res) => {
 // Login
 router.post("/login", (req, res, next) => passport.authenticate(
   "local",
-  { session: false },
+  { session: true },
   // (error, user /*, info */) => {
   (error, user) => {
     if (error) {
@@ -76,6 +76,7 @@ router.post("/login", (req, res, next) => passport.authenticate(
     }
   },
 )(req, res, next));
+
 
 // Logout
 router.get("/logout", (req, res) => {
