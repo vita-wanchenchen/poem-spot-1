@@ -2,6 +2,7 @@
   "name": "poem-spot-1",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001/",
   "devDependencies": {
     "babel-eslint": "^9.0.0",
     "concurrently": "^4.1.0",
@@ -85,7 +86,7 @@
     "workbox-webpack-plugin": "3.6.3"
   },
   "scripts": {
-    "watch:server": "nodemon index.js",
+    "watch:server": "nodemon server/index.js",
     "start:server": "node server/index.js",
     "start:client": "node scripts/start.js",
     "start": "run-p start:server start:client",
@@ -93,7 +94,8 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "seed": "node scripts/seedDB.js"
   },
   "eslintConfig": {
     "extends": "react-app"

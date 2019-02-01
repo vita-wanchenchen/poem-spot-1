@@ -1,7 +1,7 @@
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable react/destructuring-assignment */
-// eslint-disable-next-line import/no-unresolved
 import React, { Component } from "react";
+// import Axios from "axios";
+
+// eslint-disable-next-line no-unused-vars
 import API from "../utils/API";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
@@ -21,7 +21,7 @@ class Home extends Component {
   componentDidMount() {
     this.loadMeetup();
     this.loadPoem();
-    // this.loadPoemDB();
+    this.loadPoemDB();
   }
 
   // load meetup API
@@ -78,16 +78,18 @@ class Home extends Component {
           <div className="APIS">
             <h1>Meetup Group</h1>
             <h2>{this.state.meetUp.name}</h2>
-            {/* <img src={this.state.meetUp.group_photo.thumb_link} alt="" /> */}
-            <p>Status: {this.state.meetUp.status}</p>
-            <p>Group Link: {this.state.meetUp.link}</p>
+            {/* <img src=
+            {this.state.meetUp.group_photo.thumb_link} alt="" /> */}
+            <p>Status: </p>
+            {this.state.meetUp.status}
+            <p>Group Link: </p>
+            {this.state.meetUp.link}
             <p>What we are about: </p>
             {this.state.meetUp.description}
-            <p>Location:
-              <span> {this.state.meetUp.city} </span>,
-              <span> {this.state.meetUp.state}</span>
-              <span>  {this.state.meetUp.country}</span>
-            </p>
+            <p>Location: </p>
+            <span>{this.state.meetUp.city}</span>
+            <span>{this.state.meetUp.state}</span>
+            <span>{this.state.meetUp.country}</span>
           </div>
         </div>
         {/* Database Poems */}
@@ -101,8 +103,10 @@ class Home extends Component {
                 {this.state.dbPoems.map(poems => (
                   <div>
                     <h2>{poems.title}</h2>
-                    <p>Authors: {poems.authors}</p>
-                    <p>Poem: {poems.body}</p>
+                    <p>Author: </p>
+                    {poems.author}
+                    <p>Poem: </p>
+                    {poems.body}
                   </div>
                 ))}
               </React.Fragment>

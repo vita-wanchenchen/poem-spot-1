@@ -32,7 +32,7 @@ class Login extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const { password, email } = this.state;
-    Axios.post("http://localhost:3001/users/login", {
+    Axios.post("/users/login", {
       email,
       password,
     })

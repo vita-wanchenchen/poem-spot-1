@@ -1,10 +1,9 @@
 /* eslint-disable no-console */
 const mongoose = require("mongoose");
-const db = require("../models/poem");
-const userdb = require("../models/user");
+const db = require("../server/models");
 
 // This file empties the Poems collection and inserts the poems below
-const mongodbURI = process.env.MONGODB_URI || "mongodb://localhost/poem-spot";
+const mongodbURI = process.env.MONGODB_URI || "mongodb://localhost/poem-spot-test";
 
 mongoose.connect(mongodbURI, () => {
   // Test data
@@ -67,9 +66,9 @@ mongoose.connect(mongodbURI, () => {
     });
 
   // User inserte into DB
-  userdb.User
+  db.User
     .remove({})
-    .then(() => userdb.User.create(userSeed))
+    .then(() => db.User.create(userSeed))
     .then((data) => {
       console.log("User records inserted!", data);
     })

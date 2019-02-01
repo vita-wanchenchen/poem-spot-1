@@ -31,10 +31,6 @@ mongoose.connect(db, { useNewUrlParser: true })
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log(err));
 
-// // View Engine
-// app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-// app.set("view engine", "handlebars");
-
 // Express body parser
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({
@@ -82,8 +78,9 @@ app.use(cors());
 
 // Routes
 app.use(routes);
-app.use("/", require("./routes/index.js"));
+app.use("/", routes);
 app.use("/users", require("./routes/users.js"));
+app.use("/poems", require("./routes/poems.js"));
 
 // Start the API server
 app.listen(PORT, () => {
