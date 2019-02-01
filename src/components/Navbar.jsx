@@ -39,10 +39,10 @@ function Navbar() {
       </button>
       <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul style={navbarNav} className="navbar-nav">
-          <li className="nav-item active">
+          {/* <li className="nav-item active">
             <Link style={linkStyle} to="/" className="nav-link">Home</Link>
             <span className="sr-only">(current)</span>
-          </li>
+          </li> */}
           <li className="nav-item">
             <Link style={linkStyle} to="/login" className="nav-link">Login</Link>
           </li>
