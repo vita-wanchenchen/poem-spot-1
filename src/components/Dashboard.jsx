@@ -67,71 +67,75 @@ class Dashboard extends Component {
     return (
       <div>
         <NavbarDash />
-        <div>
+        <div margin-bottom="0">
           <h3 style={{ fontSize: "5em" }}>Dashboard</h3>
         </div>
-        <div className="conatiner" id="form">
-          <form className="form-group main-body">
-            <div className="authentication">
-              <p>Poem Title :</p>
-              <input
-                className="form-control"
-                value={this.state.title}
-                onChange={this.handleInputChange}
-                name="title"
-                placeholder="Title (required)"
-                type="text"
-              />
-              <p>Poem Author :</p>
-              <input
-                className="form-control"
-                value={this.state.authors}
-                onChange={this.handleInputChange}
-                name="author"
-                placeholder="Author (required)"
-                type="text"
-              />
-              <p>Poem :</p>
-              <textarea
-                className="form-control"
-                value={this.state.body}
-                onChange={this.handleInputChange}
-                name="body"
-                placeholder="Body (required)"
-              />
-              <Button
-                disabled={!(this.state.author && this.state.title && this.state.body)}
-                onClick={this.handleFormSubmit}
-                type="submit"
-              >
-                <span>Submit Poem</span>
-                <IconDance><span role="img" aria-label="write">✍</span></IconDance>
-              </Button>
+        <div className="container" display="flex" flex-direction="row">
+          <div className="row">
+            <div className="col-md-5">
+              <form className="form-group main-body">
+                <div className="authentication">
+                  <p>Poem Title :</p>
+                  <input
+                    className="form-control"
+                    value={this.state.title}
+                    onChange={this.handleInputChange}
+                    name="title"
+                    placeholder="Title (required)"
+                    type="text"
+                  />
+                  <p>Poem Author :</p>
+                  <input
+                    className="form-control"
+                    value={this.state.authors}
+                    onChange={this.handleInputChange}
+                    name="author"
+                    placeholder="Author (required)"
+                    type="text"
+                  />
+                  <p>Poem :</p>
+                  <textarea
+                    className="form-control"
+                    value={this.state.body}
+                    onChange={this.handleInputChange}
+                    name="body"
+                    placeholder="Body (required)"
+                  />
+                  <Button
+                    disabled={!(this.state.author && this.state.title && this.state.body)}
+                    onClick={this.handleFormSubmit}
+                    type="submit"
+                  >
+                    <span>Submit Poem</span>
+                    <IconDance><span role="img" aria-label="write">✍</span></IconDance>
+                  </Button>
+                </div>
+              </form>
             </div>
-          </form>
-        </div>
-        {/* Database Poems */}
-        <div id="dbPoems">
-          <div className="APIS">
-            <h1>My Poems</h1>
-            {!this.state.dbPoems.length ? (
-              <h1 className="text-center">No Poems to Display</h1>
-            ) : (
-              <React.Fragment>
-                {this.state.dbPoems.map(poems => (
-                  <div>
-                    <h2>{poems.title}</h2>
-                    <p>Author: </p>
-                    {poems.author}
-                    <p>Poem: </p>
-                    {poems.body}
-                  </div>
-                ))}
-              </React.Fragment>
-            )}
+            {/* Database Poems */}
+            <div id="dbPoems" className="col-md-7 col-lg-7 s7">
+              <div className="APIS">
+                <h1>My Poems</h1>
+                {!this.state.dbPoems.length ? (
+                  <h1 className="text-center">No Poems to Display</h1>
+                ) : (
+                  <React.Fragment>
+                    {this.state.dbPoems.map(poems => (
+                      <div>
+                        <h2>{poems.title}</h2>
+                        <p>Author: </p>
+                        {poems.author}
+                        <p>Poem: </p>
+                        {poems.body}
+                      </div>
+                    ))}
+                  </React.Fragment>
+                )}
+              </div>
+            </div>
           </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
     );
   }
