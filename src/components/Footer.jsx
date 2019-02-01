@@ -27,7 +27,7 @@ function Footer() {
   return (
     <div className="sticky-footer" style={footerBody}>
       <footer className="footer" style={footerStyle}>
-        <spn style={footerSpan}>© Dead Coders Society</spn>
+        <span style={footerSpan}>© Dead Coders Society</span>
       </footer>
     </div>
   );
