@@ -7,6 +7,11 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 import Background from "../images/background.png";
 
+const styledWelcome = {
+  fontSize: "70px",
+  margin: "30px",
+};
+
 const crumpledPaper = {
   backgroundImage: `url(${Background})`,
 };
@@ -57,10 +62,8 @@ class Home extends Component {
         <div className="main">
           <Navbar />
           <div className="container">
-            <div className="main-body">
-              <div className="welcome">
-                <h1>Welcome To Poem Spot</h1>
-              </div>
+            <div className="welcome text-center" style={styledWelcome}>
+              <span>Welcome To Poem Spot</span>
             </div>
           </div>
         </div>
