@@ -16,8 +16,18 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create(req, res) {
+    const {
+      body,
+      user,
+    } = req;
+
+    const poem = {
+      title: body.title,
+      // ..
+      user: user.id,
+    };
     Poem
-      .create(req.body)
+      .create(poem)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
