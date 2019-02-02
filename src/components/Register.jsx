@@ -7,6 +7,15 @@ import Axios from "axios";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import Button from "./Button";
+import Background from "../images/background.png";
+
+const crumpledPaper = {
+  backgroundImage: `url(${Background})`,
+};
+
+const styleMain = {
+  height: "900px",
+};
 
 class Register extends Component {
   constructor(props) {
@@ -67,22 +76,51 @@ class Register extends Component {
 
   render() {
     return (
-      <div id="register-page">
-        <div className="main">
+      // <div id="register-page">
+      //   <div className="main">
+      <div id="register-page" style={crumpledPaper} className=" row">
+        <div className="main" style={styleMain}>
           <Navbar />
-          <div className="container">
+          {/* <div className="container">
             <div className="main-body">
-              <div className="authentication">
-                <h3>Register</h3>
-                <input onChange={this.handleNameChange} type="text" placeholder="Name" name="email" />
-                <input onChange={this.handleEmailChange} type="text" placeholder="Email Address" name="email" />
-                <input onChange={this.handlePasswordChange} type="password" placeholder="Password" name="password" />
-                <input onChange={this.handleConfirmPasswordChange} type="password" placeholder="Confirm Password" name="password_" />
-                <Button onClick={this.handleSubmit}>Submit</Button>
+              <div className="authentication"> */}
+          <div className="row justify-content-center">
+            <div className="card w-50 border-dark mt-3">
+              <div className="card-body align-self-center text-center">
+                <h3 className="card-title">Register</h3>
+                {/* <h3>Register</h3> */}
+                <div className="form-group border-dark">
+                  <div className="col-14">
+                    <input className="form-control form-control-lg" onChange={this.handleNameChange} type="text" placeholder="Name" name="email" />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <div className="col-14">
+                    <input className="form-control form-control-lg" onChange={this.handleEmailChange} type="text" placeholder="Email Address" name="email" />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <div className="col-14">
+                    <input className="form-control form-control-lg" onChange={this.handlePasswordChange} type="password" placeholder="Password" name="password" />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <div className="col-14">
+                    <input className="form-control form-control-lg" onChange={this.handleConfirmPasswordChange} type="password" placeholder="Confirm Password" name="password_" />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <Button onClick={this.handleSubmit}>
+                    <span>Submit</span>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
+          {/* </div> */}
+          {/* // </div> */}
           <Footer />
+          {/* //   </div> */}
         </div>
       </div>
     );
