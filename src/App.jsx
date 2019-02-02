@@ -10,7 +10,7 @@ import Dashboard from "./components/Dashboard";
 import "./App.css";
 
 const App = () => (
-  <div className="App">
+  <div className="App dash">
     <Switch>
       <Route path="/" exact component={Home} />
       <Route path="/dashboard" exact component={Dashboard} />
