@@ -64,6 +64,7 @@ class Home extends Component {
             </div>
           </div>
         </div>
+        <div className="col-md-1" />
         <div id="dailyPoem" className="col-md-4">
           <div className="APIS">
             <h1>Daily Poem</h1>
@@ -74,43 +75,46 @@ class Home extends Component {
             {/* <p>{this.state.dailyPoem.poet.url}</p> */}
           </div>
         </div>
+        <div className="col-md-1" />
         {/* Database Poems */}
-        <div id="dbPoems" className="col-md-4">
-          <div className="APIS">
-            <h1>Latest Poems</h1>
-            {!this.state.dbPoems.length ? (
-              <h1 className="text-center">No Poems to Display</h1>
-            ) : (
-              <React.Fragment>
-                {this.state.dbPoems.map(poems => (
-                  <div>
-                    <h2>{poems.title}</h2>
-                    <p>Author: </p>
-                    {poems.author}
-                    <p>Poem: </p>
-                    {poems.body}
-                  </div>
-                ))}
-              </React.Fragment>
-            )}
+        <div id="rightSide" className="col-md-5">
+          <div id="dbPoems">
+            <div className="APIS">
+              <h1>Latest Poems</h1>
+              {!this.state.dbPoems.length ? (
+                <h1 className="text-center">No Poems to Display</h1>
+              ) : (
+                <React.Fragment>
+                  {this.state.dbPoems.map(poems => (
+                    <div>
+                      <h2>{poems.title}</h2>
+                      <p>Author: </p>
+                      {poems.author}
+                      <p>Poem: </p>
+                      {poems.body}
+                    </div>
+                  ))}
+                </React.Fragment>
+              )}
+            </div>
           </div>
-        </div>
-        <div id="meetUp" className="col-md-4">
-          <div className="APIS">
-            <h1>Meetup Group</h1>
-            <h2>{this.state.meetUp.name}</h2>
-            {/* <img src=
-            {this.state.meetUp.group_photo.thumb_link} alt="" /> */}
-            <p>Status: </p>
-            {this.state.meetUp.status}
-            <p>Group Link: </p>
-            {this.state.meetUp.link}
-            <p>What we are about: </p>
-            {this.state.meetUp.description}
-            <p>Location: </p>
-            <span>{this.state.meetUp.city}</span>
-            <span>{this.state.meetUp.state}</span>
-            <span>{this.state.meetUp.country}</span>
+          <div id="meetUp">
+            <div className="APIS">
+              <h1>Meetup Group</h1>
+              <h2>{this.state.meetUp.name}</h2>
+              {/* <img src=
+              {this.state.meetUp.group_photo.thumb_link} alt="" /> */}
+              <p>Status: </p>
+              {this.state.meetUp.status}
+              <p>Group Link: </p>
+              {this.state.meetUp.link}
+              <p>What we are about: </p>
+              {this.state.meetUp.description}
+              <p>Location: </p>
+              <span>{this.state.meetUp.city}</span>
+              <span>{this.state.meetUp.state}</span>
+              <span>{this.state.meetUp.country}</span>
+            </div>
           </div>
         </div>
         <Footer />
