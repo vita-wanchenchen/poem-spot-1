@@ -20,7 +20,12 @@ module.exports = function passportConfig(passport) {
         bcrypt.compare(password, user.password, (err, isMatch) => {
           if (err) throw err;
           if (isMatch) {
-            return done(null, user);
+            return done(null, {
+              // NOTE: only return the fields that you will actually need.
+              id: user.id,
+              name: user.name,
+              email: user.email,
+            });
           }
           return done(null, false, { message: "Password incorrect" });
         });
@@ -34,7 +39,11 @@ module.exports = function passportConfig(passport) {
 
   passport.deserializeUser((id, done) => {
     User.findById(id, (err, user) => {
-      done(err, user);
+      done(err, {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+      });
     });
   });
 };

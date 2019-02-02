@@ -18,7 +18,7 @@ router.post("/register", (req, res) => {
 
   if (password.length < 6) {
     return res.status(400).send({
-      message: "Passport must be of length greater than 6",
+      message: "Password must be of length greater than 6",
     });
   }
 
@@ -62,16 +62,22 @@ router.post("/register", (req, res) => {
 router.post("/login", (req, res, next) => passport.authenticate(
   "local",
   { session: true },
-  // (error, user /*, info */) => {
+  // NOTE: If you use a custom override method here, you must manually call
+  // req.login and serialize/deserialize user. See: https://stackoverflow.com/a/36525372/802397
   (error, user) => {
     if (error) {
       res.status(400).send({
         message: "Login Unsuccessful",
       });
     } else {
-      res.status(200).send({
-        message: "Login successful",
-        user,
+      req.logIn(user, (err) => {
+        if (err) throw err;
+
+        res.status(200).send({
+          message: "Login successful",
+          user,
+        });
+        // NOTE: you should be doing res.redirect here instead of in clientside - maybe.
       });
     }
   },
