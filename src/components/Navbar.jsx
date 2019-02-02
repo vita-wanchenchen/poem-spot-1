@@ -10,6 +10,7 @@ const navbarStyle = {
   backgroundColor: "black",
   paddingBottom: "-30px",
   marginBottom: "20px",
+  width: "100%",
 };
 
 const navBrand = {

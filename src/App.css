@@ -47,9 +47,10 @@
 
 .main-body h1{
   font-size: 4em;
-}
+} */
 
-.main-body .authentication{
+/* .authentication  */
+/* .main-body{
   width: 400px;
 
   display: flex;
@@ -57,9 +58,9 @@
   align-items: center;
   flex-wrap: nowrap;
   flex-direction: column;
-}
+} */
 
-.main-body .authentication input, .main-body .authentication button{
+/* .main-body .authentication input, .main-body .authentication button{
   width: 300px;
   height: 40px;
   font-family: 'Handlee', 'Courier New', Courier, monospace;
@@ -68,8 +69,8 @@
   border: 1px solid #000;
   padding: 3px;
   box-sizing: border-box;
-}
-textarea{
+} */
+ textarea{
 width: 640px;
   height: 250px;
   padding: 12px 20px;

@@ -59,8 +59,8 @@ class Home extends Component {
   render() {
     return (
       <div id="home-page" style={crumpledPaper} className="row">
+        <Navbar />
         <div className="main">
-          <Navbar />
           <div className="container">
             <div className="welcome text-center" style={styledWelcome}>
               <span>Welcome To Poem Spot</span>
