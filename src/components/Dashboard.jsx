@@ -6,21 +6,23 @@ import Footer from "./Footer";
 import Button from "./Button";
 import IconDance from "./IconDance";
 
-
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       dbPoems: [],
+      poemsById: [],
       title: "",
       author: "",
       body: "",
+      userID: "",
     };
   }
 
   // When the component mounts, load allpoems will load
   componentDidMount() {
     this.loadPoemDB();
+    this.loadPoemsByID();
   }
 
   // Load Poems from DB
@@ -28,6 +30,18 @@ class Dashboard extends Component {
     API.getPoemsDB()
       .then(res => this.setState({
         dbPoems: res.data,
+        title: "",
+        author: "",
+        body: "",
+      }))
+      .catch(err => console.log(err));
+  };
+
+  // Load Poems from DB by id/ use session req.user?
+  loadPoemsByID = () => {
+    API.getPoemsById(this.state.userID)
+      .then(res => this.setState({
+        poemsById: res.data,
         title: "",
         author: "",
         body: "",
@@ -50,12 +64,14 @@ class Dashboard extends Component {
       title,
       author,
       body,
+      userID,
     } = this.state;
     if (title && author && body) {
       API.savePoem({
         title,
         author,
         body,
+        userID,
       })
         // eslint-disable-next-line no-unused-vars
         .then(res => this.loadPoemDB())
@@ -115,12 +131,33 @@ class Dashboard extends Component {
             {/* Database Poems */}
             <div id="dbPoems" className="col-md-7 col-lg-7 s7">
               <div className="APIS">
-                <h1>My Poems</h1>
+                <h1>All Poems</h1>
                 {!this.state.dbPoems.length ? (
                   <h1 className="text-center">No Poems to Display</h1>
                 ) : (
                   <React.Fragment>
                     {this.state.dbPoems.map(poems => (
+                      // eslint-disable-next-line no-underscore-dangle
+                      <div key={poems._id}>
+                        <h2>{poems.title}</h2>
+                        <p>Author: </p>
+                        {poems.author}
+                        <p>Poem: </p>
+                        {poems.body}
+                      </div>
+                    ))}
+                  </React.Fragment>
+                )}
+              </div>
+            </div>
+            <div id="poemsById" className="col-md-7 col-lg-7 s7">
+              <div className="APIS">
+                <h1>My Poems</h1>
+                {!this.state.poemsById.length ? (
+                  <h1 className="text-center">No Poems to Display. Start writting!</h1>
+                ) : (
+                  <React.Fragment>
+                    {this.poemsById.map(poems => (
                       <div>
                         <h2>{poems.title}</h2>
                         <p>Author: </p>
@@ -133,6 +170,7 @@ class Dashboard extends Component {
                 )}
               </div>
             </div>
+
           </div>
           <Footer />
         </div>

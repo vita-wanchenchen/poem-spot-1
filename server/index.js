@@ -51,6 +51,21 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// app.use((req, res, next) => {
+//   if (req.session && req.session.userID) {
+//     User.findById(req.session.userID, (err, user) => {
+//       if (!err && user) {
+      // req.user = user;
+//         next();
+//       } else {
+//         next(new Error("Could not restore User from Session."));
+//       }
+//     });
+//   } else {
+//     next();
+//   }
+// });
+
 // Connect Flash
 app.use(flash());
 
@@ -81,6 +96,7 @@ app.use(routes);
 app.use("/", routes);
 app.use("/users", require("./routes/users.js"));
 app.use("/poems", require("./routes/poems.js"));
+app.use("/poems/:id", require("./routes/poems.js"));
 
 // Start the API server
 app.listen(PORT, () => {
