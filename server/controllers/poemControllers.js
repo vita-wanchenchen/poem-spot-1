@@ -11,10 +11,16 @@ module.exports = {
   },
   findById(req, res) {
     Poem
-      .findById(req.params.id)
+      .findById(req.user.id)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
+  // create(req, res) {
+  //   Poem
+  //     .create(req.body)
+  //     .then(dbModel => res.json(dbModel))
+  //     .catch(err => res.status(422).json(err));
+  // },
   create(req, res) {
     const {
       body,
@@ -23,7 +29,8 @@ module.exports = {
 
     const poem = {
       title: body.title,
-      // ..
+      author: body.author,
+      body: body.body,
       user: user.id,
     };
     Poem

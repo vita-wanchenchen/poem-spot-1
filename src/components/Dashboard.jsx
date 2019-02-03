@@ -6,6 +6,7 @@ import Footer from "./Footer";
 import Button from "./Button";
 import IconDance from "./IconDance";
 
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
@@ -15,14 +16,14 @@ class Dashboard extends Component {
       title: "",
       author: "",
       body: "",
-      userID: "",
+      user: "",
     };
   }
 
   // When the component mounts, load allpoems will load
   componentDidMount() {
     this.loadPoemDB();
-    this.loadPoemsByID();
+    // this.loadPoemByID();
   }
 
   // Load Poems from DB
@@ -38,8 +39,8 @@ class Dashboard extends Component {
   };
 
   // Load Poems from DB by id/ use session req.user?
-  loadPoemsByID = () => {
-    API.getPoemsById(this.state.userID)
+  loadPoemByID = () => {
+    API.getPoemsById()
       .then(res => this.setState({
         poemsById: res.data,
         title: "",
@@ -64,14 +65,14 @@ class Dashboard extends Component {
       title,
       author,
       body,
-      userID,
+      // user,
     } = this.state;
     if (title && author && body) {
       API.savePoem({
         title,
         author,
         body,
-        userID,
+        // user,
       })
         // eslint-disable-next-line no-unused-vars
         .then(res => this.loadPoemDB())
@@ -90,7 +91,10 @@ class Dashboard extends Component {
           <div className="row">
             <div className="col-md-5">
               <form className="form-group main-body">
-                <div className="authentication">
+                <div
+                  className="authentication"
+                  value={this.state.user}
+                >
                   <p>Poem Title :</p>
                   <input
                     className="form-control"
@@ -137,8 +141,7 @@ class Dashboard extends Component {
                 ) : (
                   <React.Fragment>
                     {this.state.dbPoems.map(poems => (
-                      // eslint-disable-next-line no-underscore-dangle
-                      <div key={poems._id}>
+                      <div>
                         <h2>{poems.title}</h2>
                         <p>Author: </p>
                         {poems.author}

@@ -10,6 +10,7 @@ const cors = require("cors");
 const routes = require("./routes");
 // Database Config
 const db = require("./config/keys").mongoURI;
+
 // Passport Config
 require("./config/passport")(passport);
 
@@ -50,21 +51,6 @@ app.use(session({
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
-
-// app.use((req, res, next) => {
-//   if (req.session && req.session.userID) {
-//     User.findById(req.session.userID, (err, user) => {
-//       if (!err && user) {
-      // req.user = user;
-//         next();
-//       } else {
-//         next(new Error("Could not restore User from Session."));
-//       }
-//     });
-//   } else {
-//     next();
-//   }
-// });
 
 // Connect Flash
 app.use(flash());
