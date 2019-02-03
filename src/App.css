@@ -82,22 +82,11 @@ width: 640px;
   resize: none;
 }
 
-#home-page {
-  background-color: rgba(0,30,253,.07);
-  background-blend-mode: multiply;
-}
-
-#login-page {
-  background-color: rgba(0,30,253,.07);
-  background-blend-mode: multiply;
-}
-
-#register-page {
-  background-color: rgba(0,30,253,.07);
-  background-blend-mode: multiply;
-}
-
-.dash {
+#home-page,
+#login-page,
+#register-page,
+#dashboard-page
+ {
   background-color: rgba(0,30,253,.07);
   background-blend-mode: multiply;
 }
