@@ -12,15 +12,18 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       dbPoems: [],
+      poemsById: [],
       title: "",
       author: "",
       body: "",
+      user: "",
     };
   }
 
   // When the component mounts, load allpoems will load
   componentDidMount() {
     this.loadPoemDB();
+    // this.loadPoemByID();
   }
 
   // Load Poems from DB
@@ -28,6 +31,18 @@ class Dashboard extends Component {
     API.getPoemsDB()
       .then(res => this.setState({
         dbPoems: res.data,
+        title: "",
+        author: "",
+        body: "",
+      }))
+      .catch(err => console.log(err));
+  };
+
+  // Load Poems from DB by id/ use session req.user?
+  loadPoemByID = () => {
+    API.getPoemsById()
+      .then(res => this.setState({
+        poemsById: res.data,
         title: "",
         author: "",
         body: "",
@@ -50,12 +65,14 @@ class Dashboard extends Component {
       title,
       author,
       body,
+      // user,
     } = this.state;
     if (title && author && body) {
       API.savePoem({
         title,
         author,
         body,
+        // user,
       })
         // eslint-disable-next-line no-unused-vars
         .then(res => this.loadPoemDB())
@@ -74,7 +91,10 @@ class Dashboard extends Component {
           <div className="row">
             <div className="col-md-5">
               <form className="form-group main-body">
-                <div className="authentication">
+                <div
+                  className="authentication"
+                  value={this.state.user}
+                >
                   <p>Poem Title :</p>
                   <input
                     className="form-control"
@@ -115,7 +135,7 @@ class Dashboard extends Component {
             {/* Database Poems */}
             <div id="dbPoems" className="col-md-7 col-lg-7 s7">
               <div className="APIS">
-                <h1>My Poems</h1>
+                <h1>All Poems</h1>
                 {!this.state.dbPoems.length ? (
                   <h1 className="text-center">No Poems to Display</h1>
                 ) : (
@@ -133,6 +153,27 @@ class Dashboard extends Component {
                 )}
               </div>
             </div>
+            <div id="poemsById" className="col-md-7 col-lg-7 s7">
+              <div className="APIS">
+                <h1>My Poems</h1>
+                {!this.state.poemsById.length ? (
+                  <h1 className="text-center">No Poems to Display. Start writting!</h1>
+                ) : (
+                  <React.Fragment>
+                    {this.poemsById.map(poems => (
+                      <div>
+                        <h2>{poems.title}</h2>
+                        <p>Author: </p>
+                        {poems.author}
+                        <p>Poem: </p>
+                        {poems.body}
+                      </div>
+                    ))}
+                  </React.Fragment>
+                )}
+              </div>
+            </div>
+
           </div>
           <Footer />
         </div>

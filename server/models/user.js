@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
+// eslint-disable-next-line prefer-destructuring
+const Schema = mongoose.Schema;
+
+const UserSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -17,7 +20,14 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-
+  poem: [
+    {
+      // Store ObjectIds in the array
+      type: Schema.Types.ObjectId,
+      // The ObjectIds will refer to the ids in the Note model
+      ref: "Poem",
+    },
+  ],
 });
 
 const User = mongoose.model("User", UserSchema);

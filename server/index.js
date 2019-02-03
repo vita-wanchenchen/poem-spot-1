@@ -10,6 +10,7 @@ const cors = require("cors");
 const routes = require("./routes");
 // Database Config
 const db = require("./config/keys").mongoURI;
+
 // Passport Config
 require("./config/passport")(passport);
 
@@ -81,6 +82,7 @@ app.use(routes);
 app.use("/", routes);
 app.use("/users", require("./routes/users.js"));
 app.use("/poems", require("./routes/poems.js"));
+app.use("/poems/:id", require("./routes/poems.js"));
 
 // Start the API server
 app.listen(PORT, () => {

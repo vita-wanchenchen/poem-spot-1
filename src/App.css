@@ -43,6 +43,7 @@
   align-items: center;
   color: #000;
   background-color: #fff;
+  background-color: transparent;
 }
 
 .main-body h1{
@@ -79,4 +80,24 @@ width: 640px;
   border-radius: 4px;
   background-color: #f8f8f8;
   resize: none;
+}
+
+#home-page {
+  background-color: rgba(0,30,253,.07);
+  background-blend-mode: multiply;
+}
+
+#login-page {
+  background-color: rgba(0,30,253,.07);
+  background-blend-mode: multiply;
+}
+
+#register-page {
+  background-color: rgba(0,30,253,.07);
+  background-blend-mode: multiply;
+}
+
+.dash {
+  background-color: rgba(0,30,253,.07);
+  background-blend-mode: multiply;
 }

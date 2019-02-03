@@ -1,3 +1,4 @@
+/* eslint-disable prefer-template */
 import axios from "axios";
 
 const cors = "https://cors-anywhere.herokuapp.com/";
@@ -17,7 +18,11 @@ export default {
   getPoemsDB() {
     return axios.get("/poems");
   },
-  // Saves a book to the database
+  // Gets the poem with the given id
+  getPoemsById(id) {
+    return axios.get("/poems/" + id);
+  },
+  // Saves a poem to the database
   savePoem(poemData) {
     return axios.post("/poems", poemData);
   },
