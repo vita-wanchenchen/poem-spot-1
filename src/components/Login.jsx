@@ -66,35 +66,35 @@ class Login extends Component {
           {/* <div className="container"> */}
           {/* <div className="main-body"> */}
           {/* <form className="authentication"> */}
-          <div className="row justify-content-center">
-            <div className="card w-50 border-dark mt-3">
-              <div className="card-body align-self-center text-center">
-                <h3 className="card-title">Login</h3>
-                <div className="form-group border-dark">
-                  <div className="col-14">
-                    <input className="form-control form-control-lg" onChange={this.handleEmailChange} type="text" placeholder="Email Address" name="email" />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <div className="col-14">
-                    <input className="form-control form-control-lg" onChange={this.handlePasswordChange} type="password" placeholder="Password" name="password" />
-                  </div>
-                </div>
-                <div className="form-group">
-                  <Button onClick={this.handleSubmit}>
-                    <span>Submit</span>
-                  </Button>
-                </div>
-                {/* </form> */}
+          <div className="row justify-content-center align-self-center text-center mr-5 ml-5">
+            {/* <div className="card w-50 border-dark mt-3"> */}
+            <div className="card-body col-md-3 mt-3 w-50">
+              <h3 className="card-title">Login</h3>
+              <div className="form-group">
+                {/* <div className="col-14"> */}
+                <input className="form-control form-control-lg" onChange={this.handleEmailChange} type="text" placeholder="Email Address" name="email" />
+                {/* </div> */}
               </div>
+              <div className="form-group">
+                {/* <div className="col-14"> */}
+                <input className="form-control form-control-lg" onChange={this.handlePasswordChange} type="password" placeholder="Password" name="password" />
+                {/* </div> */}
+              </div>
+              <div className="form-group">
+                <Button onClick={this.handleSubmit}>
+                  <span>Submit</span>
+                </Button>
+              </div>
+              {/* </form> */}
             </div>
           </div>
-          {/* <h3>Login</h3> */}
-          {/* </div> */}
-          {/* </div> */}
-          <Footer />
         </div>
+        {/* <h3>Login</h3> */}
+        {/* </div> */}
+        {/* </div> */}
+        <Footer />
       </div>
+      // </div>
     );
   }
 }

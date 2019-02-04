@@ -5,6 +5,15 @@ import NavbarDash from "./NavbarDash";
 import Footer from "./Footer";
 import Button from "./Button";
 import IconDance from "./IconDance";
+import Background from "../images/background.png";
+
+const crumpledPaper = {
+  backgroundImage: `url(${Background})`,
+};
+
+const pageTitle = {
+  fontSize: "70px",
+};
 
 
 class Dashboard extends Component {
@@ -80,40 +89,42 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div>
+      <div id="dashboard-page" style={crumpledPaper}>
         <NavbarDash />
-        <div margin-bottom="0">
-          <h3 style={{ fontSize: "5em" }}>Dashboard</h3>
-        </div>
         <div className="container" display="flex" flex-direction="row">
+          <div style={pageTitle}>
+            <span>Dashboard</span>
+          </div>
+          {/* <div className="container" display="flex" flex-direction="row"> */}
           <div className="row">
-            <div className="col-md-5">
-              <form className="form-group main-body">
+            <div className="col-md-6">
+              <form className="form-group">
                 <div
-                  className="authentication"
+                  className="card-body align-self-center"
                   value={this.state.user}
                 >
-                  <p>Poem Title :</p>
+                  <h4>Poem Title :</h4>
                   <input
-                    className="form-control"
+                    className="form-control form-control-lg mb-3"
                     value={this.state.title}
                     onChange={this.handleInputChange}
                     name="title"
                     placeholder="Title (required)"
                     type="text"
                   />
-                  <p>Poem Author :</p>
+                  <h4>Poem Author :</h4>
                   <input
-                    className="form-control"
+                    className="form-control form-control-lg mb-3"
                     value={this.state.authors}
                     onChange={this.handleInputChange}
                     name="author"
                     placeholder="Author (required)"
                     type="text"
                   />
-                  <p>Poem :</p>
+                  <h4>Poem :</h4>
                   <textarea
-                    className="form-control"
+                    className="form-control form-control-lg mb-3"
+                    rows="8"
                     value={this.state.body}
                     onChange={this.handleInputChange}
                     name="body"
@@ -131,7 +142,7 @@ class Dashboard extends Component {
               </form>
             </div>
             {/* Database Poems */}
-            <div id="dbPoems" className="col-md-7 col-lg-7 s7">
+            <div id="dbPoems" className="col-md-6 s7">
               <div className="APIS">
                 <h1>All Poems</h1>
                 {!this.state.dbPoems.length ? (
@@ -151,7 +162,7 @@ class Dashboard extends Component {
                 )}
               </div>
             </div>
-            <div id="poemsByUser" className="col-md-7 col-lg-7 s7" value={this.state.user}>
+            <div id="poemsById" className="col-md-6 s7" value={this.state.user}>
               <div className="APIS">
                 <h1>My Poems</h1>
                 {!this.state.poemsByUser.length ? (
