@@ -12,18 +12,18 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       dbPoems: [],
-      poemsById: [],
+      poemsByUser: [],
       title: "",
       author: "",
       body: "",
-      user: "",
+      user: localStorage.getItem("user.id"),
     };
   }
 
   // When the component mounts, load allpoems will load
   componentDidMount() {
     this.loadPoemDB();
-    // this.loadPoemByID();
+    this.loadPoemsByUser();
   }
 
   // Load Poems from DB
@@ -39,10 +39,10 @@ class Dashboard extends Component {
   };
 
   // Load Poems from DB by id/ use session req.user?
-  loadPoemByID = () => {
-    API.getPoemsById()
+  loadPoemsByUser = () => {
+    API.getPoemsByUser("5c56052831e9fe763c3fba71")
       .then(res => this.setState({
-        poemsById: res.data,
+        poemsByUser: res.data,
         title: "",
         author: "",
         body: "",
@@ -65,14 +65,12 @@ class Dashboard extends Component {
       title,
       author,
       body,
-      // user,
     } = this.state;
     if (title && author && body) {
       API.savePoem({
         title,
         author,
         body,
-        // user,
       })
         // eslint-disable-next-line no-unused-vars
         .then(res => this.loadPoemDB())
@@ -153,14 +151,14 @@ class Dashboard extends Component {
                 )}
               </div>
             </div>
-            <div id="poemsById" className="col-md-7 col-lg-7 s7">
+            <div id="poemsByUser" className="col-md-7 col-lg-7 s7" value={this.state.user}>
               <div className="APIS">
                 <h1>My Poems</h1>
-                {!this.state.poemsById.length ? (
+                {!this.state.poemsByUser.length ? (
                   <h1 className="text-center">No Poems to Display. Start writting!</h1>
                 ) : (
                   <React.Fragment>
-                    {this.poemsById.map(poems => (
+                    {this.poemsByUser.map(poems => (
                       <div>
                         <h2>{poems.title}</h2>
                         <p>Author: </p>

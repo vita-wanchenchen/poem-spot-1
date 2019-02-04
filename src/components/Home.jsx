@@ -73,7 +73,7 @@ class Home extends Component {
             <h1>Daily Poem</h1>
             <h2>{this.state.dailyPoem.title}</h2>
             <p>{this.state.dailyPoem.content}</p>
-            <p>{this.state.dailyPoem.url}</p>
+            <a href={this.state.dailyPoem.url}> Get more info on this poet!</a>
             {/* <p>{this.state.dailyPoem.poet.name}</p> */}
             {/* <p>{this.state.dailyPoem.poet.url}</p> */}
           </div>
@@ -102,21 +102,27 @@ class Home extends Component {
             </div>
           </div>
           <div id="meetUp">
-            <div className="APIS">
+            <div className="APIS mb-5">
               <h1>Meetup Group</h1>
               <h2>{this.state.meetUp.name}</h2>
-              {/* <img src=
-              {this.state.meetUp.group_photo.thumb_link} alt="" /> */}
+              {/* <img src={this.state.meetUp.key_photo.photo_link} alt="group_photo" /> */}
               <p>Status: </p>
               {this.state.meetUp.status}
               <p>Group Link: </p>
-              {this.state.meetUp.link}
+              <a href={this.state.meetUp.link}>Check out our website.</a>
               <p>What we are about: </p>
               {this.state.meetUp.description}
               <p>Location: </p>
-              <span>{this.state.meetUp.city}</span>
-              <span>{this.state.meetUp.state}</span>
-              <span>{this.state.meetUp.country}</span>
+              <span>
+                {this.state.meetUp.city}
+                <span>,   </span>
+              </span>
+              <span>
+                {this.state.meetUp.state}
+              </span>
+              <span>
+                {this.state.meetUp.country}
+              </span>
             </div>
           </div>
         </div>

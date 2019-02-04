@@ -4,6 +4,7 @@ const poemsController = require("../controllers/poemControllers");
 // Matches with "/poems"
 router.route("/")
   .get(poemsController.findAll)
+  .get(poemsController.findUser)
   .post(poemsController.create);
 
 // Matches with "/api/poems/:id"
