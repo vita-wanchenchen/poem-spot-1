@@ -26,13 +26,25 @@ class Dashboard extends Component {
       author: "",
       body: "",
       user: localStorage.getItem("user.id"),
+      // eslint-disable-next-line react/no-unused-state
+      userProfile: {},
     };
   }
 
   // When the component mounts, load allpoems will load
   componentDidMount() {
     this.loadPoemDB();
-    this.loadPoemsByUser();
+    // this.loadPoemsByUser();
+    this.loadUserInfo();
+  }
+
+  // Get user info
+  loadUserInfo = () => {
+    const userProfile = localStorage.getItem("user");
+    console.log("UserProfile retrieves : ", userProfile);
+    // eslint-disable-next-line react/no-unused-state
+    this.setState({ userProfile });
+    return userProfile;
   }
 
   // Load Poems from DB
@@ -47,9 +59,9 @@ class Dashboard extends Component {
       .catch(err => console.log(err));
   };
 
-  // Load Poems from DB by id/ use session req.user?
+  // Load Poems from DB by user id/ use session req.user?
   loadPoemsByUser = () => {
-    API.getPoemsByUser("5c56052831e9fe763c3fba71")
+    API.getPoemsByUser()
       .then(res => this.setState({
         poemsByUser: res.data,
         title: "",

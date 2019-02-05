@@ -19,8 +19,9 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findById(req, res) {
+    // const userID = req.user.id;
     Poem
-      .findById(req.params.id)
+      .findById({ _id: req.user.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
