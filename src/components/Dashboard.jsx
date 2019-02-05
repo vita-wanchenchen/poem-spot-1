@@ -32,7 +32,7 @@ class Dashboard extends Component {
   // When the component mounts, load allpoems will load
   componentDidMount() {
     this.loadPoemDB();
-    // this.loadPoemByID();
+    // this.loadPoemByUser();
   }
 
   // Load Poems from DB
@@ -48,8 +48,8 @@ class Dashboard extends Component {
   };
 
   // Load Poems from DB by id/ use session req.user?
-  loadPoemByID = () => {
-    API.getPoemsById()
+  loadPoemByUser = () => {
+    API.getPoemsByUser()
       .then(res => this.setState({
         poemsById: res.data,
         title: "",
