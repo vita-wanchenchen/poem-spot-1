@@ -59,7 +59,6 @@ class Home extends Component {
 
   render() {
     return (
-    <div>
       <div id="home-page" style={crumpledPaper} className="row">
         <Navbar />
         <div className="main">
@@ -70,50 +69,38 @@ class Home extends Component {
           </div>
         </div>
         <div className="col-md-1" />
-
-        {/* <DailyPoem />
         <div id="dailyPoem" className="col-md-4">
           <div className="APIS">
             <h1>Daily Poem</h1>
             <h2>{this.state.dailyPoem.title}</h2>
             <p>{this.state.dailyPoem.content}</p>
             <p>{this.state.dailyPoem.url}</p>
-            {/* <p>{this.state.dailyPoem.poet.name}</p> */}
-            {/* <p>{this.state.dailyPoem.poet.url}</p> */}
-          {/* </div> */} */}
-
-            <DailyPoem />
           </div>
-          </div>
-
-        <div className="col-md-1">
-
-      Database Poems
-      <div id="rightSide" className="col-md-5">
-            <div id="dbPoems">
-              <div className="APIS">
-                <h1>Latest Poems</h1>
-                {!this.state.dbPoems.length ? (
-                  <h1 className="text-center">No Poems to Display</h1>
-                ) : (
-                  <React.Fragment>
-                    {this.state.dbPoems.map(poems => (
-                      <div key={poems.title}>
-                        <h2>{poems.title}</h2>
-                        <p>Author: </p>
-                        {poems.author}
-                        <p>Poem: </p>
-                        {poems.body}
-                      </div>
-                    ))}
-                  </React.Fragment>
-                )}
-              </div>
+          <DailyPoem />
+        </div>
+        <div className="col-md-1" />
+        {/* Database Poems */}
+        <div id="rightSide" className="col-md-5">
+          <div id="dbPoems">
+            <div className="APIS">
+              <h1>Latest Poems</h1>
+              {!this.state.dbPoems.length ? (
+                <h1 className="text-center">No Poems to Display</h1>
+              ) : (
+                <React.Fragment>
+                  {this.state.dbPoems.map(poems => (
+                    <div>
+                      <h2>{poems.title}</h2>
+                      <p>Author: </p>
+                      {poems.author}
+                      <p>Poem: </p>
+                      {poems.body}
+                    </div>
+                  ))}
+                </React.Fragment>
+              )}
             </div>
-
           </div>
-
-
           <div id="meetUp">
             <div className="APIS">
               <h1>Meetup Group</h1>
@@ -134,7 +121,7 @@ class Home extends Component {
           </div>
         </div>
         <Footer />
-    </div>
+      </div>
     );
   }
 }
