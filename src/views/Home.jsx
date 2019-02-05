@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+import Card from "@material-ui/core/Card";
+import CardActions from "@material-ui/core/CardActions";
+import CardContent from "@material-ui/core/CardContent";
+import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
 // import Axios from "axios";
 
 // eslint-disable-next-line no-unused-vars
@@ -6,7 +11,6 @@ import API from "../utils/API";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Background from "../images/background.png";
-import DailyPoem from "../components/DailyPoem";
 
 const styledWelcome = {
   fontSize: "70px",
@@ -70,13 +74,16 @@ class Home extends Component {
         </div>
         <div className="col-md-1" />
         <div id="dailyPoem" className="col-md-4">
-          <div className="APIS">
-            <h1>Daily Poem</h1>
-            <h2>{this.state.dailyPoem.title}</h2>
-            <p>{this.state.dailyPoem.content}</p>
-            <p>{this.state.dailyPoem.url}</p>
-          </div>
-          <DailyPoem />
+          <Card>
+            <CardContent>
+              <Typography color="textSecondary" gutterBottom>Poem of the Day</Typography>
+              <Typography variant="h5" component="h2">{this.state.dailyPoem.title}</Typography>
+              <Typography color="textSecondary">{this.state.dailyPoem.content}</Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small" href={this.state.dailyPoem.url}>Source</Button>
+            </CardActions>
+          </Card>
         </div>
         <div className="col-md-1" />
         {/* Database Poems */}
