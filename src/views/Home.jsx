@@ -3,9 +3,10 @@ import React, { Component } from "react";
 
 // eslint-disable-next-line no-unused-vars
 import API from "../utils/API";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 import Background from "../images/background.png";
+import DailyPoem from "../components/DailyPoem";
 
 const styledWelcome = {
   fontSize: "70px",
@@ -58,6 +59,7 @@ class Home extends Component {
 
   render() {
     return (
+    <div>
       <div id="home-page" style={crumpledPaper} className="row">
         <Navbar />
         <div className="main">
@@ -68,6 +70,8 @@ class Home extends Component {
           </div>
         </div>
         <div className="col-md-1" />
+
+        {/* <DailyPoem />
         <div id="dailyPoem" className="col-md-4">
           <div className="APIS">
             <h1>Daily Poem</h1>
@@ -76,31 +80,40 @@ class Home extends Component {
             <p>{this.state.dailyPoem.url}</p>
             {/* <p>{this.state.dailyPoem.poet.name}</p> */}
             {/* <p>{this.state.dailyPoem.poet.url}</p> */}
+          {/* </div> */} */}
+
+            <DailyPoem />
           </div>
-        </div>
-        <div className="col-md-1" />
-        {/* Database Poems */}
-        <div id="rightSide" className="col-md-5">
-          <div id="dbPoems">
-            <div className="APIS">
-              <h1>Latest Poems</h1>
-              {!this.state.dbPoems.length ? (
-                <h1 className="text-center">No Poems to Display</h1>
-              ) : (
-                <React.Fragment>
-                  {this.state.dbPoems.map(poems => (
-                    <div>
-                      <h2>{poems.title}</h2>
-                      <p>Author: </p>
-                      {poems.author}
-                      <p>Poem: </p>
-                      {poems.body}
-                    </div>
-                  ))}
-                </React.Fragment>
-              )}
+          </div>
+
+        <div className="col-md-1">
+
+      Database Poems
+      <div id="rightSide" className="col-md-5">
+            <div id="dbPoems">
+              <div className="APIS">
+                <h1>Latest Poems</h1>
+                {!this.state.dbPoems.length ? (
+                  <h1 className="text-center">No Poems to Display</h1>
+                ) : (
+                  <React.Fragment>
+                    {this.state.dbPoems.map(poems => (
+                      <div key={poems.title}>
+                        <h2>{poems.title}</h2>
+                        <p>Author: </p>
+                        {poems.author}
+                        <p>Poem: </p>
+                        {poems.body}
+                      </div>
+                    ))}
+                  </React.Fragment>
+                )}
+              </div>
             </div>
+
           </div>
+
+
           <div id="meetUp">
             <div className="APIS">
               <h1>Meetup Group</h1>
@@ -121,7 +134,7 @@ class Home extends Component {
           </div>
         </div>
         <Footer />
-      </div>
+    </div>
     );
   }
 }

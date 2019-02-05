@@ -2,9 +2,9 @@
 /* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import Axios from "axios";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
-import Button from "./Button";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
+import Button from "../components/Button";
 import Background from "../images/background.png";
 
 const crumpledPaper = {
