@@ -5,7 +5,11 @@ import NavbarDash from "./NavbarDash";
 import Footer from "./Footer";
 import Button from "./Button";
 import IconDance from "./IconDance";
+import Background from "../images/background.png";
 
+const crumpledPaper = {
+  backgroundImage: `url(${Background})`,
+};
 
 class Dashboard extends Component {
   constructor(props) {
@@ -65,7 +69,7 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div>
+      <div style={crumpledPaper}>
         <NavbarDash />
         <div margin-bottom="0">
           <h3 style={{ fontSize: "5em" }}>Dashboard</h3>

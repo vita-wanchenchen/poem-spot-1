@@ -7,7 +7,7 @@ const linkStyle = {
 };
 
 const navbarStyle = {
-  backgroundColor: "black",
+  backgroundColor: "#0e0e30",
   paddingBottom: "-30px",
   marginBottom: "20px",
   width: "100%",
