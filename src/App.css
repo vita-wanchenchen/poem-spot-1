@@ -90,3 +90,9 @@ width: 640px;
   background-color: rgba(0,30,253,.07);
   background-blend-mode: multiply;
 }
+
+#dbPoems {
+  height:300px;
+  overflow-y: scroll;
+  margin-bottom: 60px;
+}
