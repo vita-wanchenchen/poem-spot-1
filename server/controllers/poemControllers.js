@@ -11,17 +11,17 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findUser(req, res) {
+    // const userID = req.user.id;
     Poem
-      .find({ _id: req.params.id })
+      .find({ _id: req.user.id })
       .limit(5)
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findById(req, res) {
-    // const userID = req.user.id;
     Poem
-      .findById({ _id: req.user.id })
+      .findById({ _id: req.params.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

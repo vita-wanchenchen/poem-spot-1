@@ -21,30 +21,18 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       dbPoems: [],
-      poemsByUser: [],
+      poemsById: [],
       title: "",
       author: "",
       body: "",
-      user: localStorage.getItem("user.id"),
-      // eslint-disable-next-line react/no-unused-state
-      userProfile: {},
+      user: "",
     };
   }
 
   // When the component mounts, load allpoems will load
   componentDidMount() {
     this.loadPoemDB();
-    // this.loadPoemsByUser();
-    this.loadUserInfo();
-  }
-
-  // Get user info
-  loadUserInfo = () => {
-    const userProfile = localStorage.getItem("user");
-    console.log("UserProfile retrieves : ", userProfile);
-    // eslint-disable-next-line react/no-unused-state
-    this.setState({ userProfile });
-    return userProfile;
+    // this.loadPoemByID();
   }
 
   // Load Poems from DB
@@ -59,11 +47,11 @@ class Dashboard extends Component {
       .catch(err => console.log(err));
   };
 
-  // Load Poems from DB by user id/ use session req.user?
-  loadPoemsByUser = () => {
-    API.getPoemsByUser()
+  // Load Poems from DB by id/ use session req.user?
+  loadPoemByID = () => {
+    API.getPoemsById()
       .then(res => this.setState({
-        poemsByUser: res.data,
+        poemsById: res.data,
         title: "",
         author: "",
         body: "",
@@ -86,12 +74,14 @@ class Dashboard extends Component {
       title,
       author,
       body,
+      // user,
     } = this.state;
     if (title && author && body) {
       API.savePoem({
         title,
         author,
         body,
+        // user,
       })
         // eslint-disable-next-line no-unused-vars
         .then(res => this.loadPoemDB())
@@ -174,14 +164,14 @@ class Dashboard extends Component {
                 )}
               </div>
             </div>
-            <div id="poemsById" className="col-md-6 s7" value={this.state.user}>
+            <div id="poemsById" className="col-md-6 s7">
               <div className="APIS">
                 <h1>My Poems</h1>
-                {!this.state.poemsByUser.length ? (
+                {!this.state.poemsById.length ? (
                   <h1 className="text-center">No Poems to Display. Start writting!</h1>
                 ) : (
                   <React.Fragment>
-                    {this.poemsByUser.map(poems => (
+                    {this.poemsById.map(poems => (
                       <div>
                         <h2>{poems.title}</h2>
                         <p>Author: </p>
