@@ -6,7 +6,7 @@ import React, { Component } from "react";
 import Axios from "axios";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import Button from "../components/Button";
+import Buttons from "../components/Buttons";
 import Background from "../images/background.png";
 
 const crumpledPaper = {
@@ -110,9 +110,9 @@ class Register extends Component {
                 </div>
               </div>
               <div className="form-group">
-                <Button onClick={this.handleSubmit}>
+                <Buttons onClick={this.handleSubmit}>
                   <span>Submit</span>
-                </Button>
+                </Buttons>
               </div>
             </div>
           </div>
