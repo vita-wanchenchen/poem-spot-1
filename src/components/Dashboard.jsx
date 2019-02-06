@@ -25,7 +25,9 @@ class Dashboard extends Component {
       title: "",
       author: "",
       body: "",
-      user: "",
+      user: localStorage.getItem("user.id"),
+      // eslint-disable-next-line react/no-unused-state
+      userProfile: {},
     };
   }
 
@@ -33,7 +35,16 @@ class Dashboard extends Component {
   componentDidMount() {
     this.loadPoemDB();
     // this.loadPoemByUser();
+    this.loadUserInfo();
   }
+
+loadUserInfo = () => {
+  const userProfile = localStorage.getItem("user");
+  // eslint-disable-next-line react/no-unused-state
+  this.setState({ userProfile });
+  console.log(`UserProfile${userProfile}`);
+  return userProfile;
+}
 
   // Load Poems from DB
   loadPoemDB = () => {
@@ -49,7 +60,7 @@ class Dashboard extends Component {
 
   // Load Poems from DB by id/ use session req.user?
   loadPoemByUser = () => {
-    API.getPoemsByUser()
+    API.getPoemsByUser(this.state.user)
       .then(res => this.setState({
         poemsById: res.data,
         title: "",
@@ -184,7 +195,6 @@ class Dashboard extends Component {
                 )}
               </div>
             </div>
-
           </div>
           <Footer />
         </div>
