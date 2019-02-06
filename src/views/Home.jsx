@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
+// import Card from "@material-ui/core/Card";
+// import CardActions from "@material-ui/core/CardActions";
+// import CardContent from "@material-ui/core/CardContent";
+// import Button from "@material-ui/core/Button";
+// import Typography from "@material-ui/core/Typography";
 // import Axios from "axios";
 
 // eslint-disable-next-line no-unused-vars
@@ -74,16 +74,14 @@ class Home extends Component {
         </div>
         <div className="col-md-1" />
         <div id="dailyPoem" className="col-md-4">
-          <Card>
-            <CardContent>
-              <Typography color="textSecondary" gutterBottom>Poem of the Day</Typography>
-              <Typography variant="h5" component="h2">{this.state.dailyPoem.title}</Typography>
-              <Typography color="textSecondary">{this.state.dailyPoem.content}</Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small" href={this.state.dailyPoem.url}>Source</Button>
-            </CardActions>
-          </Card>
+          <div className="APIS">
+            <h1>Daily Poem</h1>
+            <h2>{this.state.dailyPoem.title}</h2>
+            <p>{this.state.dailyPoem.content}</p>
+            <a href={this.state.dailyPoem.url}> Get more info on this poet!</a>
+            {/* <p>{this.state.dailyPoem.poet.name}</p> */}
+            {/* <p>{this.state.dailyPoem.poet.url}</p> */}
+          </div>
         </div>
         <div className="col-md-1" />
         {/* Database Poems */}
@@ -109,21 +107,27 @@ class Home extends Component {
             </div>
           </div>
           <div id="meetUp">
-            <div className="APIS">
+            <div className="APIS mb-5">
               <h1>Meetup Group</h1>
               <h2>{this.state.meetUp.name}</h2>
-              {/* <img src=
-              {this.state.meetUp.group_photo.thumb_link} alt="" /> */}
+              {/* <img src={this.state.meetUp.key_photo.photo_link} alt="group_photo" /> */}
               <p>Status: </p>
               {this.state.meetUp.status}
               <p>Group Link: </p>
-              {this.state.meetUp.link}
+              <a href={this.state.meetUp.link}>Check out our website.</a>
               <p>What we are about: </p>
               {this.state.meetUp.description}
               <p>Location: </p>
-              <span>{this.state.meetUp.city}</span>
-              <span>{this.state.meetUp.state}</span>
-              <span>{this.state.meetUp.country}</span>
+              <span>
+                {this.state.meetUp.city}
+                <span>,   </span>
+              </span>
+              <span>
+                {this.state.meetUp.state}
+              </span>
+              <span>
+                {this.state.meetUp.country}
+              </span>
             </div>
           </div>
         </div>

@@ -21,19 +21,30 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       dbPoems: [],
-      poemsById: [],
+      myPoems: [],
       title: "",
       author: "",
       body: "",
-      user: "",
+      user: localStorage.getItem("user.id"),
+      // eslint-disable-next-line react/no-unused-state
+      userProfile: {},
     };
   }
 
   // When the component mounts, load allpoems will load
   componentDidMount() {
     this.loadPoemDB();
-    // this.loadPoemByID();
+    this.loadMyPoems();
+    this.loadUserInfo();
   }
+
+loadUserInfo = () => {
+  const userProfile = localStorage.getItem("user");
+  // eslint-disable-next-line react/no-unused-state
+  this.setState({ userProfile });
+  console.log(`UserProfile${userProfile}`);
+  return userProfile;
+}
 
   // Load Poems from DB
   loadPoemDB = () => {
@@ -48,10 +59,10 @@ class Dashboard extends Component {
   };
 
   // Load Poems from DB by id/ use session req.user?
-  loadPoemByID = () => {
-    API.getPoemsById()
+  loadMyPoems = () => {
+    API.getMyPoems()
       .then(res => this.setState({
-        poemsById: res.data,
+        myPoems: res.data,
         title: "",
         author: "",
         body: "",
@@ -164,14 +175,14 @@ class Dashboard extends Component {
                 )}
               </div>
             </div>
-            <div id="poemsById" className="col-md-6 s7">
+            <div id="myPoems" className="col-md-6 s7">
               <div className="APIS">
                 <h1>My Poems</h1>
-                {!this.state.poemsById.length ? (
+                {!this.state.myPoems.length ? (
                   <h1 className="text-center">No Poems to Display. Start writting!</h1>
                 ) : (
                   <React.Fragment>
-                    {this.poemsById.map(poems => (
+                    {this.state.myPoems.map(poems => (
                       <div>
                         <h2>{poems.title}</h2>
                         <p>Author: </p>
@@ -184,7 +195,6 @@ class Dashboard extends Component {
                 )}
               </div>
             </div>
-
           </div>
           <Footer />
         </div>
