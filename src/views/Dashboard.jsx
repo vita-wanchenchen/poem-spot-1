@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import NavbarDash from "../components/NavbarDash";
 import Footer from "../components/Footer";
-import Button from "../components/Button";
+import Buttons from "../components/Buttons";
 import IconDance from "../components/IconDance";
 import Background from "../images/background.png";
 
@@ -149,14 +149,14 @@ loadUserInfo = () => {
                     name="body"
                     placeholder="Body (required)"
                   />
-                  <Button
+                  <Buttons
                     disabled={!(this.state.author && this.state.title && this.state.body)}
                     onClick={this.handleFormSubmit}
                     type="submit"
                   >
                     <span>Submit Poem</span>
                     <IconDance><span role="img" aria-label="write">✍</span></IconDance>
-                  </Button>
+                  </Buttons>
                 </div>
               </form>
             </div>
