@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 // import Axios from "axios";
 import API from "../utils/API";
-import NavbarDash from "./NavbarDash";
-import Footer from "./Footer";
-import Button from "./Button";
-import IconDance from "./IconDance";
+import NavbarDash from "../components/NavbarDash";
+import Footer from "../components/Footer";
+import Button from "../components/Button";
+import IconDance from "../components/IconDance";
 import Background from "../images/background.png";
 
 const crumpledPaper = {
