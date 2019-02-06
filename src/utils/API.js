@@ -18,12 +18,14 @@ export default {
   getPoemsDB() {
     return axios.get("/poems");
   },
-
   // Gets poems myPoems
   getMyPoems() {
     return axios.get("/poems/self/");
   },
-
+  // Gets User data
+  getUserData() {
+    return axios.get("/user/self/");
+  },
   // Gets the poem with the given id
   getPoemsById(id) {
     return axios.get("/poems/" + id);

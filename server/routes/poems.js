@@ -10,6 +10,9 @@ router.route("/")
 router.route("/self")
   .get(poemsController.findUser);
 
+router.get("/self", (req, res) => {
+  res.json(req.user);
+});
 // Matches with "/api/poems/:id"
 router.route("/:id")
   .get(poemsController.findById)

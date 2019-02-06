@@ -25,9 +25,13 @@ class Dashboard extends Component {
       title: "",
       author: "",
       body: "",
-      user: localStorage.getItem("user.id"),
+      user: "",
       // eslint-disable-next-line react/no-unused-state
-      userProfile: {},
+      userProfile: {
+        user: "",
+        name: "",
+        email: "",
+      },
     };
   }
 
@@ -39,12 +43,14 @@ class Dashboard extends Component {
   }
 
 loadUserInfo = () => {
-  const userProfile = localStorage.getItem("user");
-  // eslint-disable-next-line react/no-unused-state
-  this.setState({ userProfile });
-  console.log(`UserProfile${userProfile}`);
-  return userProfile;
-}
+  API.getUserData()
+    .then(res => this.setState({
+      // eslint-disable-next-line react/no-unused-state
+      userProfile: res.data,
+    }))
+  // console.log(this.state.userProfile)
+    .catch(err => console.log(err));
+};
 
   // Load Poems from DB
   loadPoemDB = () => {
