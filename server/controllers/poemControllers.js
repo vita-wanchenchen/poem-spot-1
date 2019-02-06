@@ -1,5 +1,6 @@
 const { Poem } = require("../models/");
 
+
 // Defining methods for the PoemsController
 module.exports = {
   findAll(req, res) {
@@ -11,9 +12,8 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   findUser(req, res) {
-    // const userID = req.user.id;
     Poem
-      .find({ _id: req.user.id })
+      .find({ user: req.user.id })
       .limit(5)
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))

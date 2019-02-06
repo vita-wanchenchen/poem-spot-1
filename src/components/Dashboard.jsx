@@ -21,7 +21,7 @@ class Dashboard extends Component {
     super(props);
     this.state = {
       dbPoems: [],
-      poemsById: [],
+      myPoems: [],
       title: "",
       author: "",
       body: "",
@@ -34,7 +34,7 @@ class Dashboard extends Component {
   // When the component mounts, load allpoems will load
   componentDidMount() {
     this.loadPoemDB();
-    // this.loadPoemByUser();
+    this.loadMyPoems();
     this.loadUserInfo();
   }
 
@@ -59,10 +59,10 @@ loadUserInfo = () => {
   };
 
   // Load Poems from DB by id/ use session req.user?
-  loadPoemByUser = () => {
-    API.getPoemsByUser(this.state.user)
+  loadMyPoems = () => {
+    API.getMyPoems()
       .then(res => this.setState({
-        poemsById: res.data,
+        myPoems: res.data,
         title: "",
         author: "",
         body: "",
@@ -175,14 +175,14 @@ loadUserInfo = () => {
                 )}
               </div>
             </div>
-            <div id="poemsById" className="col-md-6 s7">
+            <div id="myPoems" className="col-md-6 s7">
               <div className="APIS">
                 <h1>My Poems</h1>
-                {!this.state.poemsById.length ? (
+                {!this.state.myPoems.length ? (
                   <h1 className="text-center">No Poems to Display. Start writting!</h1>
                 ) : (
                   <React.Fragment>
-                    {this.poemsById.map(poems => (
+                    {this.state.myPoems.map(poems => (
                       <div>
                         <h2>{poems.title}</h2>
                         <p>Author: </p>
