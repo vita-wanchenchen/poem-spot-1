@@ -1,26 +1,30 @@
 const { Poem } = require("../models/");
 
+
 // Defining methods for the PoemsController
 module.exports = {
   findAll(req, res) {
     Poem
       .find()
+      .limit(10)
+      .sort({ date: -1 })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  findUser(req, res) {
+    Poem
+      .find({ user: req.user.id })
+      .limit(5)
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
   findById(req, res) {
     Poem
-      .findById(req.user.id)
+      .findById({ _id: req.params.id })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
-  // create(req, res) {
-  //   Poem
-  //     .create(req.body)
-  //     .then(dbModel => res.json(dbModel))
-  //     .catch(err => res.status(422).json(err));
-  // },
   create(req, res) {
     const {
       body,

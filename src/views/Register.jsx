@@ -58,10 +58,15 @@ class Register extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    const { password, password_, email } = this.state;
+    const {
+      name,
+      password,
+      password_,
+      email,
+    } = this.state;
     if (password === password_) {
       Axios.post("http://localhost:3001/users/register", {
-        name: "Name",
+        name,
         email,
         password,
       })
