@@ -3,10 +3,10 @@
 // eslint-disable-next-line import/no-unresolved
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Home from "./components/Home";
-import Register from "./components/Register";
-import Login from "./components/Login";
-import Dashboard from "./components/Dashboard";
+import Home from "./views/Home";
+import Register from "./views/Register";
+import Login from "./views/Login";
+import Dashboard from "./views/Dashboard";
 import "./App.css";
 
 const App = () => (
