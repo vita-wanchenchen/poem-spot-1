@@ -91,4 +91,10 @@ router.get("/logout", (req, res) => {
   res.redirect("/users/login");
 });
 
+// Get user data
+// eslint-disable-next-line no-unused-vars
+router.get("/self", (req, res) => {
+  res.json(req.user);
+});
+
 module.exports = router;
