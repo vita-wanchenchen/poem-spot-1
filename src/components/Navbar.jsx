@@ -7,7 +7,7 @@ const linkStyle = {
 };
 
 const navbarStyle = {
-  backgroundColor: "#0e0e30",
+  backgroundColor: "#392759",
   paddingBottom: "-30px",
   marginBottom: "20px",
   width: "100%",
@@ -45,7 +45,7 @@ function Navbar() {
             <span className="sr-only">(current)</span>
           </li>
           <li className="nav-item">
-            <Link style={linkStyle} to="/register" className="nav-link">Register</Link>
+            <Link style={linkStyle} to="/register" className="nav-link">Create Account</Link>
           </li>
         </ul>
       </div>
