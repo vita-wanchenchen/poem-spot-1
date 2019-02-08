@@ -17,7 +17,7 @@ const footerSpan = {
   left: "0",
   right: "0",
   padding: "13px",
-  background: "#0e0e30",
+  background: "#392759",
   textAlign: "center",
   fontWeight: "500",
   color: "white",
