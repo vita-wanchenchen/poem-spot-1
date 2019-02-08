@@ -30,21 +30,21 @@ class Home extends Component {
 
   componentDidMount() {
     this.loadMeetup();
-    this.loadPoem();
+    this.loadDailyPoem();
     this.loadPoemDB();
   }
 
-  // load meetup API
+  // load meetup API chooses random meet up from list
   loadMeetup = () => {
     API.getMeetUp()
       .then(res => this.setState({
-        meetUp: res.data[0],
+        meetUp: res.data[Math.floor(Math.random() * 11)],
       }))
       .catch(err => console.log(err));
   };
 
-  // Load Poem API
-  loadPoem = () => {
+  // Load DailyPoem API
+  loadDailyPoem = () => {
     API.getPoems()
       .then(res => this.setState({
         dailyPoem: res.data[0],

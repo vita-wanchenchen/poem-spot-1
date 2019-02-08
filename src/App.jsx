@@ -18,6 +18,7 @@ const App = () => (
       <Route path="/register" exact component={Register} />
       <Route path="/poems" exact component={Home} />
       <Route path="/poems/:id" exact component={Dashboard} />
+      <Route path="/users" exact component={Dashboard} />
     </Switch>
   </div>
 );
