@@ -95,14 +95,16 @@ class Home extends Component {
                 <h1 className="text-center">No Poems to Display</h1>
               ) : (
                 <React.Fragment>
-                  {this.state.dbPoems.map(poems => (
+                  {this.state.dbPoems.map((poems, index) => (
                     <div>
                       <Card>
                         <CardContent>
-                          <Typography color="textSecondary" gutterBottom>User Poems</Typography>
-                          <Typography variant="h5" component="h2">{poems.title}</Typography>
-                          <Typography color="textSecondary" gutterBottom>Author:</Typography>
-                          <Typography color="textSecondary" gutterBottom>{poems.author}</Typography>
+                          <Typography color="textSecondary" gutterBottom>
+                            {index === 0 ? "User Poems" : null }
+                          </Typography>
+                          <Typography variant="h5" component="h4">{poems.title}</Typography>
+                          <Typography>by:</Typography>
+                          <Typography>{poems.author}</Typography>
                           {/* <Typography color="textSecondary" gutterBottom></Typography> */}
                           <Typography color="textSecondary">{poems.body}</Typography>
                         </CardContent>
