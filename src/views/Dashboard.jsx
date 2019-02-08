@@ -4,7 +4,6 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import NavbarDash from "../components/NavbarDash";
 import Footer from "../components/Footer";
-import Buttons from "../components/Buttons";
 import IconDance from "../components/IconDance";
 import Background from "../images/background.png";
 
@@ -167,14 +166,16 @@ class Dashboard extends Component {
                     name="body"
                     placeholder="Body (required)"
                   />
-                  <Buttons
-                    disabled={!(this.state.author && this.state.title && this.state.body)}
-                    onClick={this.handleFormSubmit}
-                    type="submit"
-                  >
-                    <span>Submit Poem</span>
-                    <IconDance><span role="img" aria-label="write">✍</span></IconDance>
-                  </Buttons>
+                  <div className="createAccount">
+                    <button
+                      disabled={!(this.state.author && this.state.title && this.state.body)}
+                      onClick={this.handleFormSubmit}
+                      type="submit"
+                    >
+                      <span>Submit Poem</span>
+                      <IconDance><span role="img" aria-label="write">✍</span></IconDance>
+                    </button>
+                  </div>
                 </div>
               </form>
             </div>

@@ -50,27 +50,6 @@
   font-size: 4em;
 } */
 
-/* .authentication  */
-/* .main-body{
-  width: 400px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-  flex-direction: column;
-} */
-
-/* .main-body .authentication input, .main-body .authentication button{
-  width: 300px;
-  height: 40px;
-  font-family: 'Handlee', 'Courier New', Courier, monospace;
-  font-size: 20px;
-  margin-top: 20px;
-  border: 1px solid #000;
-  padding: 3px;
-  box-sizing: border-box;
-} */
  textarea{
 width: 640px;
   height: 250px;
@@ -202,4 +181,6 @@ input::placeholder {
   font-weight: darker;
 }
 
- 
+.welcome span {
+  color: purple;
+}
