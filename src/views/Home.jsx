@@ -98,46 +98,40 @@ class Home extends Component {
         <div id="rightSide" className="col-md-5">
           <div id="dbPoems">
             <div className="APIS">
-              <h1>Latest Poems</h1>
               {!this.state.dbPoems.length ? (
                 <h1 className="text-center">No Poems to Display</h1>
               ) : (
-                <React.Fragment>
-                  {this.state.dbPoems.map(poems => (
-                    <div>
-                      <h2>{poems.title}</h2>
-                      <p>Author: </p>
-                      {poems.author}
-                      <p>Poem: </p>
-                      {poems.body}
-                    </div>
-                  ))}
-                </React.Fragment>
+                <Card>
+                  <React.Fragment>
+                    <Typography color="textSecondary" gutterBottom>User Poems</Typography>
+                    <Typography>
+                      {this.state.dbPoems.map(poems => (
+                        <div>
+                          <h2>{poems.title}</h2>
+                          <Typography color="textSecondary" gutterBottom>Author:</Typography>
+                          <Typography color="textSecondary" gutterBottom>{poems.author}</Typography>
+                          {/* <Typography color="textSecondary" gutterBottom></Typography> */}
+                          <Typography color="textSecondary">{poems.body}</Typography>
+                        </div>
+                      ))}
+                    </Typography>
+                  </React.Fragment>
+                </Card>
               )}
             </div>
           </div>
           <div id="meetUp">
             <div className="APIS mb-5">
-              <h1>Meetup Group</h1>
-              <h2>{this.state.meetUp.name}</h2>
-              {/* <img src={this.state.meetUp.key_photo.photo_link} alt="group_photo" /> */}
-              <p>Status: </p>
-              {this.state.meetUp.status}
-              <p>Group Link: </p>
-              <a href={this.state.meetUp.link}>Check out our website.</a>
-              <p>What we are about: </p>
-              {this.state.meetUp.description}
-              <p>Location: </p>
-              <span>
-                {this.state.meetUp.city}
-                <span>,   </span>
-              </span>
-              <span>
-                {this.state.meetUp.state}
-              </span>
-              <span>
-                {this.state.meetUp.country}
-              </span>
+              <Card>
+                <CardContent>
+                  <Typography color="textSecondary" gutterBottom>Random Area Meetup</Typography>
+                  <Typography variant="h5" component="h2">{this.state.meetUp.name}</Typography>
+                  <Typography color="textSecondary">{this.state.meetUp.description}</Typography>
+                </CardContent>
+                <CardActions>
+                  <Button size="small" href={this.state.meetUp.link}>Visit Meetup.com</Button>
+                </CardActions>
+              </Card>
             </div>
           </div>
         </div>
