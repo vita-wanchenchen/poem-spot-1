@@ -6,19 +6,19 @@ This app has Passport.js sign-in authentication and accesses an API to display p
 
 ## TECHNOLOGIES USED:
 
-HTML5
-CSS3
-React
-MongoDB
-Mongoose
-Passport.js
-Node.js
-Express
-Styled-components
-Axios
-Styled-components
-Passport.js
-Material-UI
+ - HTML5
+ - CSS3
+ - React
+ - MongoDB
+ - Mongoose
+ - Passport.js
+ - Node.js
+ - Express
+ - Styled-components
+ - Axios
+ - Styled-components
+ - Passport.js
+ - Material-UI
 
 ## WHY POEM SPOT?
 
