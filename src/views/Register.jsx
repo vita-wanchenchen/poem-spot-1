@@ -65,7 +65,7 @@ constructor(props) {
   handleConfirmPasswordChange = (event) => {
     event.preventDefault();
     this.setState({
-      password_: event.target.value,
+      password2: event.target.value,
     });
   }
 
@@ -77,25 +77,26 @@ constructor(props) {
 
       // clear form
       this.setState(initialState);
-    }
-    const {
-      name,
-      password,
-      password2,
-      email,
-    } = this.state;
-    if (password === password2) {
-      Axios.post("http://localhost:3001/users/register", {
+
+      const {
         name,
-        email,
         password,
-      })
-        .then((res) => {
-          const { history } = this.props;
-          if (res.status === 201) {
-            history.push("/dashboard");
-          }
-        });
+        password2,
+        email,
+      } = this.state;
+      if (password === password2) {
+        Axios.post("http://localhost:3001/users/register", {
+          name,
+          email,
+          password,
+        })
+          .then((res) => {
+            const { history } = this.props;
+            if (res.status === 201) {
+              history.push("/dashboard");
+            }
+          });
+      }
     }
   }
 
@@ -117,7 +118,7 @@ constructor(props) {
       passwordError = "Password must have atleast 6 characters";
     }
 
-    if (this.state.password2 !== this.state.password) {
+    if (!this.state.password === this.state.password2) {
       password2Error = "Passwords do not match";
     }
 
@@ -179,10 +180,10 @@ constructor(props) {
                 <div className="password">
                   <label htmlFor="password">Password</label>
                   <input
-                    onChange={this.handlePasswordChange}
+                    onChange={this.handleConfirmPasswordChange}
                     type="password"
                     placeholder="Password"
-                    name="password"
+                    name="password2"
                   />
                   <div style={{ fontSize: 12, color: "red" }}>
                     {this.state.password2Error}
