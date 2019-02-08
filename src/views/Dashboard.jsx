@@ -1,5 +1,6 @@
+/* eslint-disable react/self-closing-comp */
+/* eslint-disable no-underscore-dangle */
 import React, { Component } from "react";
-// import Axios from "axios";
 import API from "../utils/API";
 import NavbarDash from "../components/NavbarDash";
 import Footer from "../components/Footer";
@@ -25,26 +26,32 @@ class Dashboard extends Component {
       title: "",
       author: "",
       body: "",
-      user: localStorage.getItem("user.id"),
+      user: "",
       // eslint-disable-next-line react/no-unused-state
-      userProfile: {},
+      userProfile: [],
+      name: "",
+      email: "",
     };
   }
 
   // When the component mounts, load allpoems will load
   componentDidMount() {
-    this.loadPoemDB();
-    this.loadMyPoems();
+    this.loadAllPoems();
     this.loadUserInfo();
   }
 
-loadUserInfo = () => {
-  const userProfile = localStorage.getItem("user");
-  // eslint-disable-next-line react/no-unused-state
-  this.setState({ userProfile });
-  console.log(`UserProfile${userProfile}`);
-  return userProfile;
-}
+  // Get user info and save
+  loadUserInfo = () => {
+    API.getUserData()
+      .then(res => this.setState({
+        // eslint-disable-next-line react/no-unused-state
+        userProfile: res.data,
+        name: res.data.name,
+        email: res.data.email,
+      }))
+      .catch(err => console.log(err));
+    console.log(this.state.userProfile);
+  };
 
   // Load Poems from DB
   loadPoemDB = () => {
@@ -58,7 +65,7 @@ loadUserInfo = () => {
       .catch(err => console.log(err));
   };
 
-  // Load Poems from DB by id/ use session req.user?
+  // Load Poems from DB by user id/session user
   loadMyPoems = () => {
     API.getMyPoems()
       .then(res => this.setState({
@@ -70,7 +77,21 @@ loadUserInfo = () => {
       .catch(err => console.log(err));
   };
 
-  // input on change
+  // Load all poems
+  loadAllPoems = () => {
+    this.loadPoemDB();
+    this.loadMyPoems();
+  };
+
+  // Delete poems
+  deletePoems = (id) => {
+    API.deletePoem(id)
+      // eslint-disable-next-line no-unused-vars
+      .then(res => this.loadAllPoems())
+      .catch(err => console.log(err));
+  };
+
+  // Input on change
   handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -85,17 +106,15 @@ loadUserInfo = () => {
       title,
       author,
       body,
-      // user,
     } = this.state;
     if (title && author && body) {
       API.savePoem({
         title,
         author,
         body,
-        // user,
       })
         // eslint-disable-next-line no-unused-vars
-        .then(res => this.loadPoemDB())
+        .then(res => this.loadAllPoems())
         .catch(err => console.log(err));
     }
   };
@@ -104,6 +123,12 @@ loadUserInfo = () => {
     return (
       <div id="dashboard-page" style={crumpledPaper}>
         <NavbarDash />
+        <h2 value={this.state.email}>
+          <span>Hi </span>
+          {this.state.name}
+          <span> ,</span>
+          <span>To start writting fill out the poem form.</span>
+        </h2>
         <div className="container" display="flex" flex-direction="row">
           <div style={pageTitle}>
             <span>Dashboard</span>
@@ -182,13 +207,24 @@ loadUserInfo = () => {
                   <h1 className="text-center">No Poems to Display. Start writting!</h1>
                 ) : (
                   <React.Fragment>
-                    {this.state.myPoems.map(poems => (
-                      <div>
-                        <h2>{poems.title}</h2>
+                    {this.state.myPoems.map(mypoems => (
+                      <div
+                        value={mypoems._id}
+                        className="mb-5"
+                      >
+                        <h2>{mypoems.title}</h2>
                         <p>Author: </p>
-                        {poems.author}
+                        {mypoems.author}
                         <p>Poem: </p>
-                        {poems.body}
+                        {mypoems.body}
+                        <br />
+                        <button
+                          className="btn btn-danger btn-sm mt-2"
+                          onClick={() => this.deletePoems(mypoems._id)}
+                          type="submit"
+                        >
+                          <span>Delete</span>
+                        </button>
                       </div>
                     ))}
                   </React.Fragment>
