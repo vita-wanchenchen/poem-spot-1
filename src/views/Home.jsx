@@ -94,22 +94,22 @@ class Home extends Component {
               {!this.state.dbPoems.length ? (
                 <h1 className="text-center">No Poems to Display</h1>
               ) : (
-                <Card>
-                  <React.Fragment>
-                    <Typography color="textSecondary" gutterBottom>User Poems</Typography>
-                    <Typography>
-                      {this.state.dbPoems.map(poems => (
-                        <div>
-                          <h2>{poems.title}</h2>
+                <React.Fragment>
+                  {this.state.dbPoems.map(poems => (
+                    <div>
+                      <Card>
+                        <CardContent>
+                          <Typography color="textSecondary" gutterBottom>User Poems</Typography>
+                          <Typography variant="h5" component="h2">{poems.title}</Typography>
                           <Typography color="textSecondary" gutterBottom>Author:</Typography>
                           <Typography color="textSecondary" gutterBottom>{poems.author}</Typography>
                           {/* <Typography color="textSecondary" gutterBottom></Typography> */}
                           <Typography color="textSecondary">{poems.body}</Typography>
-                        </div>
-                      ))}
-                    </Typography>
-                  </React.Fragment>
-                </Card>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  ))}
+                </React.Fragment>
               )}
             </div>
           </div>
