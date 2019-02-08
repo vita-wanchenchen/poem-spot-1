@@ -133,7 +133,6 @@ class Dashboard extends Component {
           <div style={pageTitle}>
             <span>Dashboard</span>
           </div>
-          {/* <div className="container" display="flex" flex-direction="row"> */}
           <div className="row">
             <div className="col-md-6">
               <form className="form-group">
