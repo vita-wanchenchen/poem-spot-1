@@ -20,7 +20,7 @@ const IconDance = Styled.div`
 
   :hover {
     animation: ${rotate} 0.5s linear infinite;
-    font-size: 1.6rem;
+    font-size: 1rem;
   }
 `;
 

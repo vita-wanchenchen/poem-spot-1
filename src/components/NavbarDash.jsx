@@ -7,7 +7,7 @@ const linkStyle = {
 };
 
 const navbarStyle = {
-  backgroundColor: "#0e0e30",
+  backgroundColor: "#392759",
   paddingBottom: "-30px",
   marginBottom: "20px",
 };
@@ -17,16 +17,6 @@ const navBrand = {
   marginBottom: "-10px",
   textdecoration: "none",
 };
-
-// const navItem = {
-//   backgroundColor: "white",
-//   marginRight: "40px",
-// };
-
-// const navbarNav = {
-//   marginRight: "40px",
-//   marginLeft: "40px",
-// };
 
 function NavbarDash() {
   return (

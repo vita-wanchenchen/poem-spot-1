@@ -6,7 +6,6 @@ import React, { Component } from "react";
 import Axios from "axios";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-// import Buttons from "../components/Buttons";
 import Background from "../images/background.png";
 
 const crumpledPaper = {
@@ -14,7 +13,7 @@ const crumpledPaper = {
 };
 
 const styleMain = {
-  height: "900px",
+  height: "1200px",
 };
 
 const initialState = {
@@ -203,88 +202,5 @@ constructor(props) {
     );
   }
 }
-
-
-//       <div id="register-page" style={crumpledPaper} className=" row">
-//         <div className="main" style={styleMain}>
-//           <Navbar />
-//           <div className="wrapper">
-//             <div className="row justify-content-center align-self-center text-center mr-5 ml-5">
-//               {/* <div className="card w-50 border-dark mt-3"> */}
-//               <div className="card-body col-md-3 mt-3 w-50">
-//                 <h3 className="card-title">Create Account</h3>
-//                 {/* <h3>Register</h3> */}
-//                 <div className="form-group">
-//                   {/* <div className="col-14"> */}
-//                   <input
-//                     className="form-control form-control-lg"
-//                     onChange={this.handleNameChange}
-//                     type="text"
-//                     placeholder="Name"
-//                     name="email"
-//                   />
-//                   <div style={{ fontSize: 12, color: "red" }}>
-//                     {this.state.nameError}
-//                   </div>
-//                   {/* </div> */}
-//                 </div>
-//                 <div className="form-group">
-//                   {/* <div className="col-14"> */}
-//                   <input
-//                     className="form-control form-control-lg"
-//                     onChange={this.handleEmailChange}
-//                     type="text"
-//                     placeholder="Email Address"
-//                     name="email"
-//                   />
-//                   <div style={{ fontSize: 12, color: "red" }}>
-//                     {this.state.emailError}
-//                   </div>
-//                   {/* </div> */}
-//                 </div>
-//                 <div className="form-group">
-//                   {/* <div className="col-14"> */}
-//                   <input
-//                     className="form-control form-control-lg"
-//                     onChange={this.handlePasswordChange}
-//                     type="password"
-//                     placeholder="Password"
-//                     name="password"
-//                   />
-//                   <div style={{ fontSize: 12, color: "red" }}>
-//                     {this.state.passwordError}
-//                   </div>
-//                   {/* </div> */}
-//                 </div>
-//                 <div className="form-group">
-//                   <div className="col-14">
-//                     <input
-//                       className="form-control form-control-lg"
-//                       onChange={this.handleConfirmPasswordChange}
-//                       type="password"
-//                       placeholder="Confirm Password"
-//                       name="password_"
-//                     />
-//                     <div style={{ fontSize: 12, color: "red" }}>
-//                       {this.state.passwordError}
-//                     </div>
-//                   </div>
-//                 </div>
-//                 <div className="form-group">
-//                   <Buttons onClick={this.handleSubmit}>
-//                     <span>Submit</span>
-//                   </Buttons>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-
-//           <Footer />
-
-//         </div>
-//       </div>
-//     );
-//   }
-// }
 
 export default Register;

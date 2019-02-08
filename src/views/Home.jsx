@@ -11,6 +11,7 @@ import API from "../utils/API";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Background from "../images/background.png";
+// import { purple } from "@material-ui/core/colors";
 
 const styledWelcome = {
   fontSize: "70px",
@@ -74,14 +75,6 @@ class Home extends Component {
         </div>
         <div className="col-md-1" />
         <div id="dailyPoem" className="col-md-4">
-          {/* <div className="APIS">
-            <h1>Daily Poem</h1>
-            <h2>{this.state.dailyPoem.title}</h2>
-            <p>{this.state.dailyPoem.content}</p>
-            <a href={this.state.dailyPoem.url}> Get more info on this poet!</a> */}
-          {/* <p>{this.state.dailyPoem.poet.name}</p> */}
-          {/* <p>{this.state.dailyPoem.poet.url}</p> */}
-          {/* </div> */}
           <Card>
             <CardContent>
               <Typography color="textSecondary" gutterBottom>Poem of the Day</Typography>
