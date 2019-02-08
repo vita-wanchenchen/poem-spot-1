@@ -4,6 +4,7 @@ body {
   font-family: 'Handlee', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin-bottom: 40px;
 }
 
 code {
