@@ -4,7 +4,6 @@ import React, { Component } from "react";
 import API from "../utils/API";
 import NavbarDash from "../components/NavbarDash";
 import Footer from "../components/Footer";
-import Buttons from "../components/Buttons";
 import IconDance from "../components/IconDance";
 import Background from "../images/background.png";
 
@@ -13,11 +12,22 @@ const crumpledPaper = {
 };
 
 const pageTitle = {
-  fontSize: "70px",
+  fontSize: "40px",
+};
+
+const initialState = {
+  title: "",
+  titleError: "",
+  author: "",
+  authorError: "",
+  body: "",
+  bodyError: "",
 };
 
 
 class Dashboard extends Component {
+  state = initialState;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -26,7 +36,7 @@ class Dashboard extends Component {
       title: "",
       author: "",
       body: "",
-      user: "",
+      // user: "",
       // eslint-disable-next-line react/no-unused-state
       userProfile: [],
       name: "",
@@ -102,138 +112,188 @@ class Dashboard extends Component {
   // Submit saves data then loads poems
   handleFormSubmit = (event) => {
     event.preventDefault();
-    const {
-      title,
-      author,
-      body,
-    } = this.state;
-    if (title && author && body) {
-      API.savePoem({
+    const isValid = this.validate();
+    if (isValid) {
+      console.log(this.state);
+
+      // clear form
+      this.setState(initialState);
+
+      const {
         title,
         author,
         body,
-      })
+      } = this.state;
+      if (title && author && body) {
+        API.savePoem({
+          title,
+          author,
+          body,
+        })
         // eslint-disable-next-line no-unused-vars
-        .then(res => this.loadAllPoems())
-        .catch(err => console.log(err));
+          .then(res => this.loadAllPoems())
+          .catch(err => console.log(err));
+      }
     }
+  };
+
+  validate = () => {
+    let titleError = "";
+    let authorError = "";
+    let bodyError = "";
+
+    if (!this.state.title) {
+      titleError = "Must enter a title";
+    }
+
+    if (!this.state.author) {
+      authorError = "Must enter an author";
+    }
+
+    if (this.state.body.length > 1000) {
+      bodyError = "Character limit is 1000";
+    }
+
+    if (titleError || bodyError || authorError) {
+      this.setState({
+        titleError, bodyError, authorError,
+      });
+      return false;
+    }
+
+    return true;
   };
 
   render() {
     return (
       <div id="dashboard-page" style={crumpledPaper}>
         <NavbarDash />
+        <div style={pageTitle}>
+          <span>Dashboard</span>
+        </div>
         <h2 value={this.state.email}>
           <span>Hi </span>
           {this.state.name}
           <span> ,</span>
           <span>To start writting fill out the poem form.</span>
         </h2>
-        <div className="container" display="flex" flex-direction="row">
-          <div style={pageTitle}>
-            <span>Dashboard</span>
-          </div>
-          <div className="row">
-            <div className="col-md-6">
-              <form className="form-group">
-                <div
-                  className="card-body align-self-center"
-                  value={this.state.user}
-                >
-                  <h4>Poem Title :</h4>
-                  <input
-                    className="form-control form-control-lg mb-3"
-                    value={this.state.title}
-                    onChange={this.handleInputChange}
-                    name="title"
-                    placeholder="Title (required)"
-                    type="text"
-                  />
-                  <h4>Poem Author :</h4>
-                  <input
-                    className="form-control form-control-lg mb-3"
-                    value={this.state.authors}
-                    onChange={this.handleInputChange}
-                    name="author"
-                    placeholder="Author (required)"
-                    type="text"
-                  />
-                  <h4>Poem :</h4>
-                  <textarea
-                    className="form-control form-control-lg mb-3"
-                    rows="8"
-                    value={this.state.body}
-                    onChange={this.handleInputChange}
-                    name="body"
-                    placeholder="Body (required)"
-                  />
-                  <Buttons
-                    disabled={!(this.state.author && this.state.title && this.state.body)}
-                    onClick={this.handleFormSubmit}
-                    type="submit"
-                  >
-                    <span>Submit Poem</span>
-                    <IconDance><span role="img" aria-label="write">✍</span></IconDance>
-                  </Buttons>
+
+        <div className="pwrapper">
+          <div className="poem-wrapper">
+            <h3>Post your poems below</h3>
+            <form onSubmit={this.handleSubmit} noValidate>
+              <div className="title">
+                {/* <label htmlFor="name"></label> */}
+                <h6>Poem Title:</h6>
+                <input
+                  value={this.state.title}
+                  onChange={this.handleInputChange}
+                  type="text"
+                  placeholder="Title (required)"
+                  name="title"
+                />
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.titleError}
                 </div>
-              </form>
-            </div>
-            {/* Database Poems */}
-            <div id="dbPoems" className="col-md-6 s7">
-              <div className="APIS">
-                <h1>All Poems</h1>
-                {!this.state.dbPoems.length ? (
-                  <h1 className="text-center">No Poems to Display</h1>
-                ) : (
-                  <React.Fragment>
-                    {this.state.dbPoems.map(poems => (
-                      <div>
-                        <h2>{poems.title}</h2>
-                        <p>Author: </p>
-                        {poems.author}
-                        <p>Poem: </p>
-                        {poems.body}
-                      </div>
-                    ))}
-                  </React.Fragment>
-                )}
               </div>
-            </div>
-            <div id="myPoems" className="col-md-6 s7">
-              <div className="APIS">
-                <h1>My Poems</h1>
-                {!this.state.myPoems.length ? (
-                  <h1 className="text-center">No Poems to Display. Start writting!</h1>
-                ) : (
-                  <React.Fragment>
-                    {this.state.myPoems.map(mypoems => (
-                      <div
-                        value={mypoems._id}
-                        className="mb-5"
-                      >
-                        <h2>{mypoems.title}</h2>
-                        <p>Author: </p>
-                        {mypoems.author}
-                        <p>Poem: </p>
-                        {mypoems.body}
-                        <br />
-                        <button
-                          className="btn btn-danger btn-sm mt-2"
-                          onClick={() => this.deletePoems(mypoems._id)}
-                          type="submit"
-                        >
-                          <span>Delete</span>
-                        </button>
-                      </div>
-                    ))}
-                  </React.Fragment>
-                )}
+              <div className="author">
+                {/* <label htmlFor="author">Poem Author:</label> */}
+                <h6>Poem Author:</h6>
+                <input
+                  onChange={this.handleInputChange}
+                  value={this.state.author}
+                  type="text"
+                  placeholder="Author (required)"
+                  name="author"
+                />
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.authorError}
+                </div>
               </div>
+              <div className="poem">
+                {/* <label htmlFor="poem">Poem:</label> */}
+                <h6>Poem:</h6>
+                <textarea
+                  value={this.state.body}
+                  onChange={this.handleInputChange}
+                  rows="8"
+                  placeholder="Enter Poem here"
+                  name="body"
+                />
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.bodyError}
+                </div>
+              </div>
+              <div className="postPoem">
+                <button
+                  // disabled={!(this.state.author && this.state.title && this.state.body)}
+                  onClick={this.handleFormSubmit}
+                  type="submit"
+                >
+                  <span>Submit Poem</span>
+                  <IconDance><span role="img" aria-label="write">✍</span></IconDance>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        {/* Database Poems */}
+        <div className="container" display="flex" flex-direction="row">
+          <div id="dbPoems" className="col-md-6 s7">
+            <div className="APIS">
+              <h1>All Poems</h1>
+              {!this.state.dbPoems.length ? (
+                <h1 className="text-center">No Poems to Display</h1>
+              ) : (
+                <React.Fragment>
+                  {this.state.dbPoems.map(poems => (
+                    <div>
+                      <h2>{poems.title}</h2>
+                      <p>Author: </p>
+                      {poems.author}
+                      <p>Poem: </p>
+                      {poems.body}
+                    </div>
+                  ))}
+                </React.Fragment>
+              )}
             </div>
           </div>
-          <Footer />
+          <div id="myPoems" className="col-md-6 s7">
+            <div className="APIS">
+              <h1>My Poems</h1>
+              {!this.state.myPoems.length ? (
+                <h1 className="text-center">No Poems to Display. Start writting!</h1>
+              ) : (
+                <React.Fragment>
+                  {this.state.myPoems.map(mypoems => (
+                    <div
+                      value={mypoems._id}
+                      className="mb-5"
+                    >
+                      <h2>{mypoems.title}</h2>
+                      <p>Author: </p>
+                      {mypoems.author}
+                      <p>Poem: </p>
+                      {mypoems.body}
+                      <br />
+                      <button
+                        className="btn btn-danger btn-sm mt-2"
+                        onClick={() => this.deletePoems(mypoems._id)}
+                        type="submit"
+                      >
+                        <span>Delete</span>
+                      </button>
+                    </div>
+                  ))}
+                </React.Fragment>
+              )}
+            </div>
+          </div>
         </div>
+        <Footer />
       </div>
+    //   </div>
     );
   }
 }
