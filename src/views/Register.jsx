@@ -13,7 +13,7 @@ const crumpledPaper = {
 };
 
 const styleMain = {
-  height: "900px",
+  height: "1200px",
 };
 
 const initialState = {
@@ -202,6 +202,5 @@ constructor(props) {
     );
   }
 }
-
 
 export default Register;

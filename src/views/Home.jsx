@@ -11,6 +11,7 @@ import API from "../utils/API";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Background from "../images/background.png";
+// import { purple } from "@material-ui/core/colors";
 
 const styledWelcome = {
   fontSize: "70px",
@@ -74,14 +75,6 @@ class Home extends Component {
         </div>
         <div className="col-md-1" />
         <div id="dailyPoem" className="col-md-4">
-          {/* <div className="APIS">
-            <h1>Daily Poem</h1>
-            <h2>{this.state.dailyPoem.title}</h2>
-            <p>{this.state.dailyPoem.content}</p>
-            <a href={this.state.dailyPoem.url}> Get more info on this poet!</a> */}
-          {/* <p>{this.state.dailyPoem.poet.name}</p> */}
-          {/* <p>{this.state.dailyPoem.poet.url}</p> */}
-          {/* </div> */}
           <Card>
             <CardContent>
               <Typography color="textSecondary" gutterBottom>Poem of the Day</Typography>
@@ -98,18 +91,24 @@ class Home extends Component {
         <div id="rightSide" className="col-md-5">
           <div id="dbPoems">
             <div className="APIS">
-              <h1>Latest Poems</h1>
               {!this.state.dbPoems.length ? (
                 <h1 className="text-center">No Poems to Display</h1>
               ) : (
                 <React.Fragment>
-                  {this.state.dbPoems.map(poems => (
+                  {this.state.dbPoems.map((poems, index) => (
                     <div>
-                      <h2>{poems.title}</h2>
-                      <p>Author: </p>
-                      {poems.author}
-                      <p>Poem: </p>
-                      {poems.body}
+                      <Card>
+                        <CardContent>
+                          <Typography color="textSecondary" gutterBottom>
+                            {index === 0 ? "User Poems" : null }
+                          </Typography>
+                          <Typography variant="h5" component="h4">{poems.title}</Typography>
+                          <Typography>by:</Typography>
+                          <Typography>{poems.author}</Typography>
+                          {/* <Typography color="textSecondary" gutterBottom></Typography> */}
+                          <Typography color="textSecondary">{poems.body}</Typography>
+                        </CardContent>
+                      </Card>
                     </div>
                   ))}
                 </React.Fragment>
@@ -118,26 +117,16 @@ class Home extends Component {
           </div>
           <div id="meetUp">
             <div className="APIS mb-5">
-              <h1>Meetup Group</h1>
-              <h2>{this.state.meetUp.name}</h2>
-              {/* <img src={this.state.meetUp.key_photo.photo_link} alt="group_photo" /> */}
-              <p>Status: </p>
-              {this.state.meetUp.status}
-              <p>Group Link: </p>
-              <a href={this.state.meetUp.link}>Check out our website.</a>
-              <p>What we are about: </p>
-              {this.state.meetUp.description}
-              <p>Location: </p>
-              <span>
-                {this.state.meetUp.city}
-                <span>,   </span>
-              </span>
-              <span>
-                {this.state.meetUp.state}
-              </span>
-              <span>
-                {this.state.meetUp.country}
-              </span>
+              <Card>
+                <CardContent>
+                  <Typography color="textSecondary" gutterBottom>Random Area Meetup</Typography>
+                  <Typography variant="h5" component="h2">{this.state.meetUp.name}</Typography>
+                  <Typography color="textSecondary">{this.state.meetUp.description}</Typography>
+                </CardContent>
+                <CardActions>
+                  <Button size="small" href={this.state.meetUp.link}>Visit Meetup.com</Button>
+                </CardActions>
+              </Card>
             </div>
           </div>
         </div>
