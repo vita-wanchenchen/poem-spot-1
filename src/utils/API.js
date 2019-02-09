@@ -33,6 +33,10 @@ export default {
   deletePoem(id) {
     return axios.delete(`/poems/${id}`);
   },
+  // increments like count
+  likeCount(id) {
+    return axios.put(`/poems/${id}`);
+  },
   // Saves a poem to the database
   savePoem(poemData) {
     return axios.post("/poems", poemData);
