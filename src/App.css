@@ -1,7 +1,36 @@
 @import url('https://fonts.googleapis.com/css?family=Handlee');
 
-.main,
-.container {
+.main{
+  width: 100%;
+  height: 100%;
+}
+
+.navigation{
+  width: 100%;
+  height: 70px;
+  background-color: black;
+  color: #fff;
+}
+
+.navigation ul{
+  width: 70%;
+  height: 100%;
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.navigation ul li{
+  color: #fff;
+}
+
+.navigation ul li a, .navigation ul li a:visited{
+  color: #fff;
+}
+
+.container{
   width: 100%;
   height: 100%;
 }
@@ -17,10 +46,15 @@
   background-color: transparent;
 }
 
+.main-body h1{
+  font-size: 4em;
+} */
+
+
 textarea{
-  width: 320px;
-  height: 200px;
-  padding: 12px 12px;
+  width: 340px;
+  height: 400px;
+  padding: 12px 20px;
   box-sizing: border-box;
   border: 2px solid #ccc;
   border-radius: 4px;
@@ -42,7 +76,6 @@ textarea{
   overflow-y: scroll;
   margin-bottom: 60px;
 }
-
 .wrapper {
   height: 100vh;
   width: 100%;
@@ -50,6 +83,7 @@ textarea{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
 }
 
 .form-wrapper {
@@ -68,17 +102,13 @@ form {
   flex-wrap: wrap;
 }
 
-h1,
-h3 {
-
+h1 {
+  text-align: center;
   width: 100%;
+  color: #111;
   font-weight: lighter;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-
-h1 {
-  text-align: center;
 }
 
 label {
@@ -100,33 +130,35 @@ input::placeholder {
   font-weight: lighter;
   color: #999;
 }
-
 .name {
   margin-left: 1%;
 }
 
 .name,
 .email,
-.password,
-.title,
-.author,
-.poem {
+.password {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
+}
+
+.name {
   width: 100%;
 }
 
-.createAccount,
-.postPoem {
+.email,
+.password {
+  width: 100%;
+}
+
+.createAccount {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.createAccount button,
-.postPoem button {
+.createAccount button {
   background-color:#6E2594;
   color: #fff;
   border: 2px solid #fff;
@@ -157,7 +189,8 @@ input::placeholder {
   flex-direction: column;
   justify-content: left;
   align-items: left;
-  margin-left: 10px;
+  margin-left: 30px;
+  /* background-color: #258ea6; */
 }
 
 .poem-wrapper {
@@ -169,9 +202,43 @@ input::placeholder {
   box-shadow: 0px 10px 50px #555;
   background-color: #ffffff;
 }
-
 .title {
   margin-right: 1%;
+}
+
+
+.title,
+.author,
+.poem {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.title,
+.author,
+.poem {
+  width: 100%;
+}
+
+.postPoem {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.postPoem button {
+  background-color: #6E2594;
+  color: #fff;
+  border: 2px solid #fff;
+  width: 100%;
+  margin-top: 1em;
+  padding: 8px 0px;
+  font-size: 1em;
+  font-weight: lighter;
+  letter-spacing: 1px;
+  margin-bottom: 0.25em;
 }
 
 .postPoem button:hover {
@@ -179,15 +246,21 @@ input::placeholder {
   background-color: #fff;
   border: 2px solid #6E2594;
 }
-
 .welcome span {
-  color: #6E2594;
+  color: purple;
 }
 
-#home-page,
-#register-page,
-#login-page,
-#dashboard-page {
+#home-page{
   background-size: cover;
 }
 
+#register-page{
+  background-size: cover;
+}
+
+#login-page{
+  background-size: cover;
+}
+#dashboard-page{
+  background-size: cover;
+}

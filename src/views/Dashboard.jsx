@@ -243,7 +243,7 @@ class Dashboard extends Component {
                       <Card>
                         <CardContent>
                           <Typography color="textSecondary" gutterBottom>
-                            {index === 0 ? "User Poems" : null }
+                            {index === 0 ? "All Poems" : null }
                           </Typography>
                           <Typography variant="h5" component="h4">{poems.title}</Typography>
                           <Typography>by:</Typography>
