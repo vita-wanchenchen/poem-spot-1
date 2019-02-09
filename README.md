@@ -14,7 +14,6 @@ This app has Passport.js sign-in authentication and accesses an API to display p
  - Passport.js
  - Node.js
  - Express
- - Styled-components
  - Axios
  - Styled-components
  - Passport.js
