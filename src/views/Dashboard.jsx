@@ -173,7 +173,7 @@ class Dashboard extends Component {
           <span>Hi </span>
           {this.state.name}
           <span> ,</span>
-          <span>To start writting fill out the poem form.</span>
+          <span>To start writing, fill out the poem form.</span>
         </h2>
         <div className="pwrapper">
           <div className="poem-wrapper">
@@ -259,29 +259,33 @@ class Dashboard extends Component {
           </div>
           <div id="myPoems" className="col-md-6 s7">
             <div className="APIS">
-              <h1>My Poems</h1>
               {!this.state.myPoems.length ? (
-                <h1 className="text-center">No Poems to Display. Start writting!</h1>
+                <h1 className="text-center">No Poems to Display. Start writing!</h1>
               ) : (
                 <React.Fragment>
-                  {this.state.myPoems.map(mypoems => (
+                  {this.state.myPoems.map((mypoems, index) => (
                     <div
                       value={mypoems._id}
                       className="mb-5"
                     >
-                      <h2>{mypoems.title}</h2>
-                      <p>Author: </p>
-                      {mypoems.author}
-                      <p>Poem: </p>
-                      {mypoems.body}
-                      <br />
-                      <button
-                        className="btn btn-danger btn-sm mt-2"
-                        onClick={() => this.deletePoems(mypoems._id)}
-                        type="submit"
-                      >
-                        <span>Delete</span>
-                      </button>
+                      <Card>
+                        <CardContent>
+                          <Typography color="textSecondary" gutterBottom>
+                            {index === 0 ? "My Poems" : null }
+                          </Typography>
+                          <Typography variant="h5" component="h4">{mypoems.title}</Typography>
+                          <Typography>by:</Typography>
+                          <Typography>{mypoems.author}</Typography>
+                          <Typography color="textSecondary">{mypoems.body}</Typography>
+                          <button
+                            className="btn btn-danger btn-sm mt-2"
+                            onClick={() => this.deletePoems(mypoems._id)}
+                            type="submit"
+                          >
+                            <span>Delete</span>
+                          </button>
+                        </CardContent>
+                      </Card>
                     </div>
                   ))}
                 </React.Fragment>
