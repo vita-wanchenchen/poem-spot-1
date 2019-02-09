@@ -86,7 +86,7 @@ class Dashboard extends Component {
       .catch(err => console.log(err));
   };
 
-  // Load all poems
+  // Load all poems from database and mypoems
   loadAllPoems = () => {
     this.loadPoemDB();
     this.loadMyPoems();
@@ -162,160 +162,138 @@ class Dashboard extends Component {
     return true;
   };
 
-  // Increment likes by 1
-incrementLikes = (id) => {
-  const clickedLike = this.state.likes + 1;
-  API.likeCount(id)
-  // eslint-disable-next-line no-unused-vars
-    .then(res => this.setState({
-      likes: clickedLike,
-    }))
-    .catch(err => console.log(err));
-};
-
-render() {
-  return (
-    <div id="dashboard-page" style={crumpledPaper}>
-      <NavbarDash />
-      <div style={pageTitle}>
-        <span>Dashboard</span>
-      </div>
-      <h2 value={this.state.email}>
-        <span>Hi </span>
-        {this.state.name}
-        <span> ,</span>
-        <span>To start writting fill out the poem form.</span>
-      </h2>
-
-      <div className="pwrapper">
-        <div className="poem-wrapper">
-          <h3>Post your poems below</h3>
-          <form onSubmit={this.handleSubmit} noValidate>
-            <div className="title">
-              <h6>Poem Title:</h6>
-              <input
-                value={this.state.title}
-                onChange={this.handleInputChange}
-                type="text"
-                placeholder="Title (required)"
-                name="title"
-              />
-              <div style={{ fontSize: 12, color: "red" }}>
-                {this.state.titleError}
-              </div>
-            </div>
-            <div className="author">
-              <h6>Poem Author:</h6>
-              <input
-                onChange={this.handleInputChange}
-                value={this.state.author}
-                type="text"
-                placeholder="Author (required)"
-                name="author"
-              />
-              <div style={{ fontSize: 12, color: "red" }}>
-                {this.state.authorError}
-              </div>
-            </div>
-            <div className="poem">
-              <h6>Poem:</h6>
-              <textarea
-                value={this.state.body}
-                onChange={this.handleInputChange}
-                rows="8"
-                placeholder="Enter Poem here"
-                name="body"
-              />
-              <div style={{ fontSize: 12, color: "red" }}>
-                {this.state.bodyError}
-              </div>
-            </div>
-            <div className="postPoem">
-              <button
-                onClick={this.handleFormSubmit}
-                type="submit"
-              >
-                <span>Submit Poem</span>
-                <IconDance><span role="img" aria-label="write">✍</span></IconDance>
-              </button>
-            </div>
-          </form>
+  render() {
+    return (
+      <div id="dashboard-page" style={crumpledPaper}>
+        <NavbarDash />
+        <div style={pageTitle}>
+          <span>Dashboard</span>
         </div>
-      </div>
-      {/* Database Poems */}
-      <div className="container" display="flex" flex-direction="row">
-        <div id="dbPoems" className="col-md-6 s7">
-          <div className="APIS">
-            {!this.state.dbPoems.length ? (
-              <h1 className="text-center">No Poems to Display</h1>
-            ) : (
-              <React.Fragment>
-                {this.state.dbPoems.map((poems, index) => (
-                  <div>
-                    <Card>
-                      <CardContent>
-                        <Typography color="textSecondary" gutterBottom>
-                          {index === 0 ? "User Poems" : null }
-                        </Typography>
-                        <Typography variant="h5" component="h4">{poems.title}</Typography>
-                        <Typography>by:</Typography>
-                        <Typography>{poems.author}</Typography>
-                        {/* <Typography color="textSecondary" gutterBottom></Typography> */}
-                        <Typography color="textSecondary">{poems.body}</Typography>
-                        <button
-                          className="badge badge-secondary"
-                          value={poems.likes}
-                          onClick={() => this.incrementLikes(poems._id)}
-                          type="button"
-                        >
-                          <span>
-                            Likes {poems.likes}
-                          </span>
-                        </button>
-                      </CardContent>
-                    </Card>
-                  </div>
-                ))}
-              </React.Fragment>)}
+        <h2 value={this.state.email}>
+          <span>Hi </span>
+          {this.state.name}
+          <span> ,</span>
+          <span>To start writting fill out the poem form.</span>
+        </h2>
+        <div className="pwrapper">
+          <div className="poem-wrapper">
+            <h3>Post your poems below</h3>
+            <form onSubmit={this.handleSubmit} noValidate>
+              <div className="title">
+                <h6>Poem Title:</h6>
+                <input
+                  value={this.state.title}
+                  onChange={this.handleInputChange}
+                  type="text"
+                  placeholder="Title (required)"
+                  name="title"
+                />
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.titleError}
+                </div>
+              </div>
+              <div className="author">
+                <h6>Poem Author:</h6>
+                <input
+                  onChange={this.handleInputChange}
+                  value={this.state.author}
+                  type="text"
+                  placeholder="Author (required)"
+                  name="author"
+                />
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.authorError}
+                </div>
+              </div>
+              <div className="poem">
+                <h6>Poem:</h6>
+                <textarea
+                  value={this.state.body}
+                  onChange={this.handleInputChange}
+                  rows="8"
+                  placeholder="Enter Poem here"
+                  name="body"
+                />
+                <div style={{ fontSize: 12, color: "red" }}>
+                  {this.state.bodyError}
+                </div>
+              </div>
+              <div className="postPoem">
+                <button
+                  onClick={this.handleFormSubmit}
+                  type="submit"
+                >
+                  <span>Submit Poem</span>
+                  <IconDance><span role="img" aria-label="write">✍</span></IconDance>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
-        <div id="myPoems" className="col-md-6 s7">
-          <div className="APIS">
-            <h1>My Poems</h1>
-            {!this.state.myPoems.length ? (
-              <h1 className="text-center">No Poems to Display. Start writting!</h1>
-            ) : (
-              <React.Fragment>
-                {this.state.myPoems.map(mypoems => (
-                  <div
-                    value={mypoems._id}
-                    className="mb-5"
-                  >
-                    <h2>{mypoems.title}</h2>
-                    <p>Author: </p>
-                    {mypoems.author}
-                    <p>Poem: </p>
-                    {mypoems.body}
-                    <br />
-                    <button
-                      className="btn btn-danger btn-sm mt-2"
-                      onClick={() => this.deletePoems(mypoems._id)}
-                      type="submit"
+        {/* Database Poems */}
+        <div className="container" display="flex" flex-direction="row">
+          <div id="dbPoems" className="col-md-6 s7">
+            <div className="APIS">
+              {!this.state.dbPoems.length ? (
+                <h1 className="text-center">No Poems to Display</h1>
+              ) : (
+                <React.Fragment>
+                  {this.state.dbPoems.map((poems, index) => (
+                    <div>
+                      <Card>
+                        <CardContent>
+                          <Typography color="textSecondary" gutterBottom>
+                            {index === 0 ? "User Poems" : null }
+                          </Typography>
+                          <Typography variant="h5" component="h4">{poems.title}</Typography>
+                          <Typography>by:</Typography>
+                          <Typography>{poems.author}</Typography>
+                          {/* <Typography color="textSecondary" gutterBottom></Typography> */}
+                          <Typography color="textSecondary">{poems.body}</Typography>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  ))}
+                </React.Fragment>)}
+            </div>
+          </div>
+          <div id="myPoems" className="col-md-6 s7">
+            <div className="APIS">
+              <h1>My Poems</h1>
+              {!this.state.myPoems.length ? (
+                <h1 className="text-center">No Poems to Display. Start writting!</h1>
+              ) : (
+                <React.Fragment>
+                  {this.state.myPoems.map(mypoems => (
+                    <div
+                      value={mypoems._id}
+                      className="mb-5"
                     >
-                      <span>Delete</span>
-                    </button>
-                  </div>
-                ))}
-              </React.Fragment>
-            )}
+                      <h2>{mypoems.title}</h2>
+                      <p>Author: </p>
+                      {mypoems.author}
+                      <p>Poem: </p>
+                      {mypoems.body}
+                      <br />
+                      <button
+                        className="btn btn-danger btn-sm mt-2"
+                        onClick={() => this.deletePoems(mypoems._id)}
+                        type="submit"
+                      >
+                        <span>Delete</span>
+                      </button>
+                    </div>
+                  ))}
+                </React.Fragment>
+              )}
+            </div>
           </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
     //   </div>
-  );
-}
+    );
+  }
 }
 
 export default Dashboard;
