@@ -44,7 +44,8 @@ module.exports = {
   },
   update(req, res) {
     Poem
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ _id: req.params.id },
+        { $inc: { likes: 1 } })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
