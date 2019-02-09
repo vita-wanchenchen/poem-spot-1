@@ -1,6 +1,3 @@
-/* eslint-disable react/no-access-state-in-setstate */
-/* eslint-disable react/button-has-type */
-/* eslint-disable react/prop-types */
 import React, { Component } from "react";
 import Axios from "axios";
 import Footer from "../components/Footer";

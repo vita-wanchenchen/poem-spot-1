@@ -21,8 +21,11 @@
     "eqeqeq": "error",
     "no-empty-function": "error",
     "no-multi-spaces": "error",
-    "no-unused-vars": "error",
+    "no-unused-vars": "off",
     "camelcase": "error",
+    "no-underscore-dangle": "off",
+    "prefer-destructuring":"off",
+    "no-param-reassign":"off",
     "indent": [
       "error",
       2
@@ -41,6 +44,10 @@
         "controlComponents": [
           "input"
         ]
+      }
+    ],
+    "react/prop-types": ["<enabled>",
+      { "ignore": "<ignore>, customValidators: <customValidator>"
       }
     ],
     "linebreak-style": [

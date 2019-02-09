@@ -1,5 +1,3 @@
-/* eslint-disable react/self-closing-comp */
-/* eslint-disable no-underscore-dangle */
 import React, { Component } from "react";
 import API from "../utils/API";
 import NavbarDash from "../components/NavbarDash";
@@ -36,8 +34,6 @@ class Dashboard extends Component {
       title: "",
       author: "",
       body: "",
-      // user: "",
-      // eslint-disable-next-line react/no-unused-state
       userProfile: [],
       name: "",
       email: "",
@@ -54,7 +50,6 @@ class Dashboard extends Component {
   loadUserInfo = () => {
     API.getUserData()
       .then(res => this.setState({
-        // eslint-disable-next-line react/no-unused-state
         userProfile: res.data,
         name: res.data.name,
         email: res.data.email,
@@ -130,7 +125,6 @@ class Dashboard extends Component {
           author,
           body,
         })
-        // eslint-disable-next-line no-unused-vars
           .then(res => this.loadAllPoems())
           .catch(err => console.log(err));
       }
@@ -183,7 +177,6 @@ class Dashboard extends Component {
             <h3>Post your poems below</h3>
             <form onSubmit={this.handleSubmit} noValidate>
               <div className="title">
-                {/* <label htmlFor="name"></label> */}
                 <h6>Poem Title:</h6>
                 <input
                   value={this.state.title}
@@ -197,7 +190,6 @@ class Dashboard extends Component {
                 </div>
               </div>
               <div className="author">
-                {/* <label htmlFor="author">Poem Author:</label> */}
                 <h6>Poem Author:</h6>
                 <input
                   onChange={this.handleInputChange}
@@ -211,7 +203,6 @@ class Dashboard extends Component {
                 </div>
               </div>
               <div className="poem">
-                {/* <label htmlFor="poem">Poem:</label> */}
                 <h6>Poem:</h6>
                 <textarea
                   value={this.state.body}
@@ -226,7 +217,6 @@ class Dashboard extends Component {
               </div>
               <div className="postPoem">
                 <button
-                  // disabled={!(this.state.author && this.state.title && this.state.body)}
                   onClick={this.handleFormSubmit}
                   type="submit"
                 >

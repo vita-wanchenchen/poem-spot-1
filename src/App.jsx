@@ -1,6 +1,3 @@
-/* eslint-disable import/no-named-as-default */
-/* eslint-disable import/no-named-as-default-member */
-// eslint-disable-next-line import/no-unresolved
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./views/Home";
