@@ -92,13 +92,15 @@
     "watch:server": "nodemon --inspect=6860 server/index.js ",
     "start:server": "node server/index.js",
     "start:client": "node scripts/start.js",
-    "start": "run-p start:server start:client",
+    "start:all": "run-p start:server start:client",
+    "start": "if-env NODE_ENV=production && npm run start:server || npm run start:all",
     "dev": "run-p watch:server start:client",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "seed": "node scripts/seedDB.js"
+    "seed": "node scripts/seedDB.js",
+    "heroku-postbuild": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
