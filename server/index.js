@@ -5,6 +5,7 @@ const session = require("express-session");
 const passport = require("passport");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const path = require("path");
 const routes = require("./routes");
 // Database Config
 const db = require("./config/keys").mongoURI;
@@ -20,7 +21,7 @@ const PORT = process.env.PORT || 3001;
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("/build"));
+  app.use(express.static(path.join(__dirname, "../", "build")));
 }
 // Passport Config
 require("./config/passport")(passport);
@@ -37,7 +38,7 @@ app.use(bodyParser.json({
 }));
 app.use(bodyParser.json());
 
-app.use("/public", express.static("public"));
+// app.use("/public", express.static("public"));
 
 // Express Session
 app.use(session({
@@ -82,6 +83,9 @@ app.use("/users", require("./routes/users.js"));
 app.use("/poems", require("./routes/poems.js"));
 app.use("/poems/:id", require("./routes/poems.js"));
 
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../", "build", "index.html"));
+});
 // Start the API server
 app.listen(PORT, () => {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
