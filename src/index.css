@@ -16,3 +16,7 @@ img {
 margin-bottom: 20px;
 margin-top: 15px;
 }
+
+#dailyPoem, #dbPoems, #myPoems {
+  white-space: pre-wrap;
+}
