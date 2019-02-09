@@ -26,6 +26,12 @@
     "no-underscore-dangle": "off",
     "prefer-destructuring":"off",
     "no-param-reassign":"off",
+    "react/no-danger": "off",
+    "react/jsx-one-expression-per-line": ["<enabled>",
+      {
+        "allow":  "literal"
+      }
+    ],
     "indent": [
       "error",
       2

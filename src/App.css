@@ -93,7 +93,7 @@ textarea{
   padding: 20px 40px;
   border-radius: 10px;
   box-shadow: 0px 10px 50px #555;
-  background-color: #E8F0FF;
+  background-color:  #E7E0FF;
 }
 
 form {
@@ -200,7 +200,7 @@ input::placeholder {
   padding: 20px 40px;
   border-radius: 10px;
   box-shadow: 0px 10px 50px #555;
-  background-color: #ffffff;
+  background-color: #E7E0FF;
 }
 .title {
   margin-right: 1%;
@@ -264,3 +264,4 @@ input::placeholder {
 #dashboard-page{
   background-size: cover;
 }
+

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React, { Component } from "react";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -135,9 +134,14 @@ class Home extends Component {
             <div className="APIS mb-5">
               <Card>
                 <CardContent>
-                  <Typography color="textSecondary" gutterBottom>Random Area Meetup</Typography>
+                  <Typography color="textSecondary" gutterBottom>Atlanta Area Meetup</Typography>
                   <Typography variant="h5" component="h2">{this.state.meetUp.name}</Typography>
-                  <Typography color="textSecondary">{this.state.meetUp.description}</Typography>
+                  <Typography color="textSecondary">
+                    <div
+                      className="APIS mb-5"
+                      dangerouslySetInnerHTML={{ __html: this.state.meetUp.description }}
+                    />
+                  </Typography>
                 </CardContent>
                 <CardActions>
                   <Button size="small" href={this.state.meetUp.link}>Visit Meetup.com</Button>
