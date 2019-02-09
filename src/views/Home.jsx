@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { Component } from "react";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -59,6 +60,14 @@ class Home extends Component {
       .catch(err => console.log(err));
   };
 
+  // Increment likes by 1
+  incrementLikes = (id) => {
+    API.likeCount(id)
+    // eslint-disable-next-line no-unused-vars
+      .then(res => this.loadPoemDB())
+      .catch(err => console.log(err));
+  };
+
   render() {
     return (
       <div id="home-page" style={crumpledPaper} className="row">
@@ -104,6 +113,16 @@ class Home extends Component {
                           <Typography>{poems.author}</Typography>
                           {/* <Typography color="textSecondary" gutterBottom></Typography> */}
                           <Typography color="textSecondary">{poems.body}</Typography>
+                          <button
+                            className="badge badge-secondary"
+                            value={poems.likes}
+                            onClick={() => this.incrementLikes(poems._id)}
+                            type="button"
+                          >
+                            <span>
+                              Likes {poems.likes}
+                            </span>
+                          </button>
                         </CardContent>
                       </Card>
                     </div>

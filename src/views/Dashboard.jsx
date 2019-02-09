@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 import React, { Component } from "react";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -85,7 +86,7 @@ class Dashboard extends Component {
       .catch(err => console.log(err));
   };
 
-  // Load all poems
+  // Load all poems from database and mypoems
   loadAllPoems = () => {
     this.loadPoemDB();
     this.loadMyPoems();
@@ -174,7 +175,6 @@ class Dashboard extends Component {
           <span> ,</span>
           <span>To start writing, fill out the poem form.</span>
         </h2>
-
         <div className="pwrapper">
           <div className="poem-wrapper">
             <h3>Post your poems below</h3>

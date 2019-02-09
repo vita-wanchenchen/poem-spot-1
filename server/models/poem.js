@@ -20,6 +20,10 @@ const poemSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  likes: {
+    type: Number,
+    default: 0,
+  },
   user: {
     // Store ObjectIds in the array
     type: Schema.Types.ObjectId,
