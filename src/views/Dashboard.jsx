@@ -1,6 +1,9 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable no-underscore-dangle */
 import React, { Component } from "react";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
 import API from "../utils/API";
 import NavbarDash from "../components/NavbarDash";
 import Footer from "../components/Footer";
@@ -241,22 +244,27 @@ class Dashboard extends Component {
         <div className="container" display="flex" flex-direction="row">
           <div id="dbPoems" className="col-md-6 s7">
             <div className="APIS">
-              <h1>All Poems</h1>
               {!this.state.dbPoems.length ? (
                 <h1 className="text-center">No Poems to Display</h1>
               ) : (
                 <React.Fragment>
-                  {this.state.dbPoems.map(poems => (
+                  {this.state.dbPoems.map((poems, index) => (
                     <div>
-                      <h2>{poems.title}</h2>
-                      <p>Author: </p>
-                      {poems.author}
-                      <p>Poem: </p>
-                      {poems.body}
+                      <Card>
+                        <CardContent>
+                          <Typography color="textSecondary" gutterBottom>
+                            {index === 0 ? "User Poems" : null }
+                          </Typography>
+                          <Typography variant="h5" component="h4">{poems.title}</Typography>
+                          <Typography>by:</Typography>
+                          <Typography>{poems.author}</Typography>
+                          {/* <Typography color="textSecondary" gutterBottom></Typography> */}
+                          <Typography color="textSecondary">{poems.body}</Typography>
+                        </CardContent>
+                      </Card>
                     </div>
                   ))}
-                </React.Fragment>
-              )}
+                </React.Fragment>)}
             </div>
           </div>
           <div id="myPoems" className="col-md-6 s7">
