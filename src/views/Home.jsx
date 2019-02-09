@@ -135,12 +135,8 @@ class Home extends Component {
             <div className="APIS mb-5">
               <Card>
                 <CardContent>
-<<<<<<< HEAD
                   <Typography color="textSecondary" gutterBottom>Random Area Meetup</Typography>
                   <a href="https://www.meetup.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png" id="meetup" alt="" width="150px" /></a>
-=======
-                  <Typography color="textSecondary" gutterBottom>Atlanta Area Meetup</Typography>
->>>>>>> master
                   <Typography variant="h5" component="h2">{this.state.meetUp.name}</Typography>
                   <Typography color="textSecondary">
                     <div
