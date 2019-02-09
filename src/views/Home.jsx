@@ -83,6 +83,7 @@ class Home extends Component {
           <Card>
             <CardContent>
               <Typography color="textSecondary" gutterBottom>Poem of the Day</Typography>
+              <a href="https://www.poemist.com/"><img src="https://www.poemist.com/images/logo.png" id="meetup" alt="" width="150px" /></a>
               <Typography variant="h5" component="h2">{this.state.dailyPoem.title}</Typography>
               <Typography color="textSecondary">{this.state.dailyPoem.content}</Typography>
             </CardContent>
@@ -134,7 +135,12 @@ class Home extends Component {
             <div className="APIS mb-5">
               <Card>
                 <CardContent>
+<<<<<<< HEAD
+                  <Typography color="textSecondary" gutterBottom>Random Area Meetup</Typography>
+                  <a href="https://www.meetup.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png" id="meetup" alt="" width="150px" /></a>
+=======
                   <Typography color="textSecondary" gutterBottom>Atlanta Area Meetup</Typography>
+>>>>>>> master
                   <Typography variant="h5" component="h2">{this.state.meetUp.name}</Typography>
                   <Typography color="textSecondary">
                     <div
