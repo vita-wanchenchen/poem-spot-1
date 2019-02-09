@@ -1,7 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/button-has-type */
-/* eslint-disable react/no-unused-state */
 import React, { Component } from "react";
 import Axios from "axios";
 import Footer from "../components/Footer";

@@ -4,14 +4,11 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-// import Axios from "axios";
-
-// eslint-disable-next-line no-unused-vars
 import API from "../utils/API";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Background from "../images/background.png";
-// import { purple } from "@material-ui/core/colors";
+
 
 const styledWelcome = {
   fontSize: "70px",
