@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-one-expression-per-line */
 import React, { Component } from "react";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -107,7 +106,7 @@ class Home extends Component {
                       <Card>
                         <CardContent>
                           <Typography color="textSecondary" gutterBottom>
-                            {index === 0 ? "User Poems" : null }
+                            {index === 0 ? "All Poems" : null }
                           </Typography>
                           <Typography variant="h5" component="h4">{poems.title}</Typography>
                           <Typography>by:</Typography>
@@ -136,10 +135,19 @@ class Home extends Component {
             <div className="APIS mb-5">
               <Card>
                 <CardContent>
+<<<<<<< HEAD
                   <Typography color="textSecondary" gutterBottom>Random Area Meetup</Typography>
                   <a href="https://www.meetup.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png" id="meetup" alt="" width="150px" /></a>
+=======
+                  <Typography color="textSecondary" gutterBottom>Atlanta Area Meetup</Typography>
+>>>>>>> master
                   <Typography variant="h5" component="h2">{this.state.meetUp.name}</Typography>
-                  <Typography color="textSecondary">{this.state.meetUp.description}</Typography>
+                  <Typography color="textSecondary">
+                    <div
+                      className="APIS mb-5"
+                      dangerouslySetInnerHTML={{ __html: this.state.meetUp.description }}
+                    />
+                  </Typography>
                 </CardContent>
                 <CardActions>
                   <Button size="small" href={this.state.meetUp.link}>Visit Meetup.com</Button>

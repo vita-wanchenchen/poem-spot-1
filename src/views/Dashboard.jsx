@@ -16,6 +16,9 @@ const crumpledPaper = {
 const pageTitle = {
   fontSize: "40px",
 };
+const nameTitle = {
+  fontSize: "22px",
+};
 
 const initialState = {
   title: "",
@@ -170,14 +173,16 @@ class Dashboard extends Component {
           <span>Dashboard</span>
         </div>
         <h2 value={this.state.email}>
-          <span>Hi </span>
-          {this.state.name}
-          <span> ,</span>
-          <span>To start writing, fill out the poem form.</span>
+          <div style={nameTitle}>
+            <span>Hi </span>
+            {this.state.name}
+            <span> ,</span>
+            <span>To start writing fill out the poem form.</span>
+          </div>
         </h2>
         <div className="pwrapper">
           <div className="poem-wrapper">
-            <h3>Post your poems below</h3>
+            <h4>Post your poems below</h4>
             <form onSubmit={this.handleSubmit} noValidate>
               <div className="title">
                 <h6>Poem Title:</h6>
@@ -243,7 +248,7 @@ class Dashboard extends Component {
                       <Card>
                         <CardContent>
                           <Typography color="textSecondary" gutterBottom>
-                            {index === 0 ? "User Poems" : null }
+                            {index === 0 ? "All Poems" : null }
                           </Typography>
                           <Typography variant="h5" component="h4">{poems.title}</Typography>
                           <Typography>by:</Typography>
