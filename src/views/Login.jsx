@@ -120,7 +120,7 @@ constructor(props) {
                 </div>
                 <div className="createAccount">
                   <button type="submit">Log in</button>
-                  <small>Need to Create Account?</small>
+                  <a href="/register"><small>Need to Create Account?</small></a>
                 </div>
               </form>
             </div>

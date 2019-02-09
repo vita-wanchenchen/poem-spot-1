@@ -186,7 +186,7 @@ constructor(props) {
                 </div>
                 <div className="createAccount">
                   <button type="submit">Create Account</button>
-                  <small>Already Have an Account?</small>
+                  <a href="/login"><small>Already Have an Account?</small></a>
                 </div>
               </form>
             </div>
