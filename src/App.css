@@ -249,3 +249,18 @@ input::placeholder {
 .welcome span {
   color: purple;
 }
+
+#home-page{
+  background-size: cover;
+}
+
+#register-page{
+  background-size: cover;
+}
+
+#login-page{
+  background-size: cover;
+}
+#dashboard-page{
+  background-size: cover;
+}
