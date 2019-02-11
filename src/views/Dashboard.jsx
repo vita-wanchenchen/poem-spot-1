@@ -16,6 +16,7 @@ const crumpledPaper = {
 const pageTitle = {
   fontSize: "40px",
 };
+
 const nameTitle = {
   fontSize: "22px",
 };
@@ -182,10 +183,10 @@ class Dashboard extends Component {
         </h2>
         <div className="pwrapper">
           <div className="poem-wrapper">
-            <h4>Post your poems below</h4>
+            <h2>Post your poems below</h2>
             <form onSubmit={this.handleSubmit} noValidate>
               <div className="title">
-                <h6>Poem Title:</h6>
+                <label htmlFor="title">Poem Title</label>
                 <input
                   value={this.state.title}
                   onChange={this.handleInputChange}
@@ -198,7 +199,7 @@ class Dashboard extends Component {
                 </div>
               </div>
               <div className="author">
-                <h6>Poem Author:</h6>
+                <label htmlFor="author">Poem Author</label>
                 <input
                   onChange={this.handleInputChange}
                   value={this.state.author}
@@ -211,7 +212,7 @@ class Dashboard extends Component {
                 </div>
               </div>
               <div className="poem">
-                <h6>Poem:</h6>
+                <label htmlFor="poem">Poem</label>
                 <textarea
                   value={this.state.body}
                   onChange={this.handleInputChange}

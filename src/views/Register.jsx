@@ -8,10 +8,6 @@ const crumpledPaper = {
   backgroundImage: `url(${Background})`,
 };
 
-const styleMain = {
-  height: "1200px",
-};
-
 const initialState = {
   name: "",
   nameError: "",
@@ -130,7 +126,7 @@ constructor(props) {
   render() {
     return (
       <div id="register-page" style={crumpledPaper} className=" row">
-        <div className="main" style={styleMain}>
+        <div className="main">
           <Navbar />
           <div className="wrapper">
             <div className="form-wrapper">

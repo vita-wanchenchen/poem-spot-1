@@ -1,4 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Handlee');
+/* @import url('https://fonts.googleapis.com/css?family=Handlee'); */
+
+body {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
 
 .main{
   width: 100%;
@@ -46,18 +50,13 @@
   background-color: transparent;
 }
 
-.main-body h1{
-  font-size: 4em;
-} */
-
-
 textarea{
-  width: 340px;
-  height: 400px;
-  padding: 12px 20px;
+  width: 320px;
+  height: 300px;
+  padding: 12px 12px;
   box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
+  border: 1px solid #cfcfcf;
+  border-radius: 5px;
   background-color: #f8f8f8;
   resize: none;
 }
@@ -76,6 +75,29 @@ textarea{
   overflow-y: scroll;
   margin-bottom: 60px;
 }
+
+/* width */
+#dbPoems::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+#dbPoems::-webkit-scrollbar-track {
+  background: #E7E0FF;
+  border-radius: 5px;
+}
+
+/* Handle */
+#dbPoems::-webkit-scrollbar-thumb {
+  background: rgb(130, 102, 145);
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+#dbPoems::-webkit-scrollbar-thumb:hover {
+  background: #392759;
+}
+
 .wrapper {
   height: 100vh;
   width: 100%;
@@ -102,7 +124,8 @@ form {
   flex-wrap: wrap;
 }
 
-h1 {
+h1,
+.poem-wrapper h2 {
   text-align: center;
   width: 100%;
   color: #111;
@@ -125,11 +148,13 @@ input {
   border: 1px solid #cfcfcf;
 }
 
-input::placeholder {
+input::placeholder,
+textarea::placeholder {
   font-size: 1.2em;
   font-weight: lighter;
-  color: #999;
+  color: rgb(126, 126, 126);
 }
+
 .name {
   margin-left: 1%;
 }
@@ -140,25 +165,19 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
-}
-
-.name {
   width: 100%;
 }
 
-.email,
-.password {
-  width: 100%;
-}
-
-.createAccount {
+.createAccount,
+.postPoem {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.createAccount button {
+.createAccount button,
+.postPoem button {
   background-color:#6E2594;
   color: #fff;
   border: 2px solid #fff;
@@ -169,12 +188,6 @@ input::placeholder {
   font-weight: lighter;
   letter-spacing: 1px;
   margin-bottom: 0.25em;
-}
-
-.createAccount button:hover {
-  color: #519e8a;
-  background-color: #fff;
-  border: 2px solid #519e8a;
 }
 
 .createAccount small {
@@ -190,7 +203,6 @@ input::placeholder {
   justify-content: left;
   align-items: left;
   margin-left: 30px;
-  /* background-color: #258ea6; */
 }
 
 .poem-wrapper {
@@ -202,10 +214,10 @@ input::placeholder {
   box-shadow: 0px 10px 50px #555;
   background-color: #E7E0FF;
 }
+
 .title {
   margin-right: 1%;
 }
-
 
 .title,
 .author,
@@ -213,55 +225,23 @@ input::placeholder {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
-}
-
-.title,
-.author,
-.poem {
   width: 100%;
 }
 
-.postPoem {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.postPoem button {
-  background-color: #6E2594;
-  color: #fff;
-  border: 2px solid #fff;
-  width: 100%;
-  margin-top: 1em;
-  padding: 8px 0px;
-  font-size: 1em;
-  font-weight: lighter;
-  letter-spacing: 1px;
-  margin-bottom: 0.25em;
-}
-
+.createAccount button:hover,
 .postPoem button:hover {
   color: #6E2594;
   background-color: #fff;
   border: 2px solid #6E2594;
 }
+
 .welcome span {
-  color: purple;
+  color: #6E2594;
 }
 
-#home-page{
+#home-page,
+#register-page,
+#login-page,
+#dashboard-page {
   background-size: cover;
 }
-
-#register-page{
-  background-size: cover;
-}
-
-#login-page{
-  background-size: cover;
-}
-#dashboard-page{
-  background-size: cover;
-}
-
