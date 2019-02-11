@@ -1,28 +1,10 @@
-### POEM SPOT
+# POEM SPOT
 
-Poem Spot is a React app that allows users to publish written content on their personal pages. It also allows users to view content published by others. Content is stored in and accessed from a Mongoose database.
+## `LIVE DEMO`: https://poem-spot.herokuapp.com/
 
-This app has Passport.js sign-in authentication and accesses an API to display pertinent events in the Atlanta area.
+## `WHY POEM SPOT`?
 
-## TECHNOLOGIES USED:
-
- - HTML5
- - CSS3
- - React
- - MongoDB
- - Mongoose
- - Passport.js
- - Node.js
- - Express
- - Styled-components
- - Axios
- - Styled-components
- - Passport.js
- - Material-UI
-
-## WHY POEM SPOT?
-
-Our application, Poem Spot, is a central hub for reading, posting, and searching for POEMS and viewing LOCAL EVENTS.
+Poem Spot is a central hub for reading, posting, and searching for POEMS and viewing LOCAL EVENTS.
 
 Users upload writing to their personal page, and users can view each other’s writing. This helps people in the writing community to keep abreast of their peers’ work.
 
@@ -31,6 +13,30 @@ Our home page lists local events, including author readings, open mics, and more
 Poem Spot is narrowly focused and free of distracting content.
 
 In short, it’s a community space for people who share an interest in the written word.
+
+## `TECHNOLOGIES USED`:
+
+ - HTML5
+ - CSS3
+ - JavaScript
+ - React
+ - MongoDB
+ - Mongoose
+ - Passport.js
+ - Node.js
+ - Express
+ - Axios
+ - Styled-components
+ - Material-UI
+ - POEMIST API
+ - Meetup API
+
+ ## `TEAM MEMBERS`:
+
+ - Carolyn Bernier
+ - Jamie Rodriguez
+ - Shemika Williams
+ - Vita Chen
 
 --------------------------------------------
 
