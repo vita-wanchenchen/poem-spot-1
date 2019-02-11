@@ -9,7 +9,6 @@ const linkStyle = {
 const navbarStyle = {
   backgroundColor: "#392759",
   paddingBottom: "-30px",
-  marginBottom: "20px",
 };
 
 const navBrand = {
@@ -30,7 +29,7 @@ const navbarNav = {
 
 function NavbarDash() {
   return (
-    <nav style={navbarStyle} className="navbar navbar-expand-lg navbar-light">
+    <nav id="dashNav" style={navbarStyle} className="navbar navbar-expand-lg navbar-light">
       <ul style={navBrand} className="navbar-brand">
         <Link style={linkStyle} to="/">Poem Spot</Link>
       </ul>

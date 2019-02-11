@@ -15,6 +15,7 @@ const crumpledPaper = {
 
 const pageTitle = {
   fontSize: "40px",
+  textAlign: "center",
 };
 
 const nameTitle = {
@@ -170,17 +171,20 @@ class Dashboard extends Component {
     return (
       <div id="dashboard-page" style={crumpledPaper}>
         <NavbarDash />
-        <div style={pageTitle}>
-          <span>Dashboard</span>
+        <div id="name">
+          <h2 value={this.state.email}>
+            <div style={nameTitle}>
+              <span>Welcome to your dashboard </span>
+              {this.state.name}
+              <span>.  </span>
+              <span>To start writing fill out the poem form.</span>
+            </div>
+          </h2>
         </div>
-        <h2 value={this.state.email}>
-          <div style={nameTitle}>
-            <span>Hi </span>
-            {this.state.name}
-            <span> ,</span>
-            <span>To start writing fill out the poem form.</span>
-          </div>
-        </h2>
+        <div style={pageTitle}>
+          <span> My Dashboard</span>
+        </div>
+
         <div className="pwrapper">
           <div className="poem-wrapper">
             <h2>Post your poems below</h2>
