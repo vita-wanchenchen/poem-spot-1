@@ -8,10 +8,6 @@ const crumpledPaper = {
   backgroundImage: `url(${Background})`,
 };
 
-const styleMain = {
-  height: "900px",
-};
-
 const initialState = {
   email: "",
   emailError: "",
@@ -88,7 +84,7 @@ constructor(props) {
   render() {
     return (
       <div id="login-page" style={crumpledPaper} className=" row">
-        <div className="main" style={styleMain}>
+        <div className="main">
           <Navbar />
           <div className="wrapper">
             <div className="form-wrapper">

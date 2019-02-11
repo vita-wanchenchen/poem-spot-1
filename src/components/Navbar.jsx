@@ -15,7 +15,7 @@ const navbarStyle = {
 
 const navBrand = {
   fontSize: "30px",
-  marginBottom: "-10px",
+  marginBottom: "-5px",
   textdecoration: "none",
 };
 
