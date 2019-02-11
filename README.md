@@ -4,8 +4,15 @@ Poem Spot is a React app that allows users to publish written content on their p
 
 This app has Passport.js sign-in authentication and accesses an API to display pertinent events in the Atlanta area.
 
-## TECHNOLOGIES USED:
+## LIVE DEMO: https://quiet-bayou-89518.herokuapp.com/
 
+## TEAM MEMBERS:
+ - Carolyn Bernier
+ - Jamie Rodriguez
+ - Shemika Williams
+ - Vita Chen
+
+## TECHNOLOGIES USED:
  - HTML5
  - CSS3
  - React
@@ -14,7 +21,6 @@ This app has Passport.js sign-in authentication and accesses an API to display p
  - Passport.js
  - Node.js
  - Express
- - Styled-components
  - Axios
  - Styled-components
  - Passport.js
