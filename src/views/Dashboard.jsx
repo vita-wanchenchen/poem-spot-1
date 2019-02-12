@@ -13,6 +13,11 @@ import Footer from "../components/Footer";
 import IconDance from "../components/IconDance";
 import Background from "../images/background.png";
 
+const styledWelcome = {
+  fontSize: "70px",
+  margin: "30px",
+};
+
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -22,10 +27,21 @@ const styles = theme => ({
     textAlign: "center",
     color: "black",
     backgroundColor: "#e7e0ff",
+    borderRadius: "15px",
   },
   purple: {
     backgroundColor: "#e7e0ff",
-    borderRadius: "15",
+    borderRadius: "15px",
+  },
+  title: {
+    justify: "center",
+    borderRadius: "15px",
+    padding: theme.spacing.unit * 2,
+    textAlign: "center",
+    backgroundColor: "transparent",
+    borderStyle: "none",
+    shadows: "0px",
+    boxShadows: "0px",
   },
 });
 
@@ -197,9 +213,9 @@ class Dashboard extends Component {
         <NavbarDash />
         <Grid container spacing={24}>
           <Grid item xs={8}>
-            <Paper className={classes.paper}>
+            <Paper className={classes.title}>
               <div style={pageTitle}>
-                <span>Dashboard</span>
+                <span style={styledWelcome}>Dashboard</span>
               </div>
             </Paper>
           </Grid>
@@ -307,7 +323,9 @@ class Dashboard extends Component {
               <div id="myPoems">
                 <div className="APIS">
                   {!this.state.myPoems.length ? (
-                    <h1 className="text-center">No Poems to Display. Start writing!</h1>
+                    <Typography>
+                      <h1 className="text-center">No Poems to Display. Start writing!</h1>
+                    </Typography>
                   ) : (
                     <React.Fragment>
                       {this.state.myPoems.map((mypoems, index) => (

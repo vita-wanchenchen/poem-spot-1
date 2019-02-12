@@ -9,6 +9,7 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
+import shadows from "@material-ui/core/styles/shadows";
 import "../App.css";
 import API from "../utils/API";
 import Footer from "../components/Footer";
@@ -36,20 +37,24 @@ const styles = theme => ({
     textAlign: "center",
     color: "black",
     backgroundColor: "#e7e0ff",
+    borderRadius: "15px",
   },
   purple: {
     backgroundColor: "#e7e0ff",
     borderStyle: "none",
-    borderRadius: "15",
+    borderRadius: "15px",
     padding: theme.spacing.unit * 2,
     textAlign: "center",
   },
   title: {
     justify: "center",
-    borderRadius: "15",
+    borderRadius: "15px",
     padding: theme.spacing.unit * 2,
     textAlign: "center",
-    backgroundColor: "#e7e0ff",
+    backgroundColor: "transparent",
+    borderStyle: "none",
+    shadows: "0px",
+    boxShadows: "0px",
   },
 });
 
@@ -172,7 +177,7 @@ class Home extends Component {
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Paper>
+            <Paper className={classes.paper}>
               <div id="meetUp">
                 <div className="APIS">
                   <Card>
