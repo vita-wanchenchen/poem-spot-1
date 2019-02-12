@@ -40,9 +40,16 @@ const styles = theme => ({
   purple: {
     backgroundColor: "#e7e0ff",
     borderStyle: "none",
-    borderRadius: "10",
+    borderRadius: "15",
     padding: theme.spacing.unit * 2,
     textAlign: "center",
+  },
+  title: {
+    justify: "center",
+    borderRadius: "15",
+    padding: theme.spacing.unit * 2,
+    textAlign: "center",
+    backgroundColor: "#e7e0ff",
   },
 });
 
@@ -105,7 +112,7 @@ class Home extends Component {
         <Navbar />
         <Grid container spacing={24}>
           <Grid item xs={12} sm={8}>
-            <Paper className={classes.purple} style={styledWelcome}>Welcome To Poem Spot</Paper>
+            <Paper className={classes.title} style={styledWelcome}>Welcome To Poem Spot</Paper>
           </Grid>
           <Grid item xs={12} sm={6} id="dailyPoem">
             <Paper className={classes.paper}>
@@ -125,7 +132,7 @@ class Home extends Component {
 
           <Grid item xs={12} sm={6}>
             {/* Database Poems */}
-            <Paper id="dbPoems" className={classes.purple}>
+            <Paper id="dbPoems" className={classes.paper}>
               <div className="APIS">
                 {!this.state.dbPoems.length ? (
                   <h1 className="text-center">No Poems to Display</h1>

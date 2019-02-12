@@ -25,6 +25,7 @@ const styles = theme => ({
   },
   purple: {
     backgroundColor: "#e7e0ff",
+    borderRadius: "15",
   },
 });
 
