@@ -117,10 +117,10 @@ class Home extends Component {
         <Navbar />
         <Grid container spacing={24}>
           <Grid item xs={12} sm={8}>
-            <Paper className={classes.title} style={styledWelcome}>Welcome To Poem Spot</Paper>
+            <div style={styledWelcome}>Welcome To Poem Spot</div>
           </Grid>
           <Grid item xs={12} sm={6} id="dailyPoem">
-            <Paper className={classes.paper}>
+            <div className={classes.purple}>
               <Card>
                 <CardContent>
                   <Typography color="textSecondary" gutterBottom>Poem of the Day</Typography>
@@ -132,7 +132,7 @@ class Home extends Component {
                   <Button size="small" href={this.state.dailyPoem.url}>Source</Button>
                 </CardActions>
               </Card>
-            </Paper>
+            </div>
           </Grid>
 
           <Grid item xs={12} sm={6}>

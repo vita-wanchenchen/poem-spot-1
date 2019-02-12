@@ -55,6 +55,7 @@ const crumpledPaper = {
 
 const pageTitle = {
   fontSize: "40px",
+  fontAlign: "center",
 };
 
 const nameTitle = {
@@ -212,12 +213,10 @@ class Dashboard extends Component {
       <div id="dashboard-page" style={crumpledPaper}>
         <NavbarDash />
         <Grid container spacing={24}>
-          <Grid item xs={8}>
-            <Paper className={classes.title}>
-              <div style={pageTitle}>
-                <span style={styledWelcome}>Dashboard</span>
-              </div>
-            </Paper>
+          <Grid item xs={12}>
+            <div style={pageTitle}>
+              <span style={styledWelcome}>Dashboard</span>
+            </div>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Paper className={classes.purple}>
@@ -289,7 +288,7 @@ class Dashboard extends Component {
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Paper className={classes.purple}>
+            <div className={classes.purple}>
               {/* Database Poems */}
               <div id="dbPoems">
                 <div className="APIS">
@@ -316,7 +315,7 @@ class Dashboard extends Component {
                     </React.Fragment>)}
                 </div>
               </div>
-            </Paper>
+            </div>
           </Grid>
           <Grid item>
             <Paper className={classes.purple}>
