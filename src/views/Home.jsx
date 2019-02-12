@@ -57,6 +57,21 @@ const styles = theme => ({
     shadows: "0px",
     boxShadows: "0px",
   },
+  poemOfTheDay: {
+    textAlign: "left",
+    marginLeft: "5%",
+    marginRight: "5%",
+  },
+  userPoems: {
+    textAlign: "left",
+    marginRight: "5%",
+    marginLeft: "5%",
+  },
+  meetUp: {
+    justifyContent: "right",
+    marginRight: "5%",
+    marginLeft: "5%",
+  },
 });
 
 function FullWidthGrid(props) {
@@ -120,8 +135,8 @@ class Home extends Component {
           <Grid item xs={12} sm={12}>
             <div style={styledWelcome}>Welcome To Poem Spot</div>
           </Grid>
-          <Grid item xs={12} sm={6} id="dailyPoem">
-            <div className={classes.purple}>
+          <Grid item xs={12} sm={12} md={6} id="dailyPoem">
+            <div className={classes.poemOfTheDay}>
               <Card>
                 <CardContent>
                   <Typography color="textSecondary" gutterBottom>Poem of the Day</Typography>
@@ -136,9 +151,9 @@ class Home extends Component {
             </div>
           </Grid>
 
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={12} md={6}>
             {/* Database Poems */}
-            <Paper id="dbPoems" className={classes.paper}>
+            <Paper id="dbPoems" className={classes.userPoems}>
               <div className="APIS">
                 {!this.state.dbPoems.length ? (
                   <h1 className="text-center">No Poems to Display</h1>
@@ -177,8 +192,8 @@ class Home extends Component {
               </div>
             </Paper>
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <Paper className={classes.paper}>
+          <Grid itemxs={12} sm={12} md={6}>
+            <div className={classes.meetUp}>
               <div id="meetUp">
                 <div className="APIS">
                   <Card>
@@ -199,7 +214,7 @@ class Home extends Component {
                   </Card>
                 </div>
               </div>
-            </Paper>
+            </div>
           </Grid>
         </Grid>
         <Footer />

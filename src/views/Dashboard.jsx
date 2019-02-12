@@ -32,15 +32,11 @@ const styles = theme => ({
   purple: {
     backgroundColor: "#e7e0ff",
     borderRadius: "15px",
-    marginLeft: "20px",
+    marginLeft: "5%",
+    marginRight: "5%",
     padding: "20px",
     paddingLeft: "20px",
     paddingTop: "20px",
-  },
-  purple1: {
-    textAlign: "center",
-    backgroundColor: "#e7e0ff",
-    borderRadius: "15px",
   },
   title: {
     justify: "center",
@@ -51,6 +47,19 @@ const styles = theme => ({
     borderStyle: "none",
     shadows: "0px",
     boxShadows: "0px",
+  },
+  myPoems: {
+    backgroundColor: "#e7e0ff",
+    borderRadius: "15px",
+    marginLeft: "5%",
+    marginRight: "5%",
+    padding: "10%",
+    paddingLeft: "10%",
+  },
+  allPoems: {
+    marginRight: "5%",
+    marginLeft: "5%",
+    borderRadius: "15px",
   },
 });
 
@@ -298,7 +307,7 @@ class Dashboard extends Component {
             </Paper>
           </Grid>
           <Grid item xs={12} sm={12} md={6}>
-            <div className={classes.purple1}>
+            <div className={classes.allPoems}>
               {/* Database Poems */}
               <div id="dbPoems">
                 <div className="APIS">
@@ -328,7 +337,7 @@ class Dashboard extends Component {
             </div>
           </Grid>
           <Grid item sm={12} md={6}>
-            <Paper className={classes.purple1}>
+            <Paper className={classes.myPoems}>
               <div id="myPoems">
                 <div className="APIS">
                   {!this.state.myPoems.length ? (
