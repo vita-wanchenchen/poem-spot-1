@@ -250,3 +250,9 @@ textarea::placeholder {
 .badge-secondary {
   background-color: #1b1ee5;
 }
+
+#dashboard-page,
+#dbPoems,
+#myPoems {
+  background-color: "#e7e0ff";
+}
