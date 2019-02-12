@@ -191,6 +191,7 @@ class Dashboard extends Component {
       <div className={classes.root} id="dashboard-page" style={crumpledPaper}>
         <NavbarDash />
         <Grid container spacing={24}>
+        <Grid item xs={8}>
           <Paper className={classes.paper}>
             <div style={pageTitle}>
               <span>Dashboard</span>
@@ -331,6 +332,9 @@ class Dashboard extends Component {
             </div>
           </Paper>
         </Grid>
+      </Grid>
+      </div>
+      <div>
         <Footer />
       </div>
     );

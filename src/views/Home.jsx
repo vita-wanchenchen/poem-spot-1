@@ -153,6 +153,10 @@ class Home extends Component {
                   </React.Fragment>
                 )}
               </div>
+            </Paper>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Paper>
               <div id="meetUp">
                 <div className="APIS mb-5">
                   <Card>
