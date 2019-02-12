@@ -203,14 +203,14 @@ class Dashboard extends Component {
               <div>
                 <h2 value={this.state.email}>
                   <div style={nameTitle}>
-                    <span>Hi </span>
+                    <span>Hi, </span>
                     {this.state.name}
-                    <span> ,</span>
-                    <span>To start writing fill out the poem form.</span>
+                    <span>. </span>
+                    <span>To start writing, fill out the poem form.</span>
                   </div>
                 </h2>
-                <div className="pwrapper">
-                  <div className="poem-wrapper">
+                <div>
+                  <div>
                     <h2>Post your poems below</h2>
                     <form onSubmit={this.handleSubmit} noValidate>
                       <div className="title">
