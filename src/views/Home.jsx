@@ -21,6 +21,7 @@ import Background from "../images/background.png";
 const styledWelcome = {
   fontSize: "70px",
   margin: "30px",
+  textAlign: "center",
 };
 
 const crumpledPaper = {
@@ -116,7 +117,7 @@ class Home extends Component {
       <div id="home-page" style={crumpledPaper}>
         <Navbar />
         <Grid container spacing={24}>
-          <Grid item xs={12} sm={8}>
+          <Grid item xs={12} sm={12}>
             <div style={styledWelcome}>Welcome To Poem Spot</div>
           </Grid>
           <Grid item xs={12} sm={6} id="dailyPoem">

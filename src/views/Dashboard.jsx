@@ -32,6 +32,15 @@ const styles = theme => ({
   purple: {
     backgroundColor: "#e7e0ff",
     borderRadius: "15px",
+    marginLeft: "20px",
+    padding: "20px",
+    paddingLeft: "20px",
+    paddingTop: "20px",
+  },
+  purple1: {
+    textAlign: "center",
+    backgroundColor: "#e7e0ff",
+    borderRadius: "15px",
   },
   title: {
     justify: "center",
@@ -56,6 +65,7 @@ const crumpledPaper = {
 const pageTitle = {
   fontSize: "40px",
   fontAlign: "center",
+  textAlign: "center",
 };
 
 const nameTitle = {
@@ -218,7 +228,7 @@ class Dashboard extends Component {
               <span style={styledWelcome}>Dashboard</span>
             </div>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={12} md={6}>
             <Paper className={classes.purple}>
               <div>
                 <h2 value={this.state.email}>
@@ -287,8 +297,8 @@ class Dashboard extends Component {
               </div>
             </Paper>
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <div className={classes.purple}>
+          <Grid item xs={12} sm={12} md={6}>
+            <div className={classes.purple1}>
               {/* Database Poems */}
               <div id="dbPoems">
                 <div className="APIS">
@@ -317,8 +327,8 @@ class Dashboard extends Component {
               </div>
             </div>
           </Grid>
-          <Grid item>
-            <Paper className={classes.purple}>
+          <Grid item sm={12} md={6}>
+            <Paper className={classes.purple1}>
               <div id="myPoems">
                 <div className="APIS">
                   {!this.state.myPoems.length ? (
