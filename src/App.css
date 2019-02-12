@@ -245,3 +245,8 @@ textarea::placeholder {
 #dashboard-page {
   background-size: cover;
 }
+
+.badge,
+.badge-secondary {
+  background-color: #1b1ee5;
+}

@@ -4,11 +4,17 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import classnames from "classnames";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
 import API from "../utils/API";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import Background from "../images/background.png";
 
+// const { classes, label, backgroundColor } = props;
 
 const styledWelcome = {
   fontSize: "70px",
@@ -18,6 +24,22 @@ const styledWelcome = {
 const crumpledPaper = {
   backgroundImage: `url(${Background})`,
 };
+
+// classes, accessed via classes.
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
+});
+
+function FullWidthGrid(props) {
+  const { classes } = props;
+}
 
 class Home extends Component {
   state = {
@@ -68,94 +90,97 @@ class Home extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
-      <div id="home-page" style={crumpledPaper} className="row">
+      <div id="home-page" style={crumpledPaper}>
         <Navbar />
-        <div className="main">
-          <div className="container">
-            <div className="welcome text-center" style={styledWelcome}>
-              <span>Welcome To Poem Spot</span>
-            </div>
-          </div>
-        </div>
-        <div className="col-md-1" />
-        <div id="dailyPoem" className="col-md-4">
-          <Card>
-            <CardContent>
-              <Typography color="textSecondary" gutterBottom>Poem of the Day</Typography>
-              <a href="https://www.poemist.com/"><img src="https://www.poemist.com/images/logo.png" id="meetup" alt="" width="150px" /></a>
-              <Typography variant="h5" component="h2">{this.state.dailyPoem.title}</Typography>
-              <Typography color="textSecondary">{this.state.dailyPoem.content}</Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small" href={this.state.dailyPoem.url}>Source</Button>
-            </CardActions>
-          </Card>
-        </div>
-        <div className="col-md-1" />
-        {/* Database Poems */}
-        <div id="rightSide" className="col-md-5">
-          <div id="dbPoems">
-            <div className="APIS">
-              {!this.state.dbPoems.length ? (
-                <h1 className="text-center">No Poems to Display</h1>
-              ) : (
-                <React.Fragment>
-                  {this.state.dbPoems.map((poems, index) => (
-                    <div>
-                      <Card>
-                        <CardContent>
-                          <Typography color="textSecondary" gutterBottom>
-                            {index === 0 ? "All Poems" : null }
-                          </Typography>
-                          <Typography variant="h5" component="h4">{poems.title}</Typography>
-                          <Typography>by:</Typography>
-                          <Typography>{poems.author}</Typography>
-                          {/* <Typography color="textSecondary" gutterBottom></Typography> */}
-                          <Typography color="textSecondary">{poems.body}</Typography>
-                          <button
-                            className="badge badge-secondary"
-                            value={poems.likes}
-                            onClick={() => this.incrementLikes(poems._id)}
-                            type="button"
-                          >
-                            <span>
-                              Likes {poems.likes}
-                            </span>
-                          </button>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  ))}
-                </React.Fragment>
-              )}
-            </div>
-          </div>
-          <div id="meetUp">
-            <div className="APIS mb-5">
+        <Grid container spacing={24}>
+          <Grid item xs={12} sm={8}>
+            <Paper className={classes.paper} style={styledWelcome}>Welcome To Poem Spot</Paper>
+          </Grid>
+          <Grid item xs={12} sm={6} id="dailyPoem">
+            <Paper>
               <Card>
                 <CardContent>
-                  <Typography color="textSecondary" gutterBottom>Atlanta Area Meetup</Typography>
-                  <a href="https://www.meetup.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png" id="meetup" alt="" width="150px" /></a>
-                  <Typography variant="h5" component="h2">{this.state.meetUp.name}</Typography>
-                  <Typography color="textSecondary">
-                    <div
-                      className="APIS mb-5"
-                      dangerouslySetInnerHTML={{ __html: this.state.meetUp.description }}
-                    />
-                  </Typography>
+                  <Typography color="textSecondary" gutterBottom>Poem of the Day</Typography>
+                  <a href="https://www.poemist.com/"><img src="https://www.poemist.com/images/logo.png" id="meetup" alt="" width="150px" /></a>
+                  <Typography variant="h5" component="h2">{this.state.dailyPoem.title}</Typography>
+                  <Typography color="textSecondary">{this.state.dailyPoem.content}</Typography>
                 </CardContent>
                 <CardActions>
-                  <Button size="small" href={this.state.meetUp.link}>Visit Meetup.com</Button>
+                  <Button size="small" href={this.state.dailyPoem.url}>Source</Button>
                 </CardActions>
               </Card>
-            </div>
-          </div>
-        </div>
+            </Paper>
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+            {/* Database Poems */}
+            <Paper className={classes.paper} id="dbPoems">
+              <div className="APIS">
+                {!this.state.dbPoems.length ? (
+                  <h1 className="text-center">No Poems to Display</h1>
+                ) : (
+                  <React.Fragment>
+                    {this.state.dbPoems.map((poems, index) => (
+                      <div>
+                        <Card>
+                          <CardContent>
+                            <Typography color="textSecondary" gutterBottom>
+                              {index === 0 ? "All Poems" : null }
+                            </Typography>
+                            <Typography variant="h5" component="h4">{poems.title}</Typography>
+                            <Typography>by:</Typography>
+                            <Typography>{poems.author}</Typography>
+                            {/* <Typography color="textSecondary" gutterBottom></Typography> */}
+                            <Typography color="textSecondary">{poems.body}</Typography>
+                            <button
+                              color="#1b1ee5"
+                              className="badge badge-secondary"
+                              value={poems.likes}
+                              onClick={() => this.incrementLikes(poems._id)}
+                              type="button"
+                            >
+                              <span>
+                                <i className="material-icons">favorite</i>
+                                {poems.likes}
+                              </span>
+                            </button>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    ))}
+                  </React.Fragment>
+                )}
+              </div>
+              <div id="meetUp">
+                <div className="APIS mb-5">
+                  <Card>
+                    <CardContent>
+                      <Typography color="textSecondary" gutterBottom>Atlanta Area Meetup</Typography>
+                      <a href="https://www.meetup.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Meetup_Logo.png" id="meetup" alt="" width="150px" /></a>
+                      <Typography variant="h5" component="h2">{this.state.meetUp.name}</Typography>
+                      <Typography color="textSecondary">
+                        <div
+                          className="APIS mb-5"
+                          dangerouslySetInnerHTML={{ __html: this.state.meetUp.description }}
+                        />
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button size="small" href={this.state.meetUp.link}>Visit Meetup.com</Button>
+                    </CardActions>
+                  </Card>
+                </div>
+              </div>
+            </Paper>
+          </Grid>
+        </Grid>
         <Footer />
       </div>
     );
   }
 }
 
-export default Home;
+
+export default withStyles(styles)(Home);

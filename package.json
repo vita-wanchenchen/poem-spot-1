@@ -19,6 +19,7 @@
   "dependencies": {
     "@babel/core": "7.1.6",
     "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
     "@svgr/webpack": "2.4.1",
     "axios": "^0.18.0",
     "babel-core": "7.0.0-bridge.0",
@@ -31,6 +32,7 @@
     "body-parser": "*",
     "case-sensitive-paths-webpack-plugin": "2.1.2",
     "chalk": "2.4.1",
+    "classnames": "^2.2.6",
     "connect-flash": "^0.1.1",
     "cookie-parser": "*",
     "cors": "^2.8.5",
