@@ -60,6 +60,9 @@ const styles = theme => ({
     marginRight: "5%",
     marginLeft: "5%",
     borderRadius: "15px",
+    palette: {
+      primary: "#e7e0ff",
+    },
   },
 });
 
@@ -307,7 +310,7 @@ class Dashboard extends Component {
             </Paper>
           </Grid>
           <Grid item xs={12} sm={12} md={6}>
-            <div className={classes.allPoems}>
+            <Paper className={classes.allPoems}>
               {/* Database Poems */}
               <div id="dbPoems">
                 <div className="APIS">
@@ -334,7 +337,7 @@ class Dashboard extends Component {
                     </React.Fragment>)}
                 </div>
               </div>
-            </div>
+            </Paper>
           </Grid>
           <Grid item sm={12} md={6}>
             <Paper className={classes.myPoems}>
@@ -351,7 +354,7 @@ class Dashboard extends Component {
                           value={mypoems._id}
                           className="mb-5"
                         >
-                          <Card>
+                          <Card cardStyle={{ borderWidth: 0, borderColor: "transparent", elevation: 0 }}>
                             <CardContent>
                               <Typography color="textSecondary" gutterBottom>
                                 {index === 0 ? "My Poems" : null }

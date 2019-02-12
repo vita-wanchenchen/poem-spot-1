@@ -33,18 +33,17 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
   },
-  paper: {
-    padding: theme.spacing.unit * 2,
-    textAlign: "center",
-    color: "black",
-    backgroundColor: "#e7e0ff",
-    borderRadius: "15px",
-  },
+  // paper: {
+  //   padding: theme.spacing.unit * 2,
+  //   textAlign: "center",
+  //   color: "black",
+  //   backgroundColor: "#e7e0ff",
+  //   borderRadius: "15px",
+  // },
   purple: {
     backgroundColor: "#e7e0ff",
     borderStyle: "none",
     borderRadius: "15px",
-    padding: theme.spacing.unit * 2,
     textAlign: "center",
   },
   title: {
@@ -61,16 +60,18 @@ const styles = theme => ({
     textAlign: "left",
     marginLeft: "5%",
     marginRight: "5%",
+    borderRadius: "15px",
   },
   userPoems: {
     textAlign: "left",
     marginRight: "5%",
     marginLeft: "5%",
+    borderRadius: "15px",
   },
   meetUp: {
-    justifyContent: "right",
     marginRight: "5%",
     marginLeft: "5%",
+    borderRadius: "15px",
   },
 });
 
