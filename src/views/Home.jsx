@@ -34,7 +34,15 @@ const styles = theme => ({
   paper: {
     padding: theme.spacing.unit * 2,
     textAlign: "center",
-    color: theme.palette.text.secondary,
+    color: "black",
+    backgroundColor: "#e7e0ff",
+  },
+  purple: {
+    backgroundColor: "#e7e0ff",
+    borderStyle: "none",
+    borderRadius: "10",
+    padding: theme.spacing.unit * 2,
+    textAlign: "center",
   },
 });
 
@@ -97,10 +105,10 @@ class Home extends Component {
         <Navbar />
         <Grid container spacing={24}>
           <Grid item xs={12} sm={8}>
-            <Paper className={classes.paper} style={styledWelcome}>Welcome To Poem Spot</Paper>
+            <Paper className={classes.purple} style={styledWelcome}>Welcome To Poem Spot</Paper>
           </Grid>
           <Grid item xs={12} sm={6} id="dailyPoem">
-            <Paper>
+            <Paper className={classes.paper}>
               <Card>
                 <CardContent>
                   <Typography color="textSecondary" gutterBottom>Poem of the Day</Typography>
@@ -117,7 +125,7 @@ class Home extends Component {
 
           <Grid item xs={12} sm={6}>
             {/* Database Poems */}
-            <Paper className={classes.paper} id="dbPoems">
+            <Paper id="dbPoems" className={classes.purple}>
               <div className="APIS">
                 {!this.state.dbPoems.length ? (
                   <h1 className="text-center">No Poems to Display</h1>
@@ -159,7 +167,7 @@ class Home extends Component {
           <Grid item xs={12} sm={6}>
             <Paper>
               <div id="meetUp">
-                <div className="APIS mb-5">
+                <div className="APIS">
                   <Card>
                     <CardContent>
                       <Typography color="textSecondary" gutterBottom>Atlanta Area Meetup</Typography>

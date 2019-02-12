@@ -23,6 +23,9 @@ const styles = theme => ({
     color: "black",
     backgroundColor: "#e7e0ff",
   },
+  purple: {
+    backgroundColor: "#e7e0ff",
+  },
 });
 
 function FullWidthGrid(props) {
@@ -200,7 +203,7 @@ class Dashboard extends Component {
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Paper>
+            <Paper className={classes.purple}>
               <div>
                 <h2 value={this.state.email}>
                   <div style={nameTitle}>
@@ -269,7 +272,7 @@ class Dashboard extends Component {
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6}>
-            <Paper>
+            <Paper className={classes.purple}>
               {/* Database Poems */}
               <div id="dbPoems">
                 <div className="APIS">
@@ -299,7 +302,7 @@ class Dashboard extends Component {
             </Paper>
           </Grid>
           <Grid item>
-            <Paper>
+            <Paper className={classes.purple}>
               <div id="myPoems">
                 <div className="APIS">
                   {!this.state.myPoems.length ? (
