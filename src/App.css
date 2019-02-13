@@ -51,7 +51,7 @@ body {
 }
 
 textarea{
-  width: 320px;
+  width: 630px;
   height: 300px;
   padding: 12px 12px;
   box-sizing: border-box;
@@ -219,8 +219,18 @@ textarea::placeholder {
   margin-right: 1%;
 }
 
-.title,
-.author,
+.title{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  width: 634px;
+}
+.author{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  width: 630px;
+}
 .poem {
   display: flex;
   flex-direction: column;

@@ -255,13 +255,13 @@ class Dashboard extends Component {
                   <div>
                     <h2>Post your poems below</h2>
                     <form onSubmit={this.handleSubmit} noValidate>
-                      <div className="title">
+                      <div className="author">
                         <label htmlFor="title">Poem Title</label>
                         <input
                           value={this.state.title}
                           onChange={this.handleInputChange}
                           type="text"
-                          placeholder="Title (required)"
+                          placeholder="Title"
                           name="title"
                         />
                         <div style={{ fontSize: 12, color: "red" }}>
@@ -274,7 +274,7 @@ class Dashboard extends Component {
                           onChange={this.handleInputChange}
                           value={this.state.author}
                           type="text"
-                          placeholder="Author (required)"
+                          placeholder="Author"
                           name="author"
                         />
                         <div style={{ fontSize: 12, color: "red" }}>
