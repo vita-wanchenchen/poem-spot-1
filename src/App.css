@@ -98,7 +98,7 @@ textarea{
 }
 
 /* Track */
-#dailPoem::-webkit-scrollbar-track {
+#dailyPoem::-webkit-scrollbar-track {
   background: #E7E0FF;
   border-radius: 5px;
 }
