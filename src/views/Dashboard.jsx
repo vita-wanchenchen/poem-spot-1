@@ -253,32 +253,34 @@ class Dashboard extends Component {
             <Paper className={classes.purple}>
               <div>
                 <div>
-                  <h2>Post your poems below</h2>
-                  <form onSubmit={this.handleSubmit} noValidate>
-                    <div className="title">
-                      <label htmlFor="title">Poem Title</label>
-                      <input
-                        value={this.state.title}
-                        onChange={this.handleInputChange}
-                        type="text"
-                        placeholder="Title (required)"
-                        name="title"
-                      />
-                      <div style={{ fontSize: 12, color: "red" }}>
-                        {this.state.titleError}
+                  <div>
+                    <h2>Post your poems below</h2>
+                    <form onSubmit={this.handleSubmit} noValidate>
+                      <div className="author">
+                        <label htmlFor="title">Poem Title</label>
+                        <input
+                          value={this.state.title}
+                          onChange={this.handleInputChange}
+                          type="text"
+                          placeholder="Title"
+                          name="title"
+                        />
+                        <div style={{ fontSize: 12, color: "red" }}>
+                          {this.state.titleError}
+                        </div>
                       </div>
-                    </div>
-                    <div className="author">
-                      <label htmlFor="author">Poem Author</label>
-                      <input
-                        onChange={this.handleInputChange}
-                        value={this.state.author}
-                        type="text"
-                        placeholder="Author (required)"
-                        name="author"
-                      />
-                      <div style={{ fontSize: 12, color: "red" }}>
-                        {this.state.authorError}
+                      <div className="author">
+                        <label htmlFor="author">Poem Author</label>
+                        <input
+                          onChange={this.handleInputChange}
+                          value={this.state.author}
+                          type="text"
+                          placeholder="Author"
+                          name="author"
+                        />
+                        <div style={{ fontSize: 12, color: "red" }}>
+                          {this.state.authorError}
+                        </div>
                       </div>
                     </div>
                     <div className="poem">
