@@ -6,7 +6,6 @@ module.exports = {
   findAll(req, res) {
     Poem
       .find()
-      .limit(10)
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -14,7 +13,6 @@ module.exports = {
   findUser(req, res) {
     Poem
       .find({ user: req.user.id })
-      .limit(5)
       .sort({ date: -1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
@@ -53,7 +51,7 @@ module.exports = {
       }, {
         new: true,
       }).then((doc) => {
-        console.log("like count results: ", doc);
+        console.log("Like count results: ", doc);
         return res.json(doc);
       })
       .catch(err => res.status(422).json(err));

@@ -27,7 +27,7 @@ function Footer() {
   return (
     <div className="sticky-footer" style={footerBody}>
       <footer className="footer" style={footerStyle}>
-        <span style={footerSpan}>© Dead Coders Society</span>
+        <a href="https://github.com/vita-wanchenchen/poem-spot-1"><span style={footerSpan}>© Dead Coders Society</span></a>
       </footer>
     </div>
   );
