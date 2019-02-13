@@ -282,30 +282,30 @@ class Dashboard extends Component {
                           {this.state.authorError}
                         </div>
                       </div>
-                    </div>
-                    <div className="poem">
-                      <label htmlFor="poem">Poem</label>
-                      <textarea
-                        value={this.state.body}
-                        onChange={this.handleInputChange}
-                        rows="8"
-                        placeholder="Enter Poem here"
-                        name="body"
-                      />
-                      <div style={{ fontSize: 12, color: "red" }}>
-                        {this.state.bodyError}
+                      <div className="poem">
+                        <label htmlFor="poem">Poem</label>
+                        <textarea
+                          value={this.state.body}
+                          onChange={this.handleInputChange}
+                          rows="8"
+                          placeholder="Enter Poem here"
+                          name="body"
+                        />
+                        <div style={{ fontSize: 12, color: "red" }}>
+                          {this.state.bodyError}
+                        </div>
                       </div>
-                    </div>
-                    <div className="postPoem">
-                      <button
-                        onClick={this.handleFormSubmit}
-                        type="submit"
-                      >
-                        <span>Submit Poem</span>
-                        <IconDance><span role="img" aria-label="write">✍</span></IconDance>
-                      </button>
-                    </div>
-                  </form>
+                      <div className="postPoem">
+                        <button
+                          onClick={this.handleFormSubmit}
+                          type="submit"
+                        >
+                          <span>Submit Poem</span>
+                          <IconDance><span role="img" aria-label="write">✍</span></IconDance>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
             </Paper>
