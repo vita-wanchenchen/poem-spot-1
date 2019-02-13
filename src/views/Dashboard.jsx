@@ -1,5 +1,9 @@
 /* eslint-disable react/jsx-one-expression-per-line */
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { withStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
@@ -9,12 +13,70 @@ import Footer from "../components/Footer";
 import IconDance from "../components/IconDance";
 import Background from "../images/background.png";
 
+const styledWelcome = {
+  fontSize: "70px",
+  margin: "30px",
+};
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: "center",
+    color: "black",
+    backgroundColor: "#e7e0ff",
+    borderRadius: "15px",
+  },
+  purple: {
+    backgroundColor: "#e7e0ff",
+    borderRadius: "15px",
+    marginLeft: "5%",
+    marginRight: "5%",
+    padding: "20px",
+    paddingLeft: "20px",
+    paddingTop: "20px",
+  },
+  title: {
+    justify: "center",
+    borderRadius: "15px",
+    padding: theme.spacing.unit * 2,
+    textAlign: "center",
+    backgroundColor: "transparent",
+    borderStyle: "none",
+    shadows: "0px",
+    boxShadows: "0px",
+  },
+  myPoems: {
+    backgroundColor: "#e7e0ff",
+    borderRadius: "15px",
+    marginLeft: "5%",
+    marginRight: "5%",
+    padding: "10%",
+    paddingLeft: "10%",
+  },
+  allPoems: {
+    marginRight: "5%",
+    marginLeft: "5%",
+    borderRadius: "15px",
+    palette: {
+      primary: "#e7e0ff",
+    },
+  },
+});
+
+function FullWidthGrid(props) {
+  const { classes } = props;
+}
+
 const crumpledPaper = {
   backgroundImage: `url(${Background})`,
 };
 
 const pageTitle = {
   fontSize: "40px",
+  fontAlign: "center",
   textAlign: "center",
 };
 
@@ -168,146 +230,164 @@ class Dashboard extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
       <div id="dashboard-page" style={crumpledPaper}>
         <NavbarDash />
-        <div id="name">
-          <h2 value={this.state.email}>
-            <div style={nameTitle}>
-              <span>Welcome to your dashboard </span>
-              {this.state.name}
-              <span>.  </span>
-              <span>To start writing fill out the poem form.</span>
+        <Grid container spacing={24}>
+          <Grid item xs={12}>
+            <div style={pageTitle}>
+              <span style={styledWelcome}>Dashboard</span>
             </div>
-          </h2>
-        </div>
-        <div style={pageTitle}>
-          <span> My Dashboard</span>
-        </div>
-
-        <div className="pwrapper">
-          <div className="poem-wrapper">
-            <h2>Post your poems below</h2>
-            <form onSubmit={this.handleSubmit} noValidate>
-              <div className="title">
-                <label htmlFor="title">Poem Title</label>
-                <input
-                  value={this.state.title}
-                  onChange={this.handleInputChange}
-                  type="text"
-                  placeholder="Title (required)"
-                  name="title"
-                />
-                <div style={{ fontSize: 12, color: "red" }}>
-                  {this.state.titleError}
+          </Grid>
+          <Grid item xs={12} sm={12} md={6}>
+            <Paper className={classes.purple}>
+              <div>
+                <h2 value={this.state.email}>
+                  <div style={nameTitle}>
+                    <span>Hi, </span>
+                    {this.state.name}
+                    <span>. </span>
+                    <span>To start writing, fill out the poem form.</span>
+                  </div>
+                </h2>
+                <div>
+                  <div>
+                    <h2>Post your poems below</h2>
+                    <form onSubmit={this.handleSubmit} noValidate>
+                      <div className="title">
+                        <label htmlFor="title">Poem Title</label>
+                        <input
+                          value={this.state.title}
+                          onChange={this.handleInputChange}
+                          type="text"
+                          placeholder="Title (required)"
+                          name="title"
+                        />
+                        <div style={{ fontSize: 12, color: "red" }}>
+                          {this.state.titleError}
+                        </div>
+                      </div>
+                      <div className="author">
+                        <label htmlFor="author">Poem Author</label>
+                        <input
+                          onChange={this.handleInputChange}
+                          value={this.state.author}
+                          type="text"
+                          placeholder="Author (required)"
+                          name="author"
+                        />
+                        <div style={{ fontSize: 12, color: "red" }}>
+                          {this.state.authorError}
+                        </div>
+                      </div>
+                      <div className="poem">
+                        <label htmlFor="poem">Poem</label>
+                        <textarea
+                          value={this.state.body}
+                          onChange={this.handleInputChange}
+                          rows="8"
+                          placeholder="Enter Poem here"
+                          name="body"
+                        />
+                        <div style={{ fontSize: 12, color: "red" }}>
+                          {this.state.bodyError}
+                        </div>
+                      </div>
+                      <div className="postPoem">
+                        <button
+                          onClick={this.handleFormSubmit}
+                          type="submit"
+                        >
+                          <span>Submit Poem</span>
+                          <IconDance><span role="img" aria-label="write">✍</span></IconDance>
+                        </button>
+                      </div>
+                    </form>
+                  </div>
                 </div>
               </div>
-              <div className="author">
-                <label htmlFor="author">Poem Author</label>
-                <input
-                  onChange={this.handleInputChange}
-                  value={this.state.author}
-                  type="text"
-                  placeholder="Author (required)"
-                  name="author"
-                />
-                <div style={{ fontSize: 12, color: "red" }}>
-                  {this.state.authorError}
+            </Paper>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6}>
+            <Paper className={classes.allPoems}>
+              {/* Database Poems */}
+              <div id="dbPoems">
+                <div className="APIS">
+                  {!this.state.dbPoems.length ? (
+                    <h1 className="text-center">No Poems to Display</h1>
+                  ) : (
+                    <React.Fragment>
+                      {this.state.dbPoems.map((poems, index) => (
+                        <div>
+                          <Card>
+                            <CardContent>
+                              <Typography color="textSecondary" gutterBottom>
+                                {index === 0 ? "All Poems" : null }
+                              </Typography>
+                              <Typography variant="h5" component="h4">{poems.title}</Typography>
+                              <Typography>by:</Typography>
+                              <Typography>{poems.author}</Typography>
+                              {/* <Typography color="textSecondary" gutterBottom></Typography> */}
+                              <Typography color="textSecondary">{poems.body}</Typography>
+                            </CardContent>
+                          </Card>
+                        </div>
+                      ))}
+                    </React.Fragment>)}
                 </div>
               </div>
-              <div className="poem">
-                <label htmlFor="poem">Poem</label>
-                <textarea
-                  value={this.state.body}
-                  onChange={this.handleInputChange}
-                  rows="8"
-                  placeholder="Enter Poem here"
-                  name="body"
-                />
-                <div style={{ fontSize: 12, color: "red" }}>
-                  {this.state.bodyError}
+            </Paper>
+          </Grid>
+          <Grid item sm={12} md={6}>
+            <Paper className={classes.myPoems}>
+              <div id="myPoems">
+                <div className="APIS">
+                  {!this.state.myPoems.length ? (
+                    <Typography>
+                      <h1 className="text-center">No Poems to Display. Start writing!</h1>
+                    </Typography>
+                  ) : (
+                    <React.Fragment>
+                      {this.state.myPoems.map((mypoems, index) => (
+                        <div
+                          value={mypoems._id}
+                          className="mb-5"
+                        >
+                          <Card cardStyle={{ borderWidth: 0, borderColor: "transparent", elevation: 0 }}>
+                            <CardContent>
+                              <Typography color="textSecondary" gutterBottom>
+                                {index === 0 ? "My Poems" : null }
+                              </Typography>
+                              <Typography variant="h5" component="h4">{mypoems.title}</Typography>
+                              <Typography>by:</Typography>
+                              <Typography>{mypoems.author}</Typography>
+                              <Typography color="textSecondary">{mypoems.body}</Typography>
+                              <button
+                                className="btn btn-danger btn-sm mt-2"
+                                onClick={() => this.deletePoems(mypoems._id)}
+                                type="submit"
+                              >
+                                <span>Delete</span>
+                              </button>
+                            </CardContent>
+                          </Card>
+                        </div>
+                      ))}
+                    </React.Fragment>
+                  )}
                 </div>
               </div>
-              <div className="postPoem">
-                <button
-                  onClick={this.handleFormSubmit}
-                  type="submit"
-                >
-                  <span>Submit Poem</span>
-                  <IconDance><span role="img" aria-label="write">✍</span></IconDance>
-                </button>
-              </div>
-            </form>
-          </div>
+            </Paper>
+          </Grid>
+        </Grid>
+        <div>
+          <Footer />
         </div>
-        {/* Database Poems */}
-        <div className="container" display="flex" flex-direction="row">
-          <div id="dbPoems" className="col-md-6 s7">
-            <div className="APIS">
-              {!this.state.dbPoems.length ? (
-                <h1 className="text-center">No Poems to Display</h1>
-              ) : (
-                <React.Fragment>
-                  {this.state.dbPoems.map((poems, index) => (
-                    <div>
-                      <Card>
-                        <CardContent>
-                          <Typography color="textSecondary" gutterBottom>
-                            {index === 0 ? "All Poems" : null }
-                          </Typography>
-                          <Typography variant="h5" component="h4">{poems.title}</Typography>
-                          <Typography>by:</Typography>
-                          <Typography>{poems.author}</Typography>
-                          {/* <Typography color="textSecondary" gutterBottom></Typography> */}
-                          <Typography color="textSecondary">{poems.body}</Typography>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  ))}
-                </React.Fragment>)}
-            </div>
-          </div>
-          <div id="myPoems" className="col-md-6 s7">
-            <div className="APIS">
-              {!this.state.myPoems.length ? (
-                <h1 className="text-center">No Poems to Display. Start writing!</h1>
-              ) : (
-                <React.Fragment>
-                  {this.state.myPoems.map((mypoems, index) => (
-                    <div
-                      value={mypoems._id}
-                      className="mb-5"
-                    >
-                      <Card>
-                        <CardContent>
-                          <Typography color="textSecondary" gutterBottom>
-                            {index === 0 ? "My Poems" : null }
-                          </Typography>
-                          <Typography variant="h5" component="h4">{mypoems.title}</Typography>
-                          <Typography>by:</Typography>
-                          <Typography>{mypoems.author}</Typography>
-                          <Typography color="textSecondary">{mypoems.body}</Typography>
-                          <button
-                            className="btn btn-danger btn-sm mt-2"
-                            onClick={() => this.deletePoems(mypoems._id)}
-                            type="submit"
-                          >
-                            <span>Delete</span>
-                          </button>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  ))}
-                </React.Fragment>
-              )}
-            </div>
-          </div>
-        </div>
-        <Footer />
       </div>
-    //   </div>
     );
   }
 }
 
-export default Dashboard;
+
+export default withStyles(styles)(Dashboard);
