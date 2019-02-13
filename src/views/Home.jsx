@@ -136,8 +136,8 @@ class Home extends Component {
           <Grid item xs={12} sm={12}>
             <div style={styledWelcome}>Welcome To Poem Spot</div>
           </Grid>
-          <Grid item xs={12} sm={12} md={6} id="dailyPoem">
-            <div className={classes.poemOfTheDay}>
+          <Grid item xs={12} sm={12} md={6}>
+            <div className={classes.poemOfTheDay} id="dailyPoem">
               <Card>
                 <CardContent>
                   <Typography color="textSecondary" gutterBottom>Poem of the Day</Typography>
@@ -193,7 +193,7 @@ class Home extends Component {
               </div>
             </Paper>
           </Grid>
-          <Grid itemxs={12} sm={12} md={6}>
+          <Grid item xs={12} sm={12} md={6}>
             <div className={classes.meetUp}>
               <div id="meetUp">
                 <div className="APIS">

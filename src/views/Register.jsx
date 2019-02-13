@@ -84,7 +84,7 @@ constructor(props) {
           .then((res) => {
             const { history } = this.props;
             if (res.status === 201) {
-              history.push("/dashboard");
+              history.push("/login");
             }
           });
       }

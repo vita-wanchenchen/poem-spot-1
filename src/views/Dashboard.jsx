@@ -237,9 +237,9 @@ class Dashboard extends Component {
         <div id="name">
           <h2 value={this.state.email}>
             <div style={nameTitle}>
-              <span>Welcome to your dashboard </span>
+              <span>Welcome to your dashboard, </span>
               {this.state.name}
-              <span>.  To start writing fill out the poem form.</span>
+              <span>. To start writing, fill out the form.</span>
             </div>
           </h2>
         </div>
@@ -316,7 +316,7 @@ class Dashboard extends Component {
               <div id="dbPoems">
                 <div className="APIS">
                   {!this.state.dbPoems.length ? (
-                    <h1 className="text-center">No Poems to Display</h1>
+                    <h1 className="text-center">No poems to display.</h1>
                   ) : (
                     <React.Fragment>
                       {this.state.dbPoems.map((poems, index) => (
@@ -346,7 +346,7 @@ class Dashboard extends Component {
                 <div className="APIS">
                   {!this.state.myPoems.length ? (
                     <Typography>
-                      <h1 className="text-center">No Poems to Display. Start writing!</h1>
+                      <h1 className="text-center">No poems to display. Start writing!</h1>
                     </Typography>
                   ) : (
                     <React.Fragment>
