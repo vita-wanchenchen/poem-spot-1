@@ -234,6 +234,15 @@ class Dashboard extends Component {
     return (
       <div id="dashboard-page" style={crumpledPaper}>
         <NavbarDash />
+        <div id="name">
+          <h2 value={this.state.email}>
+            <div style={nameTitle}>
+              <span>Welcome to your dashboard </span>
+              {this.state.name}
+              <span>.  To start writing fill out the poem form.</span>
+            </div>
+          </h2>
+        </div>
         <Grid container spacing={24}>
           <Grid item xs={12}>
             <div style={pageTitle}>
@@ -243,68 +252,58 @@ class Dashboard extends Component {
           <Grid item xs={12} sm={12} md={6}>
             <Paper className={classes.purple}>
               <div>
-                <h2 value={this.state.email}>
-                  <div style={nameTitle}>
-                    <span>Hi, </span>
-                    {this.state.name}
-                    <span>. </span>
-                    <span>To start writing, fill out the poem form.</span>
-                  </div>
-                </h2>
                 <div>
-                  <div>
-                    <h2>Post your poems below</h2>
-                    <form onSubmit={this.handleSubmit} noValidate>
-                      <div className="title">
-                        <label htmlFor="title">Poem Title</label>
-                        <input
-                          value={this.state.title}
-                          onChange={this.handleInputChange}
-                          type="text"
-                          placeholder="Title (required)"
-                          name="title"
-                        />
-                        <div style={{ fontSize: 12, color: "red" }}>
-                          {this.state.titleError}
-                        </div>
+                  <h2>Post your poems below</h2>
+                  <form onSubmit={this.handleSubmit} noValidate>
+                    <div className="title">
+                      <label htmlFor="title">Poem Title</label>
+                      <input
+                        value={this.state.title}
+                        onChange={this.handleInputChange}
+                        type="text"
+                        placeholder="Title (required)"
+                        name="title"
+                      />
+                      <div style={{ fontSize: 12, color: "red" }}>
+                        {this.state.titleError}
                       </div>
-                      <div className="author">
-                        <label htmlFor="author">Poem Author</label>
-                        <input
-                          onChange={this.handleInputChange}
-                          value={this.state.author}
-                          type="text"
-                          placeholder="Author (required)"
-                          name="author"
-                        />
-                        <div style={{ fontSize: 12, color: "red" }}>
-                          {this.state.authorError}
-                        </div>
+                    </div>
+                    <div className="author">
+                      <label htmlFor="author">Poem Author</label>
+                      <input
+                        onChange={this.handleInputChange}
+                        value={this.state.author}
+                        type="text"
+                        placeholder="Author (required)"
+                        name="author"
+                      />
+                      <div style={{ fontSize: 12, color: "red" }}>
+                        {this.state.authorError}
                       </div>
-                      <div className="poem">
-                        <label htmlFor="poem">Poem</label>
-                        <textarea
-                          value={this.state.body}
-                          onChange={this.handleInputChange}
-                          rows="8"
-                          placeholder="Enter Poem here"
-                          name="body"
-                        />
-                        <div style={{ fontSize: 12, color: "red" }}>
-                          {this.state.bodyError}
-                        </div>
+                    </div>
+                    <div className="poem">
+                      <label htmlFor="poem">Poem</label>
+                      <textarea
+                        value={this.state.body}
+                        onChange={this.handleInputChange}
+                        rows="8"
+                        placeholder="Enter Poem here"
+                        name="body"
+                      />
+                      <div style={{ fontSize: 12, color: "red" }}>
+                        {this.state.bodyError}
                       </div>
-                      <div className="postPoem">
-                        <button
-                          onClick={this.handleFormSubmit}
-                          type="submit"
-                        >
-                          <span>Submit Poem</span>
-                          <IconDance><span role="img" aria-label="write">✍</span></IconDance>
-                        </button>
-                      </div>
-                    </form>
-                  </div>
+                    </div>
+                    <div className="postPoem">
+                      <button
+                        onClick={this.handleFormSubmit}
+                        type="submit"
+                      >
+                        <span>Submit Poem</span>
+                        <IconDance><span role="img" aria-label="write">✍</span></IconDance>
+                      </button>
+                    </div>
+                  </form>
                 </div>
               </div>
             </Paper>
