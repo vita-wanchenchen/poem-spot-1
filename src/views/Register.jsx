@@ -109,7 +109,7 @@ constructor(props) {
       passwordError = "Password must have atleast 6 characters";
     }
 
-    if (!this.state.password === this.state.password2) {
+    if (this.state.password2 !== this.state.password) {
       password2Error = "Passwords do not match";
     }
 
