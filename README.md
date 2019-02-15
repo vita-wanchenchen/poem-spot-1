@@ -14,22 +14,41 @@ Poem Spot is narrowly focused and free of distracting content.
 
 In short, it’s a community space for people who share an interest in the written word.
 
+## `Project Description (MVP)`
+
+ - Create MERN application for poem lovers.
+ - Visitors can see the daily poem, latest poems & local event.
+ - Require user authentication to access dashboard.
+ - Logged-in user is able to see their own dashboard where they can:
+   - Post poems
+   - See/delete posted poems
+   - See latest poems in database
+
 ## `TECHNOLOGIES USED`:
 
+ - MongoDB
+ - Express
+ - React
+ - Node.js
  - HTML5
  - CSS3
  - JavaScript
- - React
- - MongoDB
  - Mongoose
- - Passport.js
- - Node.js
- - Express
  - Axios
+ - Passport.js
  - Styled-components
  - Material-UI
  - POEMIST API
  - Meetup API
+
+ ## `What’s Next`
+
+ - The user will be able to set their creations to “private.”
+ - Allow users to search for Meetup groups using our search feature.
+ - Add commenting function for users to interact with each other.
+ - Allow users to link to a personal page.
+ - Make user profile visible and allow users to add others as friends.
+ - Search function that lets users search database poems.
 
  ## `TEAM MEMBERS`:
 
